@@ -1,0 +1,54 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import tailwindcssCover from './tailwindcss_cover.jpg'
+
+export const meta = {
+  author: 'Fabian Wassermann',
+  date: '2022-12-25',
+  title: 'The reason why I like Tailwind so much',
+  description:
+    'Tailwind CSS is a utility-first CSS framework that has gained popularity in recent years for its simplicity and flexibility.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+Tailwind CSS is a utility-first CSS framework that has gained popularity in recent years for its simplicity and flexibility.
+
+<Image src={tailwindcssCover} alt="" />
+
+## How it works
+
+Tailwind CSS is a utility-first CSS framework that provides a set of low-level
+utility classes for building custom designs. It works by applying these utility
+classes to your HTML elements using class attributes.
+
+Here's an example of how you might use Tailwind CSS to style a button:
+
+```html
+<button class="rounded-full bg-blue-500 py-2 px-4 font-bold text-white">
+  Click me
+</button>
+```
+
+In this example, the `bg-blue-500` class sets the background color of the button
+to blue, the `text-white` class sets the text color to white, and the `font-bold` class
+makes the text bold. The `py-2` and `px-4` classes add padding to the top and
+bottom (py) and left and right (px) of the button, while the `rounded-full` class
+rounds the corners of the button.
+
+You can use multiple utility classes to style your elements and create custom
+designs. For example, you might combine the classes above with others, such as
+`hover:bg-blue-700` to change the background color on hover, or `shadow-lg` to add a
+shadow to the button.
+
+## Things I like about Tailwind
+
+1. **No pre-designed components:** Unlike other CSS frameworks that come with a set of pre-designed components, Tailwind CSS provides low-level utility classes that let you build your own custom designs. This allows you to have complete control over the look and feel of your website or application, without being limited to the styles provided by the framework.
+2. **Highly customizable:** Tailwind CSS is highly customizable, thanks to its configuration file that lets you define your own set of utility classes. You can customize the colors, font sizes, spacing, and other styles to match your design system.
+3. **Easy to learn:** Tailwind CSS has a very simple syntax and a small learning curve. It uses familiar CSS concepts like class names and pseudo-selectors, making it easy for developers with CSS experience to get started.
+4. **Performance-focused:** Tailwind CSS is designed to be lightweight and efficient, with a minimal footprint on your website or application. It generates minimal CSS, which means it won't slow down your site or bloat your codebase.
+5. **Responsive by default:** Tailwind CSS comes with a set of responsive utility classes that let you easily create responsive designs. You can use these classes to adjust the layout, spacing, and other styles based on the device or screen size.
+
+Overall, Tailwind CSS is a great choice for developers who want a simple, flexible,
+and performance-focused CSS framework. It allows you to build custom designs with
+ease, while keeping your codebase clean and maintainable. I like Tailwind CSS!
