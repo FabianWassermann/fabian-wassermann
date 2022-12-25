@@ -7,44 +7,44 @@ import logoAnimaginary from '@/images/logos/animaginary.svg'
 import logoCosmos from '@/images/logos/cosmos.svg'
 import logoHelioStream from '@/images/logos/helio-stream.svg'
 import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
+import logoHundepensionBergparadies from '@/images/logos/hundepensionbergparadies.jpeg'
 
 const projects = [
   {
-    name: 'Planetaria',
+    name: 'Hundepension Bergparadies',
     description:
-      'Creating technology to empower civilians to explore space on their own terms.',
-    link: { href: 'http://planetaria.tech', label: 'planetaria.tech' },
-    logo: logoPlanetaria,
+      'I created a website for a dog hotel nearby. This is one of my first websites I´ve ever made.',
+    link: { href: 'https://www.hundepensionbergparadies.at/', label: 'hundepensionbergparadies.at' },
+    logo: logoHundepensionBergparadies,
   },
-  {
-    name: 'Animaginary',
-    description:
-      'High performance web animation library, hand-written in optimized WASM.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoAnimaginary,
-  },
-  {
-    name: 'HelioStream',
-    description:
-      'Real-time video streaming library, optimized for interstellar transmission.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoHelioStream,
-  },
-  {
-    name: 'cosmOS',
-    description:
-      'The operating system that powers our Planetaria space shuttles.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoCosmos,
-  },
-  {
-    name: 'OpenShuttle',
-    description:
-      'The schematics for the first rocket I designed that successfully made it to orbit.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoOpenShuttle,
-  },
+  // {
+  //   name: 'Animaginary',
+  //   description:
+  //     'High performance web animation library, hand-written in optimized WASM.',
+  //   link: { href: '#', label: 'github.com' },
+  //   logo: logoAnimaginary,
+  // },
+  // {
+  //   name: 'HelioStream',
+  //   description:
+  //     'Real-time video streaming library, optimized for interstellar transmission.',
+  //   link: { href: '#', label: 'github.com' },
+  //   logo: logoHelioStream,
+  // },
+  // {
+  //   name: 'cosmOS',
+  //   description:
+  //     'The operating system that powers our Planetaria space shuttles.',
+  //   link: { href: '#', label: 'github.com' },
+  //   logo: logoCosmos,
+  // },
+  // {
+  //   name: 'OpenShuttle',
+  //   description:
+  //     'The schematics for the first rocket I designed that successfully made it to orbit.',
+  //   link: { href: '#', label: 'github.com' },
+  //   logo: logoOpenShuttle,
+  // },
 ]
 
 function LinkIcon(props) {
@@ -65,12 +65,12 @@ export default function Projects() {
         <title>Projects - Fabian Wassermann</title>
         <meta
           name="description"
-          content="Things I’ve made trying to put my dent in the universe."
+          content="Things I’ve made during my freelance career."
         />
       </Head>
       <SimpleLayout
-        title="Things I’ve made trying to put my dent in the universe."
-        intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. Many of them are open-source, so if you see something that piques your interest, check out the code and contribute if you have ideas for how it can be improved."
+        title="Things I’ve made during my freelance career."
+        intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. Some of them are open-source, so if you see something that piques your interest, check out the code or help me implove it."
       >
         <ul
           role="list"
@@ -82,7 +82,7 @@ export default function Projects() {
                 <Image
                   src={project.logo}
                   alt=""
-                  className="h-8 w-8"
+                  className="h-8 w-8 rounded-full aspect-square"
                   unoptimized
                 />
               </div>
