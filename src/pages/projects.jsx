@@ -70,7 +70,7 @@ export default function Projects() {
       </Head>
       <SimpleLayout
         title="Things I’ve made during my freelance career."
-        intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. Some of them are open-source, so if you see something that piques your interest, check out the code or help me implove it."
+        intro="I’ve worked on some little projects over the years but these are the bigger projects that I’m most proud of."
       >
         <ul
           role="list"
