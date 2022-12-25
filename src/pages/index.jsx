@@ -17,12 +17,14 @@ import image2 from '@/images/photos/image-2.jpg'
 import image3 from '@/images/photos/image-3.avif'
 import image4 from '@/images/photos/image-4.jpg'
 import image5 from '@/images/photos/image-5.jpg'
+import image6 from '@/images/photos/image-6.jpg'
 import logoHs2n from '@/images/logos/hs2n.webp'
 import logoNeedNect from '@/images/logos/neednect.png'
 import logoConsens from '@/images/logos/consens.jpg'
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
+import { useEffect, useRef } from 'react'
 
 function MailIcon(props) {
   return (
@@ -238,9 +240,9 @@ function Photos() {
   let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
 
   return (
-    <div className="mt-16 sm:mt-20">
-      <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {[image1, image2, image3, image4, image5].map((image, imageIndex) => (
+    <div className="relative mt-16 sm:mt-20 overflow-hidden mx-auto max-w-[90rem] before:hidden before:sm:block before:absolute before:top-0 before:left-0 before:w-10 before:h-full before:z-10 before:bg-gradient-to-r before:from-[rgba(0,0,0,1)] before:to-[rgba(0,0,0,0)] after:hidden after:sm:block after:absolute after:top-0 after:right-0 after:w-10 after:h-full after:z-10 after:bg-gradient-to-r after:from-[rgba(0,0,0,0)] after:to-[rgba(0,0,0,1)]">
+      <div id="photos" className="-my-4 flex justify-center gap-5 w-fit overflow-hidden py-4 sm:gap-8 transition-transform duration-500 ease-in-out">
+        {[image1, image2, image3, image4, image5, image6].map((image, imageIndex) => (
           <div
             key={image.src}
             className={clsx(
@@ -264,6 +266,12 @@ function Photos() {
 // I’m the founder and CEO of AATSI, where we develop crypto technologies that automate the asset trading for people to save time and make profits.
 
 export default function Home({ articles }) {
+  useEffect(() => {
+    window.addEventListener("scroll", (e) => {
+      let offset = document.getElementById("photos").getBoundingClientRect().top;
+      document.getElementById("photos").style.transform = `translateX(${0 - window.scrollY}px)`;
+    })
+  })
   return (
     <>
       <Head>
