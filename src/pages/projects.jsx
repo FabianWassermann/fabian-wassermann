@@ -121,7 +121,7 @@ export default function Projects() {
                 <button onClick={() => {
                   project.isImageShown = !project.isImageShown;
                   forceUpdate();
-                }} className={`${project.isImageShown ? '!flex': 'hidden'} group-hover:flex z-40 h-10 w-10 text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-400 bg-white hover:bg-zinc-50 dark:bg-zinc-700 dark:hover:bg-zinc-600 rounded-full items-center justify-center shadow-md shadow-zinc-800/5 ring-1 ring-zinc-800/5 dark:border dark:border-zinc-600/50 dark:ring-0`}>
+                }} className={`${project.isImageShown ? '!flex': 'flex sm:hidden'} group-hover:flex z-40 h-10 w-10 text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-400 bg-white hover:bg-zinc-50 dark:bg-zinc-700 dark:hover:bg-zinc-600 rounded-full items-center justify-center shadow-md shadow-zinc-800/5 ring-1 ring-zinc-800/5 dark:border dark:border-zinc-600/50 dark:ring-0`}>
                   {project.isImageShown ? 
                     <EyeCloseIcon 
                       stroke="currentColor"
@@ -151,7 +151,7 @@ export default function Projects() {
                 <Image 
                   src={project.image}
                   alt=""
-                  className="w-full h-full"
+                  className="h-full w-auto mx-auto"
                   unoptimized
                 />
               </div>
