@@ -82,7 +82,7 @@ function EyeCloseIcon(props) {
 
 function Tag({ tagName }) {
   return (
-    <span className="inline-flex items-center rounded-full bg-zinc-800 px-2.5 py-1 text-xxs font-medium text-zinc-400">{tagName}</span>
+    <span className="inline-flex items-center rounded-full bg-white shadow-md dark:bg-zinc-800 px-2.5 py-1 text-xxs font-medium text-zinc-700 dark:text-zinc-400 shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:ring-0">{tagName}</span>
   )
 }
 
