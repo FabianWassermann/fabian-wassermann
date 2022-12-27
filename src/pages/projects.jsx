@@ -61,7 +61,7 @@ function LinkIcon(props) {
 
 function Tag({ tagName }) {
   return (
-    <span class="inline-flex items-center rounded-full bg-zinc-800 px-2.5 py-1 text-xxs font-medium text-zinc-400">{tagName}</span>
+    <span className="inline-flex items-center rounded-full bg-zinc-800 px-2.5 py-1 text-xxs font-medium text-zinc-400">{tagName}</span>
   )
 }
 

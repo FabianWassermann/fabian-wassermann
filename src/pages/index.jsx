@@ -133,7 +133,7 @@ function Newsletter() {
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
         Feel free to send me an email at all time. If you want you can start a conversation by sending me a message.
       </p>
-      <div class="mt-6 mb-4">
+      <div className="mt-6 mb-4">
         <input
           type="text"
           name='message'
