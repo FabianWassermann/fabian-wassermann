@@ -98,7 +98,7 @@ export default function Projects() {
               </h2>
               <div className="flex gap-2 flex-wrap z-10">
                 {project.tags.map(tag => (
-                  <Tag tagName={tag}></Tag>
+                  <Tag tagName={tag} key={tag}></Tag>
                 ))}
               </div>
               <Card.Description>{project.description}</Card.Description>
