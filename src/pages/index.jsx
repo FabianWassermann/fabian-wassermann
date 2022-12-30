@@ -292,7 +292,7 @@ export default function Home({ articles }) {
         </title>
         <meta
           name="description"
-          content="I’m Fabian, a software developer and entrepreneur based in Austria. I´m a freelancer doing everything from websites to bigger webapplications."
+          content="I’m Fabian, a software developer and entrepreneur based in Austria. I´m a freelancer doing everything from simple websites to bigger webapplications."
         />
       </Head>
       <Container className="mt-9">
@@ -301,8 +301,8 @@ export default function Home({ articles }) {
             Software developer, freelancer, and amateur mountaineer.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Fabian, a software developer and entrepreneur based in Austria. 
-            I´m a freelancer doing everything from websites to bigger webapplications.
+            I’m Fabian, a software developer, specialized in full-stack development, based in Austria. 
+            I´m a freelancer doing everything from simple websites to bigger webapplications.
           </p>
           <div className="mt-6 flex gap-6">
             {/* <SocialLink
