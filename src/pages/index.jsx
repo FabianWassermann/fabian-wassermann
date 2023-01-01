@@ -294,6 +294,7 @@ export default function Home({ articles }) {
           name="description"
           content="I’m Fabian, a software developer and entrepreneur based in Austria. I´m a freelancer doing everything from simple websites to bigger webapplications."
         />
+        <meta name="keywords" content="Fabian, Wassermann" />
       </Head>
       <Container className="mt-9">
         <div className="max-w-2xl">
