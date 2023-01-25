@@ -1,0 +1,69 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import wpfVisualStudio from './wpf_visual_studio.png'
+import azureVisualStudioSearch from './azure_visual_studio_search.png'
+import azureVisualStudioVersioning from './azure_visual_studio_versioning.png'
+import azureStart from './azure_start.png'
+import microsoftRemoteDesktop from './microsoft_remote_desktop.png'
+
+export const meta = {
+  author: 'Fabian Wassermann',
+  date: '2023-01-25',
+  title: 'The pain of developing WPF on MacOs-Silicon',
+  description:
+    'A solution if you need to develop WPF with Visual Studio but you are working on a Mac-Silicon.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+A solution if you need to develop WPF with Visual Studio but you are working on a Mac-Silicon.
+
+<Image src={wpfVisualStudio} alt="" />
+
+## What is WPF?
+
+Windows Presentation Foundation (WPF), a UI framework that is resolution-independent and uses a vector-based rendering engine, built to take advantage of modern graphics hardware.
+It's basically one way of creating an windows UI-Application with C#.
+
+## The problem
+
+The brainer would say: "Setup a Windows-VM and install a Visual Studio and you are ready to go".
+And he's right for Intel-Macs but in case you are using a Mac-Silicon you simply can't do it that way.
+Currently, there is no VM which can translate fast to arm-processors and thats the problem in this case.
+
+## Solution 1
+
+In order to use this solution you need to have an Azure-Account or an account of an other hosting provider.
+If you are attending school you may have 100USD or more per year of free credits, otherwise you have to pay every hour of developing yourself.
+
+### Step 1: Azure Visual Studio
+
+<Image src={azureVisualStudioSearch} alt="" />
+
+Search for "Visual Studio" and click on the Visual Studio version you want to use.
+
+<Image src={azureVisualStudioVersioning} alt="" />
+
+Then select the Community version if you don't have access to a higher tier.
+
+In the following you need to enter settings for your Server.
+The most important setting is to allow inbound port for RDP so that you can connect.
+
+<Image src={azureStart} alt="" />
+
+Finally start the server.
+
+### Step 2: Install remote desktop app
+
+In order to connect and view your server you can use a remote desktop application, which can be downloaded from AppStore.
+My personal preference is the Microsoft Remote Desktop app.
+
+<Image src={microsoftRemoteDesktop} alt="" />
+
+Click on create PC, enter the IP of your server and click on add.
+Congrats, you connected to your cloud server and you'r ready to work with the preinstalled Visual Studio.
+
+## Solution 2
+
+In case you own an old windows machine you can use it as a server by running it in your home network and exposing it to the web.
+You can access your own windows machine in the same way as the Azure-Server.
