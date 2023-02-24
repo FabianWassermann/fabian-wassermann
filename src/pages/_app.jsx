@@ -16,12 +16,15 @@ function usePrevious(value) {
       const mouseX = e.clientX;
       const mouseY = e.clientY;
 
+      const widthOfContentBack = document.getElementById("content-back").clientWidth;
+      const diff = (window.innerWidth - widthOfContentBack) / 2;
+
       document.getElementById("blob")
         .animate(
           [
-            { top: `${mouseY-75}px`, left: `${mouseX-150}px` }
+            { top: `${mouseY - 75}px`, left: `${mouseX - diff - 75}px` }
           ], 
-          { fill: "forwards", duration: 1000 }
+          { fill: "forwards", duration: 1500 }
         );
     }
   }, [value])
@@ -36,7 +39,7 @@ export default function App({ Component, pageProps, router }) {
     <>
       <div className="fixed inset-0 flex justify-center sm:px-8">
         <div className="flex w-full max-w-7xl lg:px-8">
-          <div className="w-full relative bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20 overflow-hidden">
+          <div className="w-full relative bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20 overflow-hidden" id="content-back">
             <div className="absolute bg-gray-700 dark:bg-gray-400" id="blob" style={{
               width: "150px",
               height: "150px",
