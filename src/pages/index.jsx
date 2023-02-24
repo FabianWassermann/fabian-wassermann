@@ -243,6 +243,8 @@ function Photos() {
     window.addEventListener("scroll", (e) => {
       // let offset = document.getElementById("photos").getBoundingClientRect().top;
       // document.getElementById("photos").style.transform = `translateX(${0 - window.scrollY}px)`;
+      if (!document.getElementById("photos"))
+        return;
       document.getElementById("photos").animate(
         [
           { transform: `translateX(${0 - window.scrollY/2}px)` }
