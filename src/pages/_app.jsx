@@ -22,7 +22,7 @@ function usePrevious(value) {
       document.getElementById("blob")
         .animate(
           [
-            { top: `${mouseY - 75}px`, left: `${mouseX - diff - 75}px` }
+            { top: `${mouseY - 75}px`, left: `${Math.min(Math.max(mouseX - diff - 75, -75), widthOfContentBack - 75)}px` }
           ], 
           { fill: "forwards", duration: 1500 }
         );
