@@ -10,20 +10,43 @@ function usePrevious(value) {
   let ref = useRef()
 
   useEffect(() => {
-    ref.current = value
+    ref.current = value;
+
+    window.onmousemove = (e) => {
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      document.getElementById("blob")
+        .animate(
+          [
+            { top: `${mouseY-75}px`, left: `${mouseX-150}px` }
+          ], 
+          { fill: "forwards", duration: 1000 }
+        );
+    }
   }, [value])
 
   return ref.current
 }
 
 export default function App({ Component, pageProps, router }) {
-  let previousPathname = usePrevious(router.pathname)
+  let previousPathname = usePrevious(router.pathname);
 
   return (
     <>
       <div className="fixed inset-0 flex justify-center sm:px-8">
         <div className="flex w-full max-w-7xl lg:px-8">
-          <div className="w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20" />
+          <div className="w-full relative bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20 overflow-hidden">
+            <div className="absolute bg-gray-700 dark:bg-gray-400" id="blob" style={{
+              width: "150px",
+              height: "150px",
+              borderRadius: "40% 60% 70% 30% / 40% 50% 60% 50%",
+              overflow: "hidden",
+              filter: "blur(50px)",
+              opacity: "0.4"
+            }}>
+            </div>
+          </div>
         </div>
       </div>
       <div className="relative">

@@ -124,7 +124,7 @@ function Newsletter() {
         });
         e.target.reset();
       }}
-      className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40"
+      className="rounded-2xl p-6 bg-white/50 ring-1 ring-zinc-100 dark:bg-zinc-900/50 dark:ring-zinc-700/40"
     >
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
         <MailIcon className="h-6 w-6 flex-none" />
@@ -189,7 +189,7 @@ function Resume() {
   ]
 
   return (
-    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+    <div className="rounded-2xl p-6 bg-white/50 ring-1 ring-zinc-100 dark:bg-zinc-900/50 dark:ring-zinc-700/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
         <BriefcaseIcon className="h-6 w-6 flex-none" />
         <span className="ml-3">Work</span>
@@ -239,6 +239,25 @@ function Resume() {
 function Photos() {
   let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
 
+  useEffect(() => {
+    window.addEventListener("scroll", (e) => {
+      // let offset = document.getElementById("photos").getBoundingClientRect().top;
+      // document.getElementById("photos").style.transform = `translateX(${0 - window.scrollY}px)`;
+      document.getElementById("photos").animate(
+        [
+          { transform: `translateX(${0 - window.scrollY/2}px)` }
+        ], 
+        {
+          delay: 100,
+          duration: 500,
+          iterations: 1,
+          easing: "cubic-bezier(.17,.67,.96,.59)",
+          fill: "forwards"
+        }
+      );
+    })
+  })
+
   return (
     <div className="relative py-3 mt-16 sm:mt-20 overflow-hidden mx-auto max-w-[90rem] before:hidden before:sm:block before:absolute before:top-0 before:left-0 before:w-10 before:h-full before:z-10 before:bg-gradient-to-r before:dark:from-[rgba(0,0,0,1)] before:from-zinc-50 before:to-[rgba(0,0,0,0)] after:hidden after:sm:block after:absolute after:top-0 after:right-0 after:w-10 after:h-full after:z-10 after:bg-gradient-to-r after:from-[rgba(0,0,0,0)] after:dark:to-[rgba(0,0,0,1)] after:to-zinc-50">
       <div id="photos" className="-my-4 flex justify-center gap-5 w-fit overflow-hidden py-4 sm:gap-8">
@@ -266,24 +285,6 @@ function Photos() {
 // I’m the founder and CEO of AATSI, where we develop crypto technologies that automate the asset trading for people to save time and make profits.
 
 export default function Home({ articles }) {
-  useEffect(() => {
-    window.addEventListener("scroll", (e) => {
-      // let offset = document.getElementById("photos").getBoundingClientRect().top;
-      // document.getElementById("photos").style.transform = `translateX(${0 - window.scrollY}px)`;
-      document.getElementById("photos").animate(
-        [
-          { transform: `translateX(${0 - window.scrollY/2}px)` }
-        ], 
-        {
-          delay: 100,
-          duration: 500,
-          iterations: 1,
-          easing: "cubic-bezier(.17,.67,.96,.59)",
-          fill: "forwards"
-        }
-      );
-    })
-  })
   return (
     <>
       <Head>
