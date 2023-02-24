@@ -22,6 +22,16 @@ const projects = [
     isImageShown: false,
     image: imageHundepensionBergparadies
   },
+  {
+    name: 'Hundezucht Sunnysoul',
+    description:
+      'This website is for a dog breeder. They´ve got the sweetest dogs I know.',
+    link: { href: 'https://www.labrador-of-sunnysoul.at/', label: 'labrador-of-sunnysoul.at' },
+    logo: logoHundepensionBergparadies,
+    tags: ["VueJs", "TailwindCSS", "HTML5"],
+    isImageShown: false,
+    image: imageHundepensionBergparadies
+  },
   // {
   //   name: 'Animaginary',
   //   description:
@@ -119,7 +129,11 @@ export default function Projects() {
                   />
                 </div>
                 <button onClick={() => {
-                  project.isImageShown = !project.isImageShown;
+                  const oldSate = project.isImageShown;
+                  projects.forEach((p) => {
+                    p.isImageShown = false;
+                  })
+                  project.isImageShown = !oldSate;
                   forceUpdate();
                 }} className={`${project.isImageShown ? '!flex': 'flex sm:hidden'} group-hover:flex z-40 h-10 w-10 text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-400 bg-white hover:bg-zinc-50 dark:bg-zinc-700 dark:hover:bg-zinc-600 rounded-full items-center justify-center shadow-md shadow-zinc-800/5 ring-1 ring-zinc-800/5 dark:border dark:border-zinc-600/50 dark:ring-0`}>
                   {project.isImageShown ? 
