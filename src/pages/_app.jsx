@@ -12,6 +12,18 @@ function usePrevious(value) {
   useEffect(() => {
     ref.current = value;
 
+    window.onclick = (e) => {
+      document.getElementById("blob")
+        .animate(
+          [
+            { transform: `scale(1)` },
+            { transform: `scale(1.2)` },
+            { transform: `scale(1)` }
+          ],
+          { duration: 500 }
+        )
+    }
+
     window.onmousemove = (e) => {
       const mouseX = e.clientX;
       const mouseY = e.clientY;
