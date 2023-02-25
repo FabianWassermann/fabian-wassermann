@@ -32,7 +32,7 @@ const projects = [
     tags: ["VueJs", "TailwindCSS", "HTML5"],
     isImageShown: false,
     image: imageSunnySoul,
-    additionalImageClasses: "w-3/4 !h-auto"
+    additionalImageClasses: "!w-3/4 !h-auto"
   },
   // {
   //   name: 'Animaginary',
