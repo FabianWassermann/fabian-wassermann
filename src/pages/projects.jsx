@@ -8,7 +8,8 @@ import logoCosmos from '@/images/logos/cosmos.svg'
 import logoHelioStream from '@/images/logos/helio-stream.svg'
 import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
 import logoHundepensionBergparadies from '@/images/logos/hundepensionbergparadies.jpeg'
-import imageHundepensionBergparadies from '@/images/projects/hundepension.png';
+import imageHundepensionBergparadies from '@/images/projects/hundepension.png'
+import imageSunnySoul from '@/images/projects/sunnysoul.png'
 import React, { useState } from 'react'
 
 const projects = [
@@ -30,7 +31,8 @@ const projects = [
     logo: logoHundepensionBergparadies,
     tags: ["VueJs", "TailwindCSS", "HTML5"],
     isImageShown: false,
-    image: imageHundepensionBergparadies
+    image: imageSunnySoul,
+    additionalImageClasses: "w-3/4 !h-auto"
   },
   // {
   //   name: 'Animaginary',
@@ -161,13 +163,25 @@ export default function Projects() {
                 <LinkIcon className="h-6 w-6 flex-none" />
                 <span className="ml-2">{project.link.label}</span>
               </p>
-              <div className={`${project.isImageShown ? 'opacity-100 z-30' : 'opacity-0 z-10'} transition-opacity bg-zinc-50 dark:bg-zinc-800 absolute -inset-y-6 -inset-x-4 sm:-inset-x-6 sm:rounded-2xl`}>
-                <Image 
-                  src={project.image}
-                  alt=""
-                  className="h-full w-auto mx-auto"
-                  unoptimized
-                />
+              <div className={`${project.isImageShown ? 'opacity-100 z-30' : 'opacity-0 z-10'} flex items-center justify-center transition-opacity bg-zinc-50 dark:bg-zinc-800 absolute -inset-y-6 -inset-x-4 sm:-inset-x-6 sm:rounded-2xl`}>
+                {
+                  project.image ? 
+                    <Image 
+                      src={project.image}
+                      alt=""
+                      className={`h-full w-auto mx-auto ${project.additionalImageClasses}`}
+                      unoptimized
+                    /> :
+                    null 
+                }
+                {/* {
+                  project.video ?
+                    <video autoPlay muted className="w-3/4">
+                      <source src={project.video} type="video/mp4"/>
+                      Your browser does not support the video tag.
+                    </video> :
+                    null
+                } */}
               </div>
             </Card>
           ))}
