@@ -17,7 +17,7 @@ function usePrevious(value) {
         .animate(
           [
             { transform: `scale(1)` },
-            { transform: `scale(1.2)` },
+            { transform: `scale(0.8)` },
             { transform: `scale(1)` }
           ],
           { duration: 500 }
