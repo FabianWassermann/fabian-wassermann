@@ -8,6 +8,7 @@ import logoCosmos from '@/images/logos/cosmos.svg'
 import logoHelioStream from '@/images/logos/helio-stream.svg'
 import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
 import logoHundepensionBergparadies from '@/images/logos/hundepensionbergparadies.jpeg'
+import logoLabradorVomSalzkofelblick from '@/images/logos/labrador-vom-salzkofelblick.png';
 import imageHundepensionBergparadies from '@/images/projects/hundepension.png'
 import imageSunnySoul from '@/images/projects/sunnysoul.png'
 import React, { useState } from 'react'
@@ -28,7 +29,7 @@ const projects = [
     description:
       'This website is for a dog breeder. They´ve got the sweetest dogs I know.',
     link: { href: 'https://www.labrador-of-sunnysoul.at/', label: 'labrador-of-sunnysoul.at' },
-    logo: logoHundepensionBergparadies,
+    logo: logoLabradorVomSalzkofelblick,
     tags: ["VueJs", "TailwindCSS", "HTML5"],
     isImageShown: false,
     image: imageSunnySoul,
@@ -126,7 +127,7 @@ export default function Projects() {
                   <Image
                     src={project.logo}
                     alt=""
-                    className="h-8 w-8 rounded-full aspect-square"
+                    className="h-8 w-8 rounded-full aspect-square object-cover"
                     unoptimized
                   />
                 </div>
