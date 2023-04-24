@@ -9,8 +9,10 @@ import logoHelioStream from '@/images/logos/helio-stream.svg'
 import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
 import logoHundepensionBergparadies from '@/images/logos/hundepensionbergparadies.jpeg'
 import logoLabradorVomSalzkofelblick from '@/images/logos/labrador-vom-salzkofelblick.png';
+import logoAatsiRebalancing from '@/images/logos/aatsi-rebalancing.png';
 import imageHundepensionBergparadies from '@/images/projects/hundepension.png'
 import imageSunnySoul from '@/images/projects/sunnysoul.png'
+import imageAatsiRebalancing from '@/images/projects/aatsi-rebalancing.png'
 import React, { useState } from 'react'
 
 const projects = [
@@ -34,6 +36,17 @@ const projects = [
     isImageShown: false,
     image: imageSunnySoul,
     additionalImageClasses: "!w-3/4 !h-auto"
+  },
+  {
+    name: 'AATSI Crypto Indexing',
+    description:
+      'This website is a demo page for showcasing purposes.',
+    link: { href: 'https://www.aatsi.org/', label: 'www.aatsi.org' },
+    logo: logoAatsiRebalancing,
+    tags: ["VueJs", "TailwindCSS", "HTML5"],
+    isImageShown: false,
+    image: imageAatsiRebalancing,
+    additionalImageClasses: "!w-[90%] !h-auto !rounded-lg"
   },
   // {
   //   name: 'Animaginary',
