@@ -8,8 +8,8 @@ import logoCosmos from '@/images/logos/cosmos.svg'
 import logoHelioStream from '@/images/logos/helio-stream.svg'
 import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
 import logoHundepensionBergparadies from '@/images/logos/hundepensionbergparadies.jpeg'
-import logoLabradorVomSalzkofelblick from '@/images/logos/labrador-vom-salzkofelblick.png';
-import logoAatsiRebalancing from '@/images/logos/aatsi-rebalancing.png';
+import logoLabradorVomSalzkofelblick from '@/images/logos/labrador-vom-salzkofelblick.png'
+import logoAatsiRebalancing from '@/images/logos/aatsi-rebalancing.png'
 import imageHundepensionBergparadies from '@/images/projects/hundepension.png'
 import imageSunnySoul from '@/images/projects/sunnysoul.png'
 import imageAatsiRebalancing from '@/images/projects/aatsi-rebalancing.png'
@@ -20,33 +20,38 @@ const projects = [
     name: 'Hundepension Bergparadies',
     description:
       'I created a website for a dog hotel nearby. This is one of my first websites I´ve ever made.',
-    link: { href: 'https://www.hundepensionbergparadies.at/', label: 'hundepensionbergparadies.at' },
+    link: {
+      href: 'https://www.hundepensionbergparadies.at/',
+      label: 'hundepensionbergparadies.at',
+    },
     logo: logoHundepensionBergparadies,
-    tags: ["HTML5", "CSS3", "JS"],
+    tags: ['HTML5', 'CSS3', 'JS'],
     isImageShown: false,
-    image: imageHundepensionBergparadies
+    image: imageHundepensionBergparadies,
   },
   {
     name: 'Hundezucht Sunnysoul',
     description:
       'This website is for a dog breeder. They´ve got the sweetest dogs I know.',
-    link: { href: 'https://www.labrador-of-sunnysoul.at/', label: 'labrador-of-sunnysoul.at' },
+    link: {
+      href: 'https://www.labrador-vom-salzkofelblick.at/',
+      label: 'labrador-vom-salzkofelblick.at',
+    },
     logo: logoLabradorVomSalzkofelblick,
-    tags: ["VueJs", "TailwindCSS", "HTML5"],
+    tags: ['VueJs', 'TailwindCSS', 'HTML5'],
     isImageShown: false,
     image: imageSunnySoul,
-    additionalImageClasses: "!w-3/4 !h-auto"
+    additionalImageClasses: '!w-3/4 !h-auto',
   },
   {
     name: 'AATSI Crypto Indexing',
-    description:
-      'This website is a demo page for showcasing purposes.',
+    description: 'This website is a demo page for showcasing purposes.',
     link: { href: 'https://www.aatsi.org/', label: 'www.aatsi.org' },
     logo: logoAatsiRebalancing,
-    tags: ["VueJs", "TailwindCSS", "HTML5"],
+    tags: ['VueJs', 'TailwindCSS', 'HTML5'],
     isImageShown: false,
     image: imageAatsiRebalancing,
-    additionalImageClasses: "!w-[90%] !h-auto !rounded-lg"
+    additionalImageClasses: '!w-[90%] !h-auto !rounded-lg',
   },
   // {
   //   name: 'Animaginary',
@@ -92,8 +97,18 @@ function LinkIcon(props) {
 function EyeOpenIcon(props) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+      ></path>
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+      ></path>
     </svg>
   )
 }
@@ -101,20 +116,27 @@ function EyeOpenIcon(props) {
 function EyeCloseIcon(props) {
   return (
     <svg fill="none" aria-hidden="true" {...props}>
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path>
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
+      ></path>
     </svg>
   )
 }
 
 function Tag({ tagName }) {
   return (
-    <span className="inline-flex items-center rounded-full bg-white shadow-md dark:bg-zinc-800 px-2.5 py-1 text-xxs font-medium text-zinc-700 dark:text-zinc-400 shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:ring-0">{tagName}</span>
+    <span className="inline-flex items-center rounded-full bg-white px-2.5 py-1 text-xxs font-medium text-zinc-700 shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:text-zinc-400 dark:ring-0">
+      {tagName}
+    </span>
   )
 }
 
 export default function Projects() {
-  const [, updateState] = React.useState();
-  const forceUpdate = React.useCallback(() => updateState({}), []);
+  const [, updateState] = React.useState()
+  const forceUpdate = React.useCallback(() => updateState({}), [])
 
   return (
     <>
@@ -135,40 +157,40 @@ export default function Projects() {
         >
           {projects.map((project) => (
             <Card as="li" key={project.name}>
-              <div className="flex items-start justify-between w-full">
-                <div className="relative flex h-12 w-12 items-center z-10 justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+              <div className="flex w-full items-start justify-between">
+                <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
                   <Image
                     src={project.logo}
                     alt=""
-                    className="h-8 w-8 rounded-full aspect-square object-cover"
+                    className="aspect-square h-8 w-8 rounded-full object-cover"
                     unoptimized
                   />
                 </div>
-                <button onClick={() => {
-                  const oldSate = project.isImageShown;
-                  projects.forEach((p) => {
-                    p.isImageShown = false;
-                  })
-                  project.isImageShown = !oldSate;
-                  forceUpdate();
-                }} className={`${project.isImageShown ? '!flex': 'flex sm:hidden'} group-hover:flex z-40 h-10 w-10 text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-400 bg-white hover:bg-zinc-50 dark:bg-zinc-700 dark:hover:bg-zinc-600 rounded-full items-center justify-center shadow-md shadow-zinc-800/5 ring-1 ring-zinc-800/5 dark:border dark:border-zinc-600/50 dark:ring-0`}>
-                  {project.isImageShown ? 
-                    <EyeCloseIcon 
-                      stroke="currentColor"
-                      className="h-6 w-6"
-                    /> : 
-                    <EyeOpenIcon
-                      stroke="currentColor"
-                      className="h-6 w-6"
-                    />
-                  }
+                <button
+                  onClick={() => {
+                    const oldSate = project.isImageShown
+                    projects.forEach((p) => {
+                      p.isImageShown = false
+                    })
+                    project.isImageShown = !oldSate
+                    forceUpdate()
+                  }}
+                  className={`${
+                    project.isImageShown ? '!flex' : 'flex sm:hidden'
+                  } z-40 h-10 w-10 items-center justify-center rounded-full bg-white text-zinc-500 shadow-md shadow-zinc-800/5 ring-1 ring-zinc-800/5 hover:bg-zinc-50 hover:text-zinc-600 group-hover:flex dark:border dark:border-zinc-600/50 dark:bg-zinc-700 dark:ring-0 dark:hover:bg-zinc-600 dark:hover:text-zinc-400`}
+                >
+                  {project.isImageShown ? (
+                    <EyeCloseIcon stroke="currentColor" className="h-6 w-6" />
+                  ) : (
+                    <EyeOpenIcon stroke="currentColor" className="h-6 w-6" />
+                  )}
                 </button>
               </div>
               <h2 className="mt-6 mb-2 text-base font-semibold text-zinc-800 dark:text-zinc-100">
                 <Card.Link href={project.link.href}>{project.name}</Card.Link>
               </h2>
-              <div className="flex gap-2 flex-wrap z-10">
-                {project.tags.map(tag => (
+              <div className="z-10 flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
                   <Tag tagName={tag} key={tag}></Tag>
                 ))}
               </div>
@@ -177,17 +199,19 @@ export default function Projects() {
                 <LinkIcon className="h-6 w-6 flex-none" />
                 <span className="ml-2">{project.link.label}</span>
               </p>
-              <div className={`${project.isImageShown ? 'opacity-100 z-30' : 'opacity-0 z-10'} flex items-center justify-center transition-opacity bg-zinc-50 dark:bg-zinc-800 absolute -inset-y-6 -inset-x-4 sm:-inset-x-6 sm:rounded-2xl`}>
-                {
-                  project.image ? 
-                    <Image 
-                      src={project.image}
-                      alt=""
-                      className={`h-full w-auto mx-auto ${project.additionalImageClasses}`}
-                      unoptimized
-                    /> :
-                    null 
-                }
+              <div
+                className={`${
+                  project.isImageShown ? 'z-30 opacity-100' : 'z-10 opacity-0'
+                } absolute -inset-y-6 -inset-x-4 flex items-center justify-center bg-zinc-50 transition-opacity dark:bg-zinc-800 sm:-inset-x-6 sm:rounded-2xl`}
+              >
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt=""
+                    className={`mx-auto h-full w-auto ${project.additionalImageClasses}`}
+                    unoptimized
+                  />
+                ) : null}
                 {/* {
                   project.video ?
                     <video autoPlay muted className="w-3/4">
