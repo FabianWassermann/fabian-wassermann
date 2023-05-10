@@ -30,7 +30,7 @@ const projects = [
     image: imageHundepensionBergparadies,
   },
   {
-    name: 'Hundezucht Sunnysoul',
+    name: 'Labrador vom Salzkofelblick',
     description:
       'This website is for a dog breeder. They´ve got the sweetest dogs I know.',
     link: {
