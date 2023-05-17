@@ -141,11 +141,12 @@ export default function Services() {
           <p className="relative z-10 mt-2 max-w-[80%] text-sm text-zinc-600 dark:text-zinc-400">
             Looking for reliable web hosting and top-notch support? Look no
             further! I offer comprehensive web hosting services and dedicated
-            support for both new and existing websites. Whether you're starting
-            a new website or need reliable hosting and support for your existing
-            one, I have the expertise and resources to meet your needs. Focus on
-            your core business while we handle the technical aspects. Contact me
-            today to discuss your web hosting and support requirements!
+            support for both new and existing websites. Whether you&apos;re
+            starting a new website or need reliable hosting and support for your
+            existing one, I have the expertise and resources to meet your needs.
+            Focus on your core business while we handle the technical aspects.
+            Contact me today to discuss your web hosting and support
+            requirements!
           </p>
         </div>
 
