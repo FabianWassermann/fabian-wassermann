@@ -132,6 +132,80 @@ export default function Services() {
             />
           ))}
         </div>
+
+        <div className="mt-32">
+          <h2 className="text-lg font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+            Website hosting and support
+          </h2>
+          <p className="relative z-10 mt-2 max-w-[80%] text-sm text-zinc-600 dark:text-zinc-400">
+            Looking for reliable web hosting and top-notch support? Look no
+            further! I offer comprehensive web hosting services and dedicated
+            support for both new and existing websites. Whether you're starting
+            a new website or need reliable hosting and support for your existing
+            one, I have the expertise and resources to meet your needs. Focus on
+            your core business while we handle the technical aspects. Contact me
+            today to discuss your web hosting and support requirements!
+          </p>
+        </div>
+
+        <div className="mt-12 flex flex-col justify-between gap-5 rounded-2xl border border-zinc-100 bg-white/50 p-2 dark:border-zinc-700/40  dark:bg-zinc-900/50 lg:flex-row">
+          <div className="p-5">
+            <div>
+              <h3 className="text-lg font-semibold tracking-tight text-teal-500">
+                Monthly support
+              </h3>
+              <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                Web hosting can be daunting, especially when starting out. But
+                fear not, I'm here to help! With my monthly support services,
+                I'll take care of all your web hosting needs, making it easy for
+                you to focus on what you do best.
+              </p>
+            </div>
+            <div className="mt-10">
+              <div className="flex items-center gap-x-4">
+                <h3 className="text-sm font-semibold text-zinc-800 dark:text-zinc-100">
+                  What's included
+                </h3>
+                <div className="h-px flex-auto dark:bg-zinc-100/10" />
+              </div>
+              <div className="mt-3 grid grid-cols-2">
+                <ul>
+                  <PricingFeatureItem feature="Server configuration" />
+                  <PricingFeatureItem feature="Domain management" />
+                  <PricingFeatureItem feature="Security enhancements" />
+                </ul>
+                <ul>
+                  <PricingFeatureItem feature="Look for optimization" />
+                  <PricingFeatureItem feature="Analytics and reporting" />
+                  <PricingFeatureItem feature="Content delivery optimization" />
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center justify-center rounded-xl border border-zinc-100 bg-white/50 py-10 px-16 dark:border-zinc-700/40 dark:bg-zinc-900/50">
+            <h3 className="text-center text-sm font-semibold text-zinc-800 dark:text-zinc-100">
+              Get assistance now
+            </h3>
+            <div className="mt-5 truncate text-center text-base font-semibold">
+              <span className="text-4xl tracking-tight text-zinc-800 dark:text-zinc-100">
+                € 100
+              </span>
+              <span className="ml-2 text-sm text-zinc-600 dark:text-zinc-400">
+                / month
+              </span>
+            </div>
+            <Button
+              className="mt-8 w-full"
+              onClick={() => router.replace('/#contact')}
+            >
+              Contact me
+            </Button>
+            <p className="mt-2 text-center text-[0.7rem] text-zinc-600 dark:text-zinc-400">
+              * Final price depends on needs
+            </p>
+          </div>
+        </div>
       </SimpleLayout>
     </>
   )
