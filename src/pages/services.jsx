@@ -157,15 +157,15 @@ export default function Services() {
               </h3>
               <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
                 Web hosting can be daunting, especially when starting out. But
-                fear not, I'm here to help! With my monthly support services,
-                I'll take care of all your web hosting needs, making it easy for
-                you to focus on what you do best.
+                fear not, I&apos;m here to help! With my monthly support
+                services, I&apos;ll take care of all your web hosting needs,
+                making it easy for you to focus on what you do best.
               </p>
             </div>
             <div className="mt-10">
               <div className="flex items-center gap-x-4">
                 <h3 className="text-sm font-semibold text-zinc-800 dark:text-zinc-100">
-                  What's included
+                  What&apos;s included
                 </h3>
                 <div className="h-px flex-auto dark:bg-zinc-100/10" />
               </div>
