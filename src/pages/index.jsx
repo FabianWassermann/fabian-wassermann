@@ -1,7 +1,9 @@
 import Image from 'next/image'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import clsx from 'clsx'
+import React, { useState } from 'react'
 
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
@@ -109,34 +111,53 @@ function SocialLink({ icon: Icon, ...props }) {
 }
 
 function Newsletter() {
+  const [getHash, setHash] = useState('')
+
+  useEffect(() => {
+    setHash(window.location.hash)
+  }, [])
+
   return (
     <form
       onSubmit={async (e) => {
-        e.preventDefault();
-        const data = new FormData(e.target);
-        await fetch('https://1vezik7285.execute-api.eu-central-1.amazonaws.com/dev', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({email: data.get("email"), message: data.get("message")})
-        });
-        e.target.reset();
+        e.preventDefault()
+        const data = new FormData(e.target)
+        await fetch(
+          'https://1vezik7285.execute-api.eu-central-1.amazonaws.com/dev',
+          {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              email: data.get('email'),
+              message: data.get('message'),
+            }),
+          }
+        )
+        e.target.reset()
       }}
-      className="rounded-2xl p-6 bg-white/50 ring-1 ring-zinc-100 dark:bg-zinc-900/50 dark:ring-zinc-700/40"
+      id="contact"
+      className={clsx(
+        'rounded-2xl bg-white/50 p-6 ring-1 ring-zinc-100 dark:bg-zinc-900/50 dark:ring-zinc-700/40',
+        getHash.includes('contact')
+          ? 'ring-2 ring-teal-500 dark:ring-teal-500'
+          : ''
+      )}
     >
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
         <MailIcon className="h-6 w-6 flex-none" />
         <span className="ml-3">You want to contact me?</span>
       </h2>
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        Feel free to send me an email at all time. If you want you can start a conversation by sending me a message.
+        Feel free to send me an email at all time. If you want you can start a
+        conversation by sending me a message.
       </p>
       <div className="mt-6 mb-4">
         <input
           type="text"
-          name='message'
+          name="message"
           placeholder="Message"
           aria-label="Message"
           required
@@ -146,7 +167,7 @@ function Newsletter() {
       <div className="flex">
         <input
           type="email"
-          name='email'
+          name="email"
           placeholder="Email address"
           aria-label="Email address"
           required
@@ -189,7 +210,7 @@ function Resume() {
   ]
 
   return (
-    <div className="rounded-2xl p-6 bg-white/50 ring-1 ring-zinc-100 dark:bg-zinc-900/50 dark:ring-zinc-700/40">
+    <div className="rounded-2xl bg-white/50 p-6 ring-1 ring-zinc-100 dark:bg-zinc-900/50 dark:ring-zinc-700/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
         <BriefcaseIcon className="h-6 w-6 flex-none" />
         <span className="ml-3">Work</span>
@@ -198,7 +219,12 @@ function Resume() {
         {resume.map((role, roleIndex) => (
           <li key={roleIndex} className="flex gap-4">
             <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-              <Image src={role.logo} alt="" className="h-7 w-7 rounded-full" unoptimized />
+              <Image
+                src={role.logo}
+                alt=""
+                className="h-7 w-7 rounded-full"
+                unoptimized
+              />
             </div>
             <dl className="flex flex-auto flex-wrap gap-x-2">
               <dt className="sr-only">Company</dt>
@@ -240,45 +266,46 @@ function Photos() {
   let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
 
   useEffect(() => {
-    window.addEventListener("scroll", (e) => {
+    window.addEventListener('scroll', (e) => {
       // let offset = document.getElementById("photos").getBoundingClientRect().top;
       // document.getElementById("photos").style.transform = `translateX(${0 - window.scrollY}px)`;
-      if (!document.getElementById("photos"))
-        return;
-      document.getElementById("photos").animate(
-        [
-          { transform: `translateX(${0 - window.scrollY/2}px)` }
-        ], 
-        {
+      if (!document.getElementById('photos')) return
+      document
+        .getElementById('photos')
+        .animate([{ transform: `translateX(${0 - window.scrollY / 2}px)` }], {
           delay: 100,
           duration: 500,
           iterations: 1,
-          easing: "cubic-bezier(.17,.67,.96,.59)",
-          fill: "forwards"
-        }
-      );
+          easing: 'cubic-bezier(.17,.67,.96,.59)',
+          fill: 'forwards',
+        })
     })
   })
 
   return (
-    <div className="relative py-3 mt-16 sm:mt-20 overflow-hidden mx-auto max-w-[90rem] before:hidden before:sm:block before:absolute before:top-0 before:left-0 before:w-10 before:h-full before:z-10 before:bg-gradient-to-r before:dark:from-[rgba(0,0,0,1)] before:from-zinc-50 before:to-[rgba(0,0,0,0)] after:hidden after:sm:block after:absolute after:top-0 after:right-0 after:w-10 after:h-full after:z-10 after:bg-gradient-to-r after:from-[rgba(0,0,0,0)] after:dark:to-[rgba(0,0,0,1)] after:to-zinc-50">
-      <div id="photos" className="-my-4 flex justify-center gap-5 w-fit overflow-hidden py-4 sm:gap-8">
-        {[image1, image2, image3, image4, image5, image6].map((image, imageIndex) => (
-          <div
-            key={image.src}
-            className={clsx(
-              'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl',
-              rotations[imageIndex % rotations.length]
-            )}
-          >
-            <Image
-              src={image}
-              alt=""
-              sizes="(min-width: 640px) 18rem, 11rem"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-          </div>
-        ))}
+    <div className="relative mx-auto mt-16 max-w-[90rem] overflow-hidden py-3 before:absolute before:top-0 before:left-0 before:z-10 before:hidden before:h-full before:w-10 before:bg-gradient-to-r before:from-zinc-50 before:to-[rgba(0,0,0,0)] after:absolute after:top-0 after:right-0 after:z-10 after:hidden after:h-full after:w-10 after:bg-gradient-to-r after:from-[rgba(0,0,0,0)] after:to-zinc-50 before:dark:from-[rgba(0,0,0,1)] after:dark:to-[rgba(0,0,0,1)] sm:mt-20 before:sm:block after:sm:block">
+      <div
+        id="photos"
+        className="-my-4 flex w-fit justify-center gap-5 overflow-hidden py-4 sm:gap-8"
+      >
+        {[image1, image2, image3, image4, image5, image6].map(
+          (image, imageIndex) => (
+            <div
+              key={image.src}
+              className={clsx(
+                'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl',
+                rotations[imageIndex % rotations.length]
+              )}
+            >
+              <Image
+                src={image}
+                alt=""
+                sizes="(min-width: 640px) 18rem, 11rem"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </div>
+          )
+        )}
       </div>
     </div>
   )
@@ -291,7 +318,8 @@ export default function Home({ articles }) {
     <>
       <Head>
         <title>
-         Fabian Wassermann - Software developer, freelancer, and amateur mountaineer
+          Fabian Wassermann - Software developer, freelancer, and amateur
+          mountaineer
         </title>
         <meta
           name="description"
@@ -305,8 +333,9 @@ export default function Home({ articles }) {
             Software developer, freelancer, and amateur mountaineer.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Fabian, a software developer, specialized in full-stack development, based in Austria. 
-            I´m a freelancer doing everything from simple websites to bigger webapplications.
+            I’m Fabian, a software developer, specialized in full-stack
+            development, based in Austria. I´m a freelancer doing everything
+            from simple websites to bigger webapplications.
           </p>
           <div className="mt-6 flex gap-6">
             {/* <SocialLink
