@@ -129,6 +129,7 @@ export default function Services() {
               description={tier.description}
               price={tier.price}
               features={tier.features}
+              key={tier.title}
             />
           ))}
         </div>
