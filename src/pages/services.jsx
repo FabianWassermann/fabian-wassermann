@@ -31,7 +31,7 @@ function PricingCard1({ title, description, price, features }) {
           </div>
           <ul className="mt-5">
             {features.map((feature) => (
-              <PricingFeatureItem feature={feature} />
+              <PricingFeatureItem feature={feature} key={feature} />
             ))}
           </ul>
         </div>
