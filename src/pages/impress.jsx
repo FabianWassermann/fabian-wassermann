@@ -32,7 +32,7 @@ export default function Impress() {
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
             <strong>VAT (UID)</strong>
             <br />
-            coming soon
+            ATU79370538
           </p>
         </header>
       </Container>
