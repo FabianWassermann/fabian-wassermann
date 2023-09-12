@@ -1,0 +1,53 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import customerOverview from './customerOverview.png'
+import createPositions from './createPositions.png'
+
+export const meta = {
+  author: 'Fabian Wassermann',
+  date: '2023-09-01',
+  title: 'Billing Software Features and UI',
+  description:
+    'A software for manage customers and generate offers, delivery notes and invoices.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+## The Features
+
+My client wants to manage customers and all documents for these customers. The documents should be
+editable so that he can change them if he made a mistake. Moreover, he uses an online shop to order parts
+for his customers and he wants an integration with this software. Last but not least, he wants to generate an
+invoice from an earlier created offer with just one click and everything should be linked up.
+
+## Development Process
+
+### Time Management
+
+I started by creating a customer and a project in Clockify and estimated the work time for each feature. During
+development I tracked my wokring hours so that I have a overview over all the hours I spend on this project.
+
+### Version Control
+
+GitHub is always a great choice for version control because of the simplicity. I created just one big
+repository (monorepo) which hold the frontend and the backend code. Furthermore, I worked with GitHub issues to
+have more control over little tasks because I can add description, title and tags to all issues.
+Everything is linked up with CI/CD, so every code change will automatically deploy.
+
+### Hosting
+
+- MongoDB: AWS
+- NodeJs backend using ExpressJS: https://railway.app/
+- VueJs frontend: AWS Amplify
+
+## UI
+
+I will just show some small UI-components because I don't want to add 100 screenshots.
+
+### Customer overview
+
+<Image src={customerOverview} alt="" />
+
+### Create Positions
+
+<Image src={createPositions} alt="" />
