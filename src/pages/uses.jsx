@@ -49,8 +49,8 @@ export default function Uses() {
             <Tool title="Philips - 34 Zoll WQHD (Curved)">
               Thats my only monitor. I don´t need more.
             </Tool>
-            <Tool title="Logitech MX Keys">
-              I like this keyboard even if the light turns off automatically after a few minutes and you can´t change this behaviour.
+            <Tool title="Keychron K8">
+              Moved from Logitech MX Keys to this Keychron Board. Hot-swappable switches, keycaps for Win and Mac, Bluetooth and OS-Switch makes this keyboard to my new favorite.
             </Tool>
           </ToolsSection>
           <ToolsSection title="Development tools">
