@@ -60,7 +60,7 @@ const webdevTiers = [
   {
     title: 'Templated Webflow',
     description: 'Webpages are produced using a Webflow template.',
-    price: '1000',
+    price: '1500',
     features: [
       'Reflecting brand identity',
       'Responsive and mobile-friendly',
@@ -72,7 +72,7 @@ const webdevTiers = [
   {
     title: 'Custom Webflow',
     description: 'Webpages are made using custom Webflow programming.',
-    price: '1800',
+    price: '2500',
     features: [
       'All of templated webflow tier',
       'Unique and tailored design',
@@ -86,7 +86,7 @@ const webdevTiers = [
     title: 'Custom Composition',
     description:
       'All webpages are custom programmed to suit espacially your usecase.',
-    price: '2500',
+    price: '3000',
     features: [
       'All of custom webflow tier',
       'Highest possible customization',
