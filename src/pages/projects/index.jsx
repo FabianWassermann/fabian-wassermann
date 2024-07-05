@@ -10,12 +10,27 @@ import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
 import logoHundepensionBergparadies from '@/images/logos/hundepensionbergparadies.jpeg'
 import logoLabradorVomSalzkofelblick from '@/images/logos/labrador-vom-salzkofelblick.png'
 import logoAatsiRebalancing from '@/images/logos/aatsi-rebalancing.png'
+import logoTRElektrotechnik from '@/images/logos/tr-elektrotechnik.png'
 import imageHundepensionBergparadies from '@/images/projects/hundepension.png'
 import imageSunnySoul from '@/images/projects/sunnysoul.png'
 import imageAatsiRebalancing from '@/images/projects/aatsi-rebalancing.png'
+import imageTRElektrotechnik from '@/images/projects/tr-elektrotechnik.png'
 import React, { useState } from 'react'
 
 const projects = [
+  {
+    name: 'TR Elektrotechnik',
+    description:
+      'Professional website for an electrical engineer doing solar, infrared heating, electrical installations and smart home.',
+    link: {
+      href: 'https://www.tr-elektrotechnik.at/',
+      label: 'tr-elektrotechnik.at',
+    },
+    logo: logoTRElektrotechnik,
+    tags: ['Webflow', 'JS'],
+    isImageShown: false,
+    image: imageTRElektrotechnik,
+  },
   {
     name: 'Hundepension Bergparadies',
     description:
@@ -197,7 +212,7 @@ export default function Projects() {
                     <Image
                       src={project.image}
                       alt=""
-                      className={`mx-auto h-full w-auto ${project.additionalImageClasses}`}
+                      className={`mx-auto h-full w-auto object-contain ${project.additionalImageClasses}`}
                       unoptimized
                     />
                   ) : null}
