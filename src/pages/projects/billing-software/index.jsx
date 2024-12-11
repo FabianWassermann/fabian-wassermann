@@ -10,12 +10,9 @@ export default function ProjectArticlesIndex({ articles }) {
 }
 
 export async function getStaticProps() {
-  const pathArr = path.resolve(__filename).split('/');
-  const projectFolderName = pathArr[pathArr.length - 1].split('.')[0];
-
   return {
       props: {
-        articles: (await getAllArticlesOfProject(projectFolderName)).map(({ component, ...meta }) => meta),
+        articles: (await getAllArticlesOfProject("billing-software")).map(({ component, ...meta }) => meta),
       },
   }
 }
