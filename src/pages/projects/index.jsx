@@ -61,7 +61,7 @@ const projects = [
   {
     name: 'AATSI Crypto Indexing',
     description: 'This website is a demo page for showcasing purposes.',
-    link: { href: 'https://www.aatsi.org/', label: 'www.aatsi.org' },
+    link: { href: 'https://aatsi.fabian-wassermann.com/', label: 'www.aatsi.org' },
     logo: logoAatsiRebalancing,
     tags: ['VueJs', 'TailwindCSS', 'HTML5'],
     isImageShown: false,
