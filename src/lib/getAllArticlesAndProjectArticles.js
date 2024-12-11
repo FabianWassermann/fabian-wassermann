@@ -20,7 +20,7 @@ export async function getAllArticlesAndProjectArticles() {
     })
   )
 
-  const allArticles = [...(await getAllArticles()), articles]
+  const allArticles = [...(await getAllArticles()), ...articles]
 
   return allArticles.sort((a, z) => new Date(z.date) - new Date(a.date))
 }
