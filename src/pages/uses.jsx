@@ -41,13 +41,23 @@ export default function Uses() {
       >
         <div className="space-y-20">
           <ToolsSection title="Workstation">
+            <Tool title="Mac Mini, M4, 24GB RAM">
+              My workloads got heigher and heigher and my MacBook was not 
+              really happy about that. The Mac Mini M4 was the perfect fit 
+              for my needs with a great cost-benefit ratio. I still like the 
+              MacBook as a device for travelling or watching TV shows.
+            </Tool>
             <Tool title="13” MacBook Air, M1, 8GB RAM">
               I was using an Intel-based notebook prior to this and the
               difference is night and day. I’ve never heard the fans turn on a
               single time and the battery life is a dream.
             </Tool>
             <Tool title="Philips - 34 Zoll WQHD (Curved)">
-              Thats my only monitor. I don´t need more.
+              Thats my primary monitor. I added a new monitor to the setup. 
+              This monitor has a friend now.
+            </Tool>
+            <Tool title="Samsung - 27 Zoll QHD">
+              I really like this monitor. I am using it as a vertical monitor.
             </Tool>
             <Tool title="Keychron K8">
               Moved from Logitech MX Keys to this Keychron Board. Hot-swappable switches, keycaps for Win and Mac, Bluetooth and OS-Switch makes this keyboard to my new favorite.
