@@ -1,0 +1,178 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import timeTracker from "./timeTracker.png"
+import positionGenerator from "./positionGenerator.png"
+import newPages from "./newPages.png"
+import invoicesOverview from "./invoicesOverview.png"
+import filter from "./filter.png"
+import quickViewAndDownload from "./quickViewAndDownload.png"
+import paymentReminder from "./paymentReminder.png"
+import paymentReminderButton from "./paymentReminderButton.png"
+import paymentReminderDocument from "./paymentReminderDocument.png"
+import positionOrder from "./positionOrder.png"
+import customerSettings from "./customerSettings.png"
+
+export const meta = {
+  author: 'Fabian Wassermann',
+  date: '2024-12-11',
+  title: 'Overview of the last 14 months',
+  description:
+    'One year of bug fixing and a ton of new features later. This is an overview of the last 14 months regarding this project.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+## Statistics
+
+<div className="flex items-center gap-2">
+  In the last 14 months I worked **64 hours and 30 minutes** on this project. 
+  That's not much but enough for some cool new stuff.
+  <Image src={timeTracker} alt="" />
+</div>
+
+After **197 Commits**, **69 Pull requests** and **82 closed Issues** I am proud to show you a great overview of all the new features.
+
+## New Features
+
+In the following sections I will describe the new features of the software. Features like **Text after table**, **Redesign of document** and **helpful ui additions**, to name only a few, don't made it to the following features list because they are too small to mention.
+
+### Feature 1: Document overview pages
+
+<Image src={newPages} alt="" />
+
+The navigation got bigger. Now there are overview pages for **invoices**, **offers** and **delivery notes**.
+The following picture shows the invoice overview page, I had to censor some parts. The other overview pages are nearly the same but with different stati.
+
+<Image src={invoicesOverview} alt="" />
+
+### Feature 2: Document states
+
+Documents now have states. Here is a list of all the states:
+
+- **Invoices:** payed / not payed
+- **Invoices:** sended / not sended
+- **Offers:** converted to invoice / not converted to invoice
+- **DeliveryNotes:** converted to invoice / not converted to invoice
+
+### Feature 3: Filter on invoice overview page
+
+<Image src={filter} alt="" />
+
+Invoices can be filtered by date ranges or by payment state.
+
+### Feature 4: Quick view and download
+
+<Image src={quickViewAndDownload} alt="" />
+
+Clicking on the eye opens a new tab showing the document. The download button is easy to understand I guess.
+
+### Feature 4: Keep track of payment dates
+
+<Image src={paymentReminder} alt="" />
+
+If an invoice was sended to the client but is not payed the app keeps track of the days between sending and receiving payment.
+When the inoices was not payed after 30 days by the client a little clock will get visible and by hovering over it a tooltip will
+tell you how many days the invoice was not payed.
+
+There is a second red exclamation mark icon. This one gets shown when the invoice was not payed for more than 6 weeks. 
+
+### Feature 5: Generate payment reminders
+
+<Image src={paymentReminderButton} alt="" />
+
+If the client has not payed the invoice and exceeded the due date a new action will be available inside the more menu - generate payment reminder.
+By clicking on this button a ready to send payment reminder document will be generated which looks like the following.
+
+<Image src={paymentReminderDocument} alt="" />
+
+### Feature 6: Change position order
+
+<Image src={positionOrder} alt="" />
+
+By clicking on the arrows button the two positions will change place. Using this feature allows the user to modify the position order of a document.
+
+### Feature 7: Default settings for customers
+
+<Image src={customerSettings} alt="" />
+
+Each customer can hold different default settings.
+Customers can get a fixed worktime discount or a fixed discount for parts. This page is intended for making the life easier when working with many clients.
+
+## Bugs 🐛
+
+Let's take a look at the bugs. 
+Because bugs are in every software and I want to discuss a few bugs that I fixed after the initial release of the software.
+
+### Bug 1 - Position generator keyboard navigation
+
+<Image src={positionGenerator} alt="" />
+
+If you have to enter more than a few positions to an invoice you surely want to have proper keyboard navigation for this inputs.
+
+Initially the curor focus should be on the first input (article number input). 
+When clicking **Enter** inside the first input the search button should be triggered, 
+which automatically fills some data into the next fields on the right. Pressing **Tab** should move the 
+curor focus from the first input step by step to the last input. While the curor focus is on one of this inputs, 
+pressing **Enter** should trigger the button on the left side (create button).
+
+The html, css and js I coded was not respecting this behavior, but I will show you now how I fixed it.
+
+```ts
+<input
+  @keyup.enter="createPosition"
+/>
+```
+
+This is the event listener which is on all inputs expect the first one. When the **Enter** key gets 
+pressed inside one of these inputs, the position will be created. For the first input i replaced the *createPosition* 
+with the *searchAndFillData* function.
+
+```ts
+function createPosition() {
+  ...
+  articleNumberInputRef.value.focus();
+  ...
+}
+```
+
+After position creation, the new article number input will be focused by using code. 
+This behavior enables the user to type in many positions all by keyboard.
+
+### Bug 2 - Database model unique number of documents
+
+Each document has its own unique number. For invoices for example the numbers have the following format: **number/yyyy**.
+The first invoice of next year would be **001/2025** and the second invoice **002/2025**. To insure this business logic I 
+added an unique contraint for the number field in the database model.
+
+```ts
+number String @unique
+```
+
+If the user deletes an invoice, which was important, it would be gone forever. To prevent the user from deleting 
+important documents an **isDeleted** flag was added to the database model. If the user tries to delete an invoice, the backend
+won't delete the invoice but set the **isDeleted** flag to the current datetime. The invoice is now archived but not finally deleted.
+
+If the user wants to create a new invoice, the number of the archived invoice should be free for use. But saving another invoice with 
+the same number would violate the unique constraint.
+
+In most relational databases these behaviours are easy to implement but using PrismaORM and MongoDB this can't be done, yet.
+I wondered how a big ORM like Prisma has nothing in place for handling this and I found an open [Issue](https://github.com/prisma/prisma/issues/6974) which is now almost 4 years old.
+
+I finally removed the unique constraint. This part of the business logic has to be handled by the backend now.
+
+```ts
+number String
+```
+
+### Bug 3 - Calculate worktime discount right
+
+```js
+worktimeDiscount =
+      (worktimeTotal * worktimeDiscountPercentage) / 100;
+```
+
+To make it clear a simple worktime discount calculation is easy and that's not the mistake I made.
+I applied the discount only on the first worktime position and not on every one. That's an easy fix using a basic for loop.
+
+
+Thank you for reading this software update! 
