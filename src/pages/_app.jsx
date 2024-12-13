@@ -3,6 +3,8 @@ import { useEffect, useRef } from 'react'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 
+import { isMobile } from "@/lib/isMobile";
+
 import '@/styles/tailwind.css'
 import 'focus-visible'
 
@@ -12,45 +14,50 @@ function usePrevious(value) {
   useEffect(() => {
     ref.current = value
 
-    window.onclick = (e) => {
-      document
-        .getElementById('blob')
-        .animate(
-          [
-            { transform: `scale(1)` },
-            { transform: `scale(0.8)` },
-            { transform: `scale(1)` },
-          ],
-          { duration: 500 }
-        )
-    }
-
-    window.onmousemove = (e) => {
-      const mouseX = e.clientX
-      const mouseY = e.clientY
-
-      const widthOfContentBack =
-        document.getElementById('content-back').clientWidth
-      const diff = (window.innerWidth - widthOfContentBack) / 2
-
-      document.getElementById('blob').animate(
-        [
-          {
-            top: `${mouseY - 75}px`,
-            left: `${Math.min(
-              Math.max(mouseX - diff - 75, -75),
-              widthOfContentBack - 75
-            )}px`,
-          },
-        ],
-        { fill: 'forwards', duration: 1500 }
-      )
-    }
-
-    // hotjar.initialize(3508954, 6)
+    if (!isMobile()) setupBlob()
   }, [value])
 
   return ref.current
+}
+
+function setupBlob() {
+  document
+  .getElementById('blob').classList.add("!block")
+
+  window.onclick = (e) => {
+    document
+      .getElementById('blob')
+      .animate(
+        [
+          { transform: `scale(1)` },
+          { transform: `scale(0.8)` },
+          { transform: `scale(1)` },
+        ],
+        { duration: 500 }
+      )
+  }
+
+  window.onmousemove = (e) => {
+    const mouseX = e.clientX
+    const mouseY = e.clientY
+
+    const widthOfContentBack =
+      document.getElementById('content-back').clientWidth
+    const diff = (window.innerWidth - widthOfContentBack) / 2
+
+    document.getElementById('blob').animate(
+      [
+        {
+          top: `${mouseY - 75}px`,
+          left: `${Math.min(
+            Math.max(mouseX - diff - 75, -75),
+            widthOfContentBack - 75
+          )}px`,
+        },
+      ],
+      { fill: 'forwards', duration: 1500 }
+    )
+  }
 }
 
 export default function App({ Component, pageProps, router }) {
@@ -65,7 +72,7 @@ export default function App({ Component, pageProps, router }) {
             id="content-back"
           >
             <div
-              className="absolute bg-gray-700 dark:bg-gray-400"
+              className="absolute bg-gray-700 dark:bg-gray-400 hidden"
               id="blob"
               style={{
                 width: '150px',
