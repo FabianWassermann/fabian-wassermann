@@ -1,11 +1,10 @@
 import { ProjectArticlesBase } from '@/components/ProjectArticlesBase'
 import { getAllArticlesOfProject } from '@/lib/getAllArticlesOfProject'
-import * as path from 'path'
 
 
 export default function ProjectArticlesIndex({ articles }) {
   return (
-   <ProjectArticlesBase articles={ articles } projectName="Billing Software" description="All news and updates to the Billing Software I made for one of my clients." />
+   <ProjectArticlesBase articles={ articles } projectPath="billing-software" projectName="Billing Software" description="All news and updates to the Billing Software I made for one of my clients." />
   )
 }
 
