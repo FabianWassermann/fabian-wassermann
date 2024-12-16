@@ -81,6 +81,16 @@ const applicationProjects = [
     },
     tags: ['ExpressJs', 'VueJs', 'Prisma ORM', 'MongoDB'],
   },
+  {
+    name: 'Capital Gains Tax Application',
+    description:
+      'In Austria you have to pay tax on capital gains from stocks, interest and dividend. This app helps to have an overview over broker actions and supports filing tax declarations.',
+    link: {
+      href: '/projects/tax-app',
+      label: '/projects/tax-app',
+    },
+    tags: ['ExpressJs', 'VueJs', 'Prisma ORM', 'MongoDB'],
+  },
 ]
 
 function LinkIcon(props) {

@@ -1,0 +1,172 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import documentUpload from "./documentUpload.png"
+import signIn from "./signin.png"
+import signUp from "./signup.png"
+import headerNavContent from "./headerNavContent.png"
+import operationList from "./operationList.png"
+import taxOverview from "./taxOverview.png"
+import yearFilter from "./yearFilter.png"
+
+export const meta = {
+  author: 'Fabian Wassermann',
+  date: '2024-12-12',
+  title: 'First release and features',
+  description:
+    'This software was initially developed for myself and one friend of mine. We like investing in stocks but tax in Austra is not always that easy to do. This application makes our lives easier.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+## KeSt in Austria is not that easy
+
+In Austria you have to pay KeSt (Kapitalertragssteuer) in English it's "Capital gains tax". 
+In some cases you have to pay **27.5%** in others **25%**. In case of dividends you have to check 
+in which country the company is located and therefore pays the dividens from. For some countries Austria 
+has a **double taxation agreement** (Doppelbesteuerungsabkommen). In this cases you just need to pay a specific part of the KeSt.
+
+Simple example to understand KeSt: You sell **Microsoft** and the sold position is **100 EUR in profit**. Then you have to pay **27.5 EUR** (27.5%).
+
+## Why I chose specific technologies
+
+- For the frontend I wanted to go with **VueJs** because I can build nice UIs very easily. 
+- With **ExpressJs** on the backend I can setup a simple API. 
+- **MongoDB** for easy data management because it's fast and simple to use.
+
+## Database model setup
+
+First of all, I needed to understand the while data model so I can start modelling the database. I made a list of everything I need to save.
+
+- **Users:** User credentials for basic authentication
+- **Brokers:** Broker names and settings
+  - **FileTypes:** Each broker has different file types
+- **Operations:** A trade (buy and sell of stock), receiving dividend or interest.
+  - **OperationType:** Indicates if the operation was a trade, dividend or interest.
+  - **Currency:** I have to keep track which currency was used for an operation.
+- **Trade:** Additional data for a trade operation.
+- **Dividend:** Additional data for a dividend operation.
+- **Interest:** Additional data for an interest operation.
+
+After this basic list it was time to create the PrismaORM schema and add some database contraints for the business logic.
+
+## API setup
+
+### Authentication
+
+In my career I already made some **authentication** flows, 
+so creating a safe API that can only be accessed by signed-in users was a really straight forward task.
+Each user has a username and a password. The **password gets hashed and salted** before storing it in the database.
+
+For the authentication flow I use two signed **JWT tokens - an access and refresh token**. If you want to learn more about working 
+with JWT tokens and building authentication flows, just message me or ask ChatGPT.
+
+### Endpoints
+
+| Path    | Returns |
+| -------- | ------- |
+| /health  | HTTP 200 if server is running    |
+| /brokers | List of all brokers     |
+| /operations    | List of all operations of logged in user    |
+| /extractDataFromFile    | Accepts base64 string of file contents and file type. Data gets saved to database.    |
+| /simpleTaxReport    | Returns a tax report (overview).   |
+| /download/operations/:fileType    | Returns a file containing all operations of the current logged in user. FileType can be xlsx or csv.   |
+
+## Frontend setup
+
+The frontend setup is just a starter VueJs template I made myself a few months ago. I added a basic login and register page and hooked it up to the backend.
+
+<div className="flex gap-2 flex-col sm:flex-row">
+  <Image src={signUp} alt="" className="shrink min-w-0 h-full" /> 
+  <Image src={signIn} alt="" className="shrink min-w-0 h-full" />
+</div>
+
+I also created an easy way to handle the access and refresh tokens from the backend using an library named axios.
+
+```ts
+const httpAutoAToken = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+  headers: { "Content-Type": "application/json" },
+  withCredentials: true,
+});
+
+httpAutoAToken.interceptors.request.use(
+  async function (config) {
+    let token = store.getters.accessToken;
+    if (token) config.headers.Authorization = `Bearer ${token}`;
+    return config;
+  },
+  async function (error) {
+    return Promise.reject(error);
+  }
+);
+
+httpAutoAToken.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  async function (error) {
+    const response = error.response;
+
+    if (response.status === 403) {
+      // try to refresh
+      try {
+        await store.dispatch("refreshAccessToken");
+        // redo request
+        return Promise.resolve(httpAutoAToken.request(error.config));
+      } catch (refreshError) {
+        await store.dispatch("logout");
+        router.push({ name: "login" });
+      }
+    }
+
+    return Promise.reject(error);
+  }
+);
+```
+
+I added a nice navigation, header and a cool content section.
+
+{/* TODO: add this to browser */}
+<Image src={headerNavContent} alt="" />
+
+
+## Feature 1: Broker document upload
+
+I use the XTB broker for investing and Capital.com for trading therefore the first brokers I integrated were XTB and Capital.com.
+You could use the API's of the brokers but for the first release I wanted to make it work with the document exports of the brokers.
+XTB and Capital.com support **csv file export** of the closed trades and additionally in case of XTB cash operations.
+
+First of all I wanted to create an easy way to upload the file so I created a simple and basic UI, which let's you select the broker 
+and the type of document you want to uplaod (As I said: Each broker can have different document types).
+
+<Image src={documentUpload} alt="" />
+
+After uploading the document, all data gets extracted from the file and written into the database in the right format.
+
+## Feature 2: Operation CRUD and export
+
+<div className="flex flex-col sm:flex-row gap-2 sm:gap-5">
+  <Image src={operationList} alt="" className="shrink min-w-0 h-full flex-1"  />
+  <span className="flex-1">
+    All operations can be viewed on the operation page. A **filter** can be applied using the top buttons all, stocks, dividends and interests. 
+    By selecting an operation the **update** button and the **delete** button on the bottom of the page can be clicked. Additional operations can be **added** by simply clicking on the create button.
+    The **export** button enables the user to export all operations as csv or xlsx file.
+  </span>
+</div>
+
+## Feature 3: Tax overview
+
+<Image src={taxOverview} alt="" />
+
+The three most important numbers get displayed on the overview page: **profit**, **tax** and **net profit**.
+On the top you can filter for stocks, dividends and interests.
+
+## Feature 4: Year filter
+
+<Image src={yearFilter} alt="" />
+
+A simple dropdown lets you select a year and only operations and data gets shown from the selected year.
+
+-------
+
+That are the first few features of the new tax app. If you have new ideas for features, please let me know.
