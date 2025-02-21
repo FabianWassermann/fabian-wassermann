@@ -21,6 +21,7 @@ import image4 from '@/images/photos/image-4.jpg'
 import image5 from '@/images/photos/image-5.jpg'
 import image6 from '@/images/photos/image-6.jpg'
 import logoHs2n from '@/images/logos/hs2n.webp'
+import logoFeratel from '@/images/logos/feratel.jpg'
 import logoNeedNect from '@/images/logos/neednect.png'
 import logoConsens from '@/images/logos/consens.jpg'
 import { generateRssFeed } from '@/lib/generateRssFeed'
@@ -184,14 +185,21 @@ function Newsletter() {
 function Resume() {
   let resume = [
     {
-      company: 'NeedNect - Solutions',
-      title: 'Fullstack Developer',
-      logo: logoNeedNect,
-      start: 'May 2022',
+      company: 'Feratel Media Technologies',
+      title: 'IT Support',
+      logo: logoFeratel,
+      start: 'Feb 2025',
       end: {
         label: 'Present',
         dateTime: new Date().getFullYear(),
       },
+    },
+    {
+      company: 'NeedNect - Solutions',
+      title: 'Fullstack Developer',
+      logo: logoNeedNect,
+      start: 'May 2022',
+      end: 'Jan. 2025'
     },
     {
       company: 'hs2n Informationstechnologie GmbH',
