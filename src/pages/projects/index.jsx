@@ -11,13 +11,28 @@ import logoHundepensionBergparadies from '@/images/logos/hundepensionbergparadie
 import logoLabradorVomSalzkofelblick from '@/images/logos/labrador-vom-salzkofelblick.png'
 import logoAatsiRebalancing from '@/images/logos/aatsi-rebalancing.png'
 import logoTRElektrotechnik from '@/images/logos/tr-elektrotechnik.png'
+import logoKestAustria from '@/images/logos/kestaustria.png'
 import imageHundepensionBergparadies from '@/images/projects/hundepension.png'
 import imageSunnySoul from '@/images/projects/sunnysoul.png'
 import imageAatsiRebalancing from '@/images/projects/aatsi-rebalancing.png'
 import imageTRElektrotechnik from '@/images/projects/tr-elektrotechnik.png'
+import imageKestAustria from '@/images/projects/kestaustria.png'
 import React, { useState } from 'react'
 
 const projects = [
+  {
+    name: 'KestAustria',
+    description:
+      'Website for a Software calculating capital gain tax for Austrians. The website gives an overview over the features.',
+    link: {
+      href: 'https://www.kestaustria.at/',
+      label: 'kestaustria.at',
+    },
+    logo: logoKestAustria,
+    tags: ['NextJs', 'TailwindCSS'],
+    isImageShown: false,
+    image: imageKestAustria,
+  },
   {
     name: 'TR Elektrotechnik',
     description:
