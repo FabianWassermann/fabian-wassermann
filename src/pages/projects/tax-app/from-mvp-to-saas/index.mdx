@@ -1,0 +1,121 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import activities from './activities.png'
+import dashboard from './dashboard.png'
+import activitiyImport from './activitiyImport.png'
+import login from './login.png'
+import saveTax from './saveTax.png'
+import tax from './tax.png'
+
+export const meta = {
+  author: 'Fabian Wassermann',
+  date: '2025-04-08',
+  title: 'From MVP to SAAS',
+  description:
+    'Created a new frontend having better functionalities and greater UI/UX.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+## What is a MVP
+
+MVP stands for **Minimum Viable Product** — a version of your product with just enough features to test the core concept and gather feedback from early users. It’s all about validating your idea with minimal effort, so you can iterate quickly and build what users _actually_ need.
+
+## Database Model Upgrades
+
+One of the first major steps in moving from MVP to a more robust SaaS product was improving the database model.
+I wanted to future-proof the architecture and make adding new features easier down the line.
+
+This took around two weeks, and the model
+grew **from 6 to over 17 tables**. Here are some notable changes and additions:
+
+- **Occurrence:** Previously named _Operations_ — renamed for better clarity and extensibility.
+- **Bank:** Expanded to support not only brokers but also banks.
+- **TaxRate:** Enables storing tax rates for different countries, timeframes, and tax types.
+- **TaxType:** Differentiates between tax categories like _SPOT_ (Stocks, ETFs) and _INTEREST_.
+- **DoubleTaxationAgreement:** Supports bilateral tax agreements — critical for accurate dividend tax calculations.
+- **Assets:** Covers Stocks, ETFs, and Crypto. (Curious where I got the data from? Stay tuned!)
+- **AssetLinking:** Allows associating assets with specific brokers for better data integration.
+
+## API & Authentication Updates
+
+### Better Authentication with Clerk
+
+To enhance user onboarding and security, I integrated Clerk for user authentication. Two authentication middlewares were added to the API, allowing seamless onboarding for both Clerk and non-Clerk users. The result? A clean, modern login experience with minimal friction.
+
+<Image src={login} alt="" className="rounded-lg" />{' '}
+
+### Currency Conversion for Accurate Taxation
+
+While researching Austria’s capital gains tax laws, I discovered a key requirement:
+**All foreign currency transactions must be converted to EUR using the exchange rate on the transaction date.**
+
+This ensures accurate profit and tax calculations in accordance with Austrian tax law. After some intense reading and research, I implemented this logic—problem solved!
+
+## Frontend 2.0 – UI Upgrade
+
+### Component Library: shadcn-vue
+
+For the UI, I chose shadcn-vue — a component library built on Vue 3 and Tailwind CSS. It provides lightweight, fully customizable, and accessible components. Unlike more rigid libraries, it lets me control styling and structure while ensuring a great developer and user experience.
+
+### Feature: Activity List
+
+<Image src={activities} alt="" className="rounded-lg" />{' '}
+
+A centralized list of all activities including:
+
+- Trades
+- Dividends
+- Interest
+
+Users can create, update, or delete activities manually or import them via broker CSV or Excel files. Currently supported:
+
+- \*XTB - Cash Operations\*\* (dividends, interest, trades)
+- **IBKR - Flex Query Orders** (trades)
+
+<Image src={activitiyImport} alt="" className="rounded-lg" />{' '}
+
+New broker integrations are on the way!
+
+### Feature: Dashboard
+
+<Image src={dashboard} alt="" className="rounded-lg" />{' '}
+
+A real-time snapshot of your tax obligations:
+
+- Profit & Loss (PnL)
+- Capital Gain Tax (KeSt)
+- Withholding Tax
+- KeSt savings over time
+
+Includes a simple chart visualizing your tax data trends.
+
+### Feature: Save Dividend Tax
+
+<Image src={saveTax} alt="" className="rounded-lg" />{' '}
+
+Austria has **Double Taxation Agreements** with many countries, allowing up to **15% tax reduction** on dividends. The app detects this automatically and applies the deduction—saving you money with zero manual effort.
+
+### Feature: Simplify Your Tax Filing
+
+<Image src={tax} alt="" className="rounded-lg" />{' '}
+
+This feature provides a clear overview of:
+
+- Taxable categories: **Interest, Dividends, Trades**
+- A dynamic table showing all tax fields you need to fill
+- A help form and FAQ section at the bottom to assist with filing
+
+---
+
+## Ready to Simplify Your Investment Taxes?
+
+Thanks for reading! If you're interested in the project or want to explore more:
+
+<p>
+  Visit the website: <a href="https://kestaustria.at">kestaustria.at</a> <br />
+  Create a free account:
+  <a href="https://app.kestaustria.at">app.kestaustria.at</a>
+</p>
+
+Let’s make investment taxes simple.
