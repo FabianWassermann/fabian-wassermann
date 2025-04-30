@@ -52,6 +52,22 @@ export default function Document() {
       <Head>
         <script dangerouslySetInnerHTML={{ __html: modeScript }} />
         <script dangerouslySetInnerHTML={{ __html: hotjarScript }} />
+
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-CNFR05ENG4"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-CNFR05ENG4');
+            `,
+          }}
+        />
         <link
           rel="alternate"
           type="application/rss+xml"
