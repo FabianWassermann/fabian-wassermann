@@ -1,0 +1,111 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import page from './page.png'
+import setInitialStock from './setInitialStock.png'
+import stockLevelList from './stockLevelList.png'
+import stockLevelListActions from './stockLevelListActions.png'
+import stockSpotModal from './stockSpotModal.png'
+import bookingHistory from './bookingHistory.png'
+import partOverview from './partOverview.png'
+import partManagement from './partManagement.png'
+import createPart from './createPart.png'
+
+export const meta = {
+  author: 'Fabian Wassermann',
+  date: '2025-06-18',
+  title: 'Inventory System',
+  description:
+    'New Update of the Software includes Inventory System for managing all stockings.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+## The idea
+
+My client wants to track all his spare parts in his warehouse and truck.
+He wants to manage all his spare parts including moving parts from the
+warehouse to the truck. In the future he wants to consume parts by invoices so that the
+stock level changes automatically if he used parts.
+
+## First steps
+
+First of all we need a new page for the inventory system.
+
+<Image src={page} alt="" />
+
+My toughts about what the user wants to do:
+
+- see stock levels
+- see history of bookings
+- create bookings
+
+## Feature 1: Set initial stock level
+
+Initially my client needs to set the initial stock level of each part.
+
+<Image src={setInitialStock} alt="" />
+
+This would add **1 part** with the number **202458E** to the **warehouse**.
+
+## Feature 2: Stock level list
+
+An overview over the parts of a stock location with select option for actions.
+
+<div className="relative">
+  <Image src={stockLevelList} alt="" />
+  <Image
+    src={stockLevelListActions}
+    alt=""
+    className="absolute right-0 bottom-0 mb-5 shadow ring-1 ring-gray-300"
+  />
+</div>
+
+## Feature 3: Change stock level
+
+If my client made a mistake counting the parts and needs to change a stock level he can easily to this.
+
+By clicking on the "Lagerstand anpassen" button, the stock level can be changed to any value.
+
+## Feature 4: Change stock spot
+
+My client organizes all parts in boxes on shelfs and he wants to track where which part is located.
+
+By clicking on the "Ort anpassen" button, the stock spot can be changed.
+
+<Image src={stockSpotModal} alt="" />
+
+## Feature 5: Booking history
+
+My client can view the entire booking history of a stock location like the warehouse or the truck.
+Each booking holds information about the type, parts, related stock locations and date.
+
+<Image src={bookingHistory} alt="" />
+
+## Feature 6: Part page
+
+The user can click on a part row in the table and opens an overview page showing more details about this one part.
+
+The overview shows how many parts are in all stock locations and all bookings related to this part.
+
+<Image src={partOverview} alt="" />
+
+## Feature 7: Bring parts from warehouse to truck
+
+The user can click on "Aktionen" > "Umladen" and can select all parts he wants to transfer to the truck or back to the warehouse.
+
+## Feature 8: Part management
+
+Some parts are not in our system because we only imported some parts of the mulag online shop.
+But my client wants to add more parts to the system, so I created a part manager.
+
+<Image src={partManagement} alt="" className="max-w-lg" />
+
+The user can create an update parts.
+There are different types because mulag articles need to sync prices with the mulag shop.
+
+<Image src={createPart} alt="" className="max-w-lg" />
+
+---
+
+Thats not everything for this update and more features are in development.
+Thank you for reading this software update!
