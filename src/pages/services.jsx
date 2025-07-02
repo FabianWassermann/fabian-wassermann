@@ -380,9 +380,9 @@ function ServicesBento() {
               </p>
             </div>
             <p className="text-sm/6 mt-2 max-w-lg text-zinc-600 dark:text-zinc-400">
-              With my monthly support services, I'll take care of all your web
-              maintainance needs, making it easy for you to focus on what you do
-              best.
+              With my monthly support services, I&apos;ll take care of all your
+              web maintainance needs, making it easy for you to focus on what
+              you do best.
             </p>
           </div>
         </div>
