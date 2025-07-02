@@ -186,7 +186,7 @@ function Resume() {
   let resume = [
     {
       company: 'Feratel Media Technologies',
-      title: 'IT Support',
+      title: 'IT Interfaces Support ',
       logo: logoFeratel,
       start: 'Feb 2025',
       end: {
