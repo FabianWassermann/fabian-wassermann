@@ -454,7 +454,7 @@ function CTASection() {
   return (
     <div className="mt-28 lg:flex lg:items-center lg:justify-between">
       <h2 className="max-w-2xl text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-5xl">
-        Let's Connect
+        Let&apos;s Connect
         <br />
         Start our project today
       </h2>
