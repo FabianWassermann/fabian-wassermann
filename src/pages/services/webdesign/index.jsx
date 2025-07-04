@@ -492,7 +492,7 @@ function RadiusPicker({ radius, onChange }) {
   }
 
   return (
-    <fieldset aria-label="Choose a memory option">
+    <fieldset aria-label="Radius">
       <div className="flex items-center justify-between">
         <div className="text-sm/6 font-medium text-zinc-800 dark:text-zinc-100">
           Radius
@@ -509,12 +509,77 @@ function RadiusPicker({ radius, onChange }) {
               value={option.id}
               checked={selectedRadius === option.id}
               onChange={handleChange}
-              name="option"
+              name="option-radius"
               type="radio"
               className="absolute inset-0 appearance-none focus:outline focus:outline-0 disabled:cursor-not-allowed"
             />
             {!option.icon && (
               <span className="text-sm font-medium uppercase text-zinc-800 group-has-[:checked]:text-teal-500 dark:text-zinc-100 dark:group-has-[:checked]:text-teal-400">
+                {option.name}
+              </span>
+            )}
+            {option.icon}
+            <div className="pointer-events-none absolute inset-0 rounded-md shadow outline outline-black/5 group-hover:outline-teal-400/30 group-has-[:checked]:outline-teal-400/30 dark:outline-white/5 dark:group-hover:outline-teal-400/30 dark:group-has-[:checked]:outline-teal-400/30" />
+          </label>
+        ))}
+      </div>
+    </fieldset>
+  )
+}
+
+function FontFamilyPicker({ fontFamily, onChange }) {
+  const [selectedFontFamily, setSelectedFontFamily] = useState(
+    fontFamily || 'Arial'
+  )
+
+  const fontFamilyOptions = [
+    {
+      id: 'Arial',
+      name: 'Arial',
+    },
+    {
+      id: 'Times New Roman',
+      name: 'Times New Roman',
+    },
+    {
+      id: 'Courier New',
+      name: 'Courier New',
+    },
+  ]
+
+  const handleChange = (event) => {
+    const newValue = event.target.value
+    setSelectedFontFamily(newValue)
+
+    if (onChange) {
+      onChange(newValue)
+    }
+  }
+
+  return (
+    <fieldset aria-label="Font">
+      <div className="flex items-center justify-between">
+        <div className="text-sm/6 font-medium text-zinc-800 dark:text-zinc-100">
+          Font
+        </div>
+      </div>
+      <div className="mt-2 flex gap-3">
+        {fontFamilyOptions.map((option) => (
+          <label
+            key={option.id}
+            aria-label={option.name}
+            className="group relative flex items-center justify-center rounded-md bg-white/50 p-2 ring-1 ring-zinc-100 hover:ring-teal-500 has-[:checked]:ring-teal-500 dark:bg-zinc-900/50 dark:ring-zinc-700/40 dark:hover:ring-teal-400 dark:has-[:checked]:ring-teal-400"
+          >
+            <input
+              value={option.id}
+              checked={selectedFontFamily === option.id}
+              onChange={handleChange}
+              name="option-font"
+              type="radio"
+              className="absolute inset-0 appearance-none focus:outline focus:outline-0 disabled:cursor-not-allowed"
+            />
+            {!option.icon && (
+              <span className="whitespace-nowrap text-xs font-medium text-zinc-600 group-has-[:checked]:text-teal-500 dark:text-zinc-400 dark:group-has-[:checked]:text-teal-400">
                 {option.name}
               </span>
             )}
@@ -553,15 +618,19 @@ function DesignStep() {
             </h2>
           </div>
           <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-            Before designing anything, it&apos;s crucial to understand your
-            business, goals, and audience. This step sets the direction for
-            everything that follows — ensuring the final website isn&apos;t just
-            beautiful, but effective and aligned with your needs.
+            During the design phase, I shape the look and feel of your website.
+            Based on what we uncovered in the discovery step, I plan the layout,
+            structure the content, and bring your brand to life with colors,
+            typography, and visuals that connect with your audience.
           </p>
         </div>
         <div className="flex items-start gap-4 lg:row-span-2">
           <div className="flex grow flex-col gap-3">
             <RadiusPicker radius={radius} onChange={setRadius} />
+            <FontFamilyPicker
+              fontFamily={fontFamily}
+              onChange={setFontFamily}
+            />
           </div>
           <HexColorPicker color={color} onChange={setColor} />
         </div>
@@ -581,125 +650,134 @@ function ExampleHeroSection(props) {
     { name: 'Rings', href: '#' },
     { name: 'Necklaces', href: '#' },
     { name: 'Earrings', href: '#' },
-    { name: 'Bracekets', href: '#' },
+    { name: 'Bracelets', href: '#' },
     { name: 'Sale', href: '#' },
   ]
 
-  const { ...restProps } = props
+  const { fontFamily, radius, colorHex, ...restProps } = props
 
   return (
-    <IframeRenderer
-      style={{ width: '100%', height: '550px', borderRadius: '0.8rem' }}
-      {...restProps}
-    >
-      <div className="bg-white">
-        <header className="absolute inset-x-0 top-0 z-50">
-          <div className="mx-auto max-w-7xl">
-            <div className="px-6 pt-6 lg:max-w-2xl lg:pl-8 lg:pr-0">
-              <nav
-                aria-label="Global"
-                className="flex items-center justify-between lg:justify-start"
-              >
-                <a className="-m-1.5 cursor-pointer p-1.5">
-                  <span className="sr-only">Your Company</span>
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="size-8"
+    <div {...restProps}>
+      <div className="w-full overflow-hidden rounded-xl">
+        <IframeRenderer
+          style={{ width: '100%', height: '550px' }}
+          colorHex={colorHex}
+          radius={radius}
+          fontFamily={fontFamily}
+        >
+          <div className="bg-white">
+            <header className="absolute inset-x-0 top-0 z-50">
+              <div className="mx-auto max-w-7xl">
+                <div className="px-6 pt-6 lg:max-w-2xl lg:pl-8 lg:pr-0">
+                  <nav
+                    aria-label="Global"
+                    className="flex items-center justify-between lg:justify-start"
                   >
-                    <path
-                      d="M6 3h12l4 6-10 13L2 9Z"
-                      className="dark:fill-primary-100 dark:stroke-primary-400 fill-primary-100/10 stroke-primary-500"
-                    />
-                    <path
-                      d="M11 3 8 9l4 13 4-13-3-6"
-                      className="dark:stroke-primary-400 stroke-primary-500"
-                    />
-                    <path
-                      d="M2 9h20"
-                      className="dark:stroke-primary-400 stroke-primary-500"
-                    />
-                  </svg>
-                </a>
-                <button
-                  type="button"
-                  className="-m-2.5 rounded-md p-2.5 text-gray-700 lg:hidden"
-                >
-                  <span className="sr-only">Open main menu</span>
-                  <Bars3Icon aria-hidden="true" className="size-6" />
-                </button>
-                <div className="hidden lg:ml-8 lg:flex lg:gap-x-12">
-                  {navigation.map((item) => (
-                    <a
-                      key={item.name}
-                      className="cursor-pointer text-base/6 font-semibold text-gray-900"
+                    <a className="-m-1.5 cursor-pointer p-1.5">
+                      <span className="sr-only">Your Company</span>
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="size-8"
+                      >
+                        <path
+                          d="M6 3h12l4 6-10 13L2 9Z"
+                          className="dark:fill-primary-100 dark:stroke-primary-400 fill-primary-100/10 stroke-primary-500"
+                        />
+                        <path
+                          d="M11 3 8 9l4 13 4-13-3-6"
+                          className="dark:stroke-primary-400 stroke-primary-500"
+                        />
+                        <path
+                          d="M2 9h20"
+                          className="dark:stroke-primary-400 stroke-primary-500"
+                        />
+                      </svg>
+                    </a>
+                    <button
+                      type="button"
+                      className="-m-2.5 rounded-md p-2.5 text-gray-700 lg:hidden"
                     >
-                      {item.name}
-                    </a>
-                  ))}
-                </div>
-              </nav>
-            </div>
-          </div>
-        </header>
-
-        <div className="relative">
-          <div className="mx-auto max-w-7xl">
-            <div className="relative z-10 pt-14 lg:w-full lg:max-w-2xl">
-              <svg
-                viewBox="0 0 100 100"
-                preserveAspectRatio="none"
-                aria-hidden="true"
-                className="absolute inset-y-0 right-8 hidden h-full w-80 translate-x-1/2 transform fill-white lg:block"
-              >
-                <polygon points="0,0 90,0 50,100 0,100" />
-              </svg>
-
-              <div className="relative px-6 py-12 sm:py-24 lg:px-8 lg:py-24 lg:pr-0">
-                <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
-                  <div className="hidden sm:mb-10 sm:flex">
-                    <div className="relative rounded-full px-3 py-1 text-base/6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                      The Big Summer Sale.{' '}
-                      <a className="text-primary-600 cursor-pointer whitespace-nowrap font-semibold">
-                        <span aria-hidden="true" className="absolute inset-0" />
-                        Shop now <span aria-hidden="true">&rarr;</span>
-                      </a>
+                      <span className="sr-only">Open main menu</span>
+                      <Bars3Icon aria-hidden="true" className="size-6" />
+                    </button>
+                    <div className="hidden lg:ml-8 lg:flex lg:gap-x-12">
+                      {navigation.map((item) => (
+                        <a
+                          key={item.name}
+                          className="cursor-pointer text-base/6 font-semibold text-gray-900"
+                        >
+                          {item.name}
+                        </a>
+                      ))}
                     </div>
-                  </div>
-                  <h1 className="text-pretty text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
-                    The Art of Fine Jewelry
-                  </h1>
-                  <p className="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">
-                    Unrivaled craftsmanship, rare gemstones, and timeless design
-                    come together in collections that exude sophistication and
-                    prestige.
-                  </p>
-                  <div className="mt-10 flex items-center gap-x-6">
-                    <a className="bg-primary-600 hover:bg-primary-500 focus-visible:outline-primary-600 cursor-pointer rounded-md px-4 py-3 text-base font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-                      Shop now
-                    </a>
-                    <a className="cursor-pointer text-base/6 font-semibold text-gray-900">
-                      Explore Collections <span aria-hidden="true">→</span>
-                    </a>
+                  </nav>
+                </div>
+              </div>
+            </header>
+
+            <div className="relative">
+              <div className="mx-auto max-w-7xl">
+                <div className="relative z-10 pt-14 lg:w-full lg:max-w-2xl">
+                  <svg
+                    viewBox="0 0 100 100"
+                    preserveAspectRatio="none"
+                    aria-hidden="true"
+                    className="absolute inset-y-0 right-8 hidden h-full w-80 translate-x-1/2 transform fill-white lg:block"
+                  >
+                    <polygon points="0,0 90,0 50,100 0,100" />
+                  </svg>
+
+                  <div className="relative px-6 py-12 sm:py-24 lg:px-8 lg:py-24 lg:pr-0">
+                    <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
+                      <div className="hidden sm:mb-10 sm:flex">
+                        <div className="relative rounded-full px-3 py-1 text-base/6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+                          The Big Summer Sale.{' '}
+                          <a className="text-primary-600 cursor-pointer whitespace-nowrap font-semibold">
+                            <span
+                              aria-hidden="true"
+                              className="absolute inset-0"
+                            />
+                            Shop now <span aria-hidden="true">&rarr;</span>
+                          </a>
+                        </div>
+                      </div>
+                      <h1 className="text-pretty text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
+                        The Art of Fine Jewelry
+                      </h1>
+                      <p className="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">
+                        Unrivaled craftsmanship, rare gemstones, and timeless
+                        design come together in collections that exude
+                        sophistication and prestige.
+                      </p>
+                      <div className="mt-10 flex items-center gap-x-6">
+                        <a className="bg-primary-600 hover:bg-primary-500 focus-visible:outline-primary-600 cursor-pointer rounded-md px-4 py-3 text-base font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                          Shop now
+                        </a>
+                        <a className="cursor-pointer text-base/6 font-semibold text-gray-900">
+                          Explore Collections <span aria-hidden="true">→</span>
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+              <div className="bg-gray-50 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+                <Image
+                  alt=""
+                  src={imageExampleHero}
+                  className="aspect-[3/2] object-cover lg:aspect-auto lg:size-full"
+                />
+              </div>
             </div>
           </div>
-          <div className="bg-gray-50 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-            <Image
-              alt=""
-              src={imageExampleHero}
-              className="aspect-[3/2] object-cover lg:aspect-auto lg:size-full"
-            />
-          </div>
-        </div>
+        </IframeRenderer>
       </div>
-    </IframeRenderer>
+    </div>
   )
 }
 
