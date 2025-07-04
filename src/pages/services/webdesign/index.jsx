@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 
 import { Button } from '@/components/Button'
 import { SimpleLayout } from '@/components/SimpleLayout'
+import { IframeRenderer } from '@/pages/services/webdesign/iframeRenderer'
 import React, { useState, useEffect, Component } from 'react'
 import Link from 'next/link'
 import { ImgComparisonSlider } from '@img-comparison-slider/react'
@@ -20,6 +21,8 @@ import figma from '@/images/logos/figma.png'
 import meeting from '@/images/workflow/meeting.jpg'
 import planning from '@/images/workflow/planning.jpg'
 import wireframe from '@/images/workflow/wireframe.jpg'
+
+import imageExampleHero from '@/images/workflow/heroImageExample.jpg'
 
 export default function WebdesignService() {
   return (
@@ -327,9 +330,9 @@ function SpeakIcon(props) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       {...props}
     >
       <path
@@ -350,9 +353,9 @@ function DesignIcon(props) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       {...props}
     >
       <path
@@ -371,8 +374,163 @@ function DesignIcon(props) {
   )
 }
 
+function RoundIcon(props) {
+  const { isActive, ...otherProps } = props
+
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...otherProps}
+    >
+      <path
+        d="M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9-9-1.8-9-9 1.8-9 9-9"
+        className={
+          isActive
+            ? 'fill-teal-400/30 stroke-teal-400 dark:fill-teal-400/30 dark:stroke-teal-500'
+            : 'fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500'
+        }
+      />
+    </svg>
+  )
+}
+
+function SquareIcon(props) {
+  const { isActive, ...otherProps } = props
+
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...otherProps}
+    >
+      <rect
+        width="18"
+        height="18"
+        x="3"
+        y="3"
+        rx="2"
+        className={
+          isActive
+            ? 'fill-teal-400/30 stroke-teal-400 dark:fill-teal-400/30 dark:stroke-teal-500'
+            : 'fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500'
+        }
+      />
+    </svg>
+  )
+}
+
+function CircleIcon(props) {
+  const { isActive, ...otherProps } = props
+
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...otherProps}
+    >
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+        className={
+          isActive
+            ? 'fill-teal-400/30 stroke-teal-400 dark:fill-teal-400/30 dark:stroke-teal-500'
+            : 'fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500'
+        }
+      />
+    </svg>
+  )
+}
+
+function RadiusPicker({ radius, onChange }) {
+  const [selectedRadius, setSelectedRadius] = useState(radius || 'circle')
+
+  const radiusOptions = [
+    {
+      id: 'square',
+      name: 'square',
+      icon: (
+        <SquareIcon className="size-6" isActive={selectedRadius === 'square'} />
+      ),
+    },
+    {
+      id: 'round',
+      name: 'round',
+      icon: (
+        <RoundIcon className="size-6" isActive={selectedRadius === 'round'} />
+      ),
+    },
+    {
+      id: 'circle',
+      name: 'circle',
+      icon: (
+        <CircleIcon className="size-6" isActive={selectedRadius === 'circle'} />
+      ),
+    },
+  ]
+
+  const handleChange = (event) => {
+    const newValue = event.target.value
+    setSelectedRadius(newValue)
+
+    if (onChange) {
+      onChange(newValue)
+    }
+  }
+
+  return (
+    <fieldset aria-label="Choose a memory option">
+      <div className="flex items-center justify-between">
+        <div className="text-sm/6 font-medium text-zinc-800 dark:text-zinc-100">
+          Radius
+        </div>
+      </div>
+      <div className="mt-2 grid grid-cols-3 gap-3">
+        {radiusOptions.map((option) => (
+          <label
+            key={option.id}
+            aria-label={option.name}
+            className="group relative flex items-center justify-center rounded-md bg-white/50 p-2 ring-1 ring-zinc-100 hover:ring-teal-500 has-[:checked]:ring-teal-500 dark:bg-zinc-900/50 dark:ring-zinc-700/40 dark:hover:ring-teal-400 dark:has-[:checked]:ring-teal-400"
+          >
+            <input
+              value={option.id}
+              checked={selectedRadius === option.id}
+              onChange={handleChange}
+              name="option"
+              type="radio"
+              className="absolute inset-0 appearance-none focus:outline focus:outline-0 disabled:cursor-not-allowed"
+            />
+            {!option.icon && (
+              <span className="text-sm font-medium uppercase text-zinc-800 group-has-[:checked]:text-teal-500 dark:text-zinc-100 dark:group-has-[:checked]:text-teal-400">
+                {option.name}
+              </span>
+            )}
+            {option.icon}
+            <div className="pointer-events-none absolute inset-0 rounded-md shadow outline outline-black/5 group-hover:outline-teal-400/30 group-has-[:checked]:outline-teal-400/30 dark:outline-white/5 dark:group-hover:outline-teal-400/30 dark:group-has-[:checked]:outline-teal-400/30" />
+          </label>
+        ))}
+      </div>
+    </fieldset>
+  )
+}
+
 function DesignStep() {
-  const [color, setColor] = useState('#aabbcc')
+  const [color, setColor] = useState('#ffae00')
+  const [radius, setRadius] = useState('circle')
+  const [fontFamily, setFontFamily] = useState('Arial')
 
   return (
     // <ImgComparisonSlider>
@@ -386,7 +544,7 @@ function DesignStep() {
     //   />
     // </ImgComparisonSlider>
     <div>
-      <section className="grid grid-cols-1 overflow-hidden lg:grid-cols-2 lg:gap-x-6 lg:gap-y-16">
+      <section className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-6 lg:gap-y-8">
         <div className="lg:pr-4">
           <div className="inline-flex items-center gap-2">
             <DesignIcon className="size-6" />
@@ -397,56 +555,43 @@ function DesignStep() {
           <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
             Before designing anything, it&apos;s crucial to understand your
             business, goals, and audience. This step sets the direction for
-            everything that follows — ensuring the final website isn’t just
+            everything that follows — ensuring the final website isn&apos;t just
             beautiful, but effective and aligned with your needs.
           </p>
-          <ExampleHeroSection />
         </div>
-        <div className="lg:row-span-2">
+        <div className="flex items-start gap-4 lg:row-span-2">
+          <div className="flex grow flex-col gap-3">
+            <RadiusPicker radius={radius} onChange={setRadius} />
+          </div>
           <HexColorPicker color={color} onChange={setColor} />
-          {/* <div className="grid grid-cols-3 gap-3 sm:grid-cols-3 lg:mx-0 lg:mt-10 lg:grid-cols-2 lg:gap-3 xl:gap-4">
-            <div className="aspect-square overflow-hidden rounded-xl shadow-xl outline outline-1 -outline-offset-1 outline-black/10">
-              <Image
-                alt=""
-                src={meeting}
-                className="block size-full object-cover"
-              />
-            </div>
-            <div className="aspect-square overflow-hidden rounded-xl shadow-xl outline outline-1 -outline-offset-1 outline-black/10 lg:-mt-16">
-              <Image
-                alt=""
-                src={planning}
-                className="block size-full object-cover"
-              />
-            </div>
-            <div className="hidden lg:block"></div>
-            <div className="aspect-square overflow-hidden rounded-xl shadow-xl outline outline-1 -outline-offset-1 outline-black/10 lg:-mt-16">
-              <Image
-                alt=""
-                src={wireframe}
-                className="block size-full object-cover"
-              />
-            </div>
-          </div> */}
         </div>
+        <ExampleHeroSection
+          className="lg:col-span-2"
+          colorHex={color}
+          radius={radius}
+          fontFamily={fontFamily}
+        />
       </section>
     </div>
   )
 }
 
-function ExampleHeroSection() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
+function ExampleHeroSection(props) {
   const navigation = [
-    { name: 'Product', href: '#' },
-    { name: 'Features', href: '#' },
-    { name: 'Marketplace', href: '#' },
-    { name: 'Company', href: '#' },
-    { name: 'Log in', href: '#' },
+    { name: 'Rings', href: '#' },
+    { name: 'Necklaces', href: '#' },
+    { name: 'Earrings', href: '#' },
+    { name: 'Bracekets', href: '#' },
+    { name: 'Sale', href: '#' },
   ]
 
+  const { ...restProps } = props
+
   return (
-    <iframe>
+    <IframeRenderer
+      style={{ width: '100%', height: '550px', borderRadius: '0.8rem' }}
+      {...restProps}
+    >
       <div className="bg-white">
         <header className="absolute inset-x-0 top-0 z-50">
           <div className="mx-auto max-w-7xl">
@@ -455,28 +600,43 @@ function ExampleHeroSection() {
                 aria-label="Global"
                 className="flex items-center justify-between lg:justify-start"
               >
-                <a href="#" className="-m-1.5 p-1.5">
+                <a className="-m-1.5 cursor-pointer p-1.5">
                   <span className="sr-only">Your Company</span>
-                  <img
-                    alt="Your Company"
-                    src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                    className="h-8 w-auto"
-                  />
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="size-8"
+                  >
+                    <path
+                      d="M6 3h12l4 6-10 13L2 9Z"
+                      className="dark:fill-primary-100 dark:stroke-primary-400 fill-primary-100/10 stroke-primary-500"
+                    />
+                    <path
+                      d="M11 3 8 9l4 13 4-13-3-6"
+                      className="dark:stroke-primary-400 stroke-primary-500"
+                    />
+                    <path
+                      d="M2 9h20"
+                      className="dark:stroke-primary-400 stroke-primary-500"
+                    />
+                  </svg>
                 </a>
                 <button
                   type="button"
-                  onClick={() => setMobileMenuOpen(true)}
                   className="-m-2.5 rounded-md p-2.5 text-gray-700 lg:hidden"
                 >
                   <span className="sr-only">Open main menu</span>
                   <Bars3Icon aria-hidden="true" className="size-6" />
                 </button>
-                <div className="hidden lg:ml-12 lg:flex lg:gap-x-14">
+                <div className="hidden lg:ml-8 lg:flex lg:gap-x-12">
                   {navigation.map((item) => (
                     <a
                       key={item.name}
-                      href={item.href}
-                      className="text-sm/6 font-semibold text-gray-900"
+                      className="cursor-pointer text-base/6 font-semibold text-gray-900"
                     >
                       {item.name}
                     </a>
@@ -485,56 +645,6 @@ function ExampleHeroSection() {
               </nav>
             </div>
           </div>
-          <Dialog
-            open={mobileMenuOpen}
-            onClose={setMobileMenuOpen}
-            className="lg:hidden"
-          >
-            <div className="fixed inset-0 z-50" />
-            <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-              <div className="flex items-center justify-between">
-                <a href="#" className="-m-1.5 p-1.5">
-                  <span className="sr-only">Your Company</span>
-                  <img
-                    alt=""
-                    src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                    className="h-8 w-auto"
-                  />
-                </a>
-                <button
-                  type="button"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="-m-2.5 rounded-md p-2.5 text-gray-700"
-                >
-                  <span className="sr-only">Close menu</span>
-                  <XMarkIcon aria-hidden="true" className="size-6" />
-                </button>
-              </div>
-              <div className="mt-6 flow-root">
-                <div className="-my-6 divide-y divide-gray-500/10">
-                  <div className="space-y-2 py-6">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div>
-                  <div className="py-6">
-                    <a
-                      href="#"
-                      className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                    >
-                      Log in
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </DialogPanel>
-          </Dialog>
         </header>
 
         <div className="relative">
@@ -549,40 +659,31 @@ function ExampleHeroSection() {
                 <polygon points="0,0 90,0 50,100 0,100" />
               </svg>
 
-              <div className="relative px-6 py-32 sm:py-40 lg:px-8 lg:py-56 lg:pr-0">
+              <div className="relative px-6 py-12 sm:py-24 lg:px-8 lg:py-24 lg:pr-0">
                 <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
                   <div className="hidden sm:mb-10 sm:flex">
-                    <div className="relative rounded-full px-3 py-1 text-sm/6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                      Anim aute id magna aliqua ad ad non deserunt sunt.{' '}
-                      <a
-                        href="#"
-                        className="whitespace-nowrap font-semibold text-indigo-600"
-                      >
+                    <div className="relative rounded-full px-3 py-1 text-base/6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+                      The Big Summer Sale.{' '}
+                      <a className="text-primary-600 cursor-pointer whitespace-nowrap font-semibold">
                         <span aria-hidden="true" className="absolute inset-0" />
-                        Read more <span aria-hidden="true">&rarr;</span>
+                        Shop now <span aria-hidden="true">&rarr;</span>
                       </a>
                     </div>
                   </div>
                   <h1 className="text-pretty text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
-                    Data to enrich your business
+                    The Art of Fine Jewelry
                   </h1>
                   <p className="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">
-                    Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
-                    qui lorem cupidatat commodo. Elit sunt amet fugiat veniam
-                    occaecat fugiat aliqua.
+                    Unrivaled craftsmanship, rare gemstones, and timeless design
+                    come together in collections that exude sophistication and
+                    prestige.
                   </p>
                   <div className="mt-10 flex items-center gap-x-6">
-                    <a
-                      href="#"
-                      className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    >
-                      Get started
+                    <a className="bg-primary-600 hover:bg-primary-500 focus-visible:outline-primary-600 cursor-pointer rounded-md px-4 py-3 text-base font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                      Shop now
                     </a>
-                    <a
-                      href="#"
-                      className="text-sm/6 font-semibold text-gray-900"
-                    >
-                      Learn more <span aria-hidden="true">→</span>
+                    <a className="cursor-pointer text-base/6 font-semibold text-gray-900">
+                      Explore Collections <span aria-hidden="true">→</span>
                     </a>
                   </div>
                 </div>
@@ -590,15 +691,15 @@ function ExampleHeroSection() {
             </div>
           </div>
           <div className="bg-gray-50 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-            <img
+            <Image
               alt=""
-              src="https://images.unsplash.com/photo-1483389127117-b6a2102724ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1587&q=80"
+              src={imageExampleHero}
               className="aspect-[3/2] object-cover lg:aspect-auto lg:size-full"
             />
           </div>
         </div>
       </div>
-    </iframe>
+    </IframeRenderer>
   )
 }
 
