@@ -822,7 +822,7 @@ function DiscoverStep() {
             className="mt-8 max-w-sm space-y-8 text-sm text-zinc-600 dark:text-zinc-400"
           >
             {list.map((entry, entryIdx) => (
-              <li className="flex gap-x-3 ">
+              <li key={entry.text} className="flex gap-x-3 ">
                 <CheckCircleIcon
                   aria-hidden="true"
                   className="mt-1 size-5 flex-none text-teal-600"
