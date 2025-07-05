@@ -9,7 +9,11 @@ const radiusMapping = {
   square: '0px',
 }
 
-export default function Blank() { return () }
+export default function Blank() { 
+  return (
+    <span></span>
+  )
+}
 
 export const IframeRenderer = ({ children, ...iframeProps }) => {
   const iframeRef = useRef(null)
