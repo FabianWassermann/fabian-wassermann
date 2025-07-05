@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 import { Button } from '@/components/Button'
 import { SimpleLayout } from '@/components/SimpleLayout'
-import { IframeRenderer } from '@/pages/services/webdesign/iframeRenderer'
+import { IframeRenderer } from '@/components/IframeRenderer'
 import React, { useState, useEffect, Component } from 'react'
 import Link from 'next/link'
 import { ImgComparisonSlider } from '@img-comparison-slider/react'
