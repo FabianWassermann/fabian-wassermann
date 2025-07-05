@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Head from 'next/head'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import clsx from 'clsx'
 import React, { useState } from 'react'
 
@@ -155,7 +154,7 @@ function Newsletter() {
         Feel free to send me an email at all time. If you want you can start a
         conversation by sending me a message.
       </p>
-      <div className="mt-6 mb-4">
+      <div className="mb-4 mt-6">
         <input
           type="text"
           name="message"
@@ -199,7 +198,7 @@ function Resume() {
       title: 'Fullstack Developer',
       logo: logoNeedNect,
       start: 'May 2022',
-      end: 'Jan. 2025'
+      end: 'Jan. 2025',
     },
     {
       company: 'hs2n Informationstechnologie GmbH',
@@ -291,7 +290,7 @@ function Photos() {
   })
 
   return (
-    <div className="relative mx-auto mt-16 max-w-[90rem] overflow-hidden py-3 before:absolute before:top-0 before:left-0 before:z-10 before:hidden before:h-full before:w-10 before:bg-gradient-to-r before:from-zinc-50 before:to-[rgba(0,0,0,0)] after:absolute after:top-0 after:right-0 after:z-10 after:hidden after:h-full after:w-10 after:bg-gradient-to-r after:from-[rgba(0,0,0,0)] after:to-zinc-50 before:dark:from-[rgba(0,0,0,1)] after:dark:to-[rgba(0,0,0,1)] sm:mt-20 before:sm:block after:sm:block">
+    <div className="relative mx-auto mt-16 max-w-[90rem] overflow-hidden py-3 before:absolute before:left-0 before:top-0 before:z-10 before:hidden before:h-full before:w-10 before:bg-gradient-to-r before:from-zinc-50 before:to-[rgba(0,0,0,0)] after:absolute after:right-0 after:top-0 after:z-10 after:hidden after:h-full after:w-10 after:bg-gradient-to-r after:from-[rgba(0,0,0,0)] after:to-zinc-50 before:dark:from-[rgba(0,0,0,1)] after:dark:to-[rgba(0,0,0,1)] sm:mt-20 before:sm:block after:sm:block">
       <div
         id="photos"
         className="-my-4 flex w-fit justify-center gap-5 overflow-hidden py-4 sm:gap-8"
