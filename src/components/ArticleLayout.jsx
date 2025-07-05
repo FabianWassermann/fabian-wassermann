@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 
 import { Container } from '@/components/Container'
 import { formatDate } from '@/lib/formatDate'
@@ -24,7 +23,8 @@ export function ArticleLayout({
   isRssFeed = false,
   previousPathname,
 }) {
-  let router = useRouter()
+  const router =
+    typeof window !== 'undefined' ? require('next/router').useRouter() : null
 
   if (isRssFeed) {
     return children

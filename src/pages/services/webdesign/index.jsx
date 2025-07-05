@@ -180,7 +180,7 @@ function WorkFlow() {
     return () => {
       window.removeEventListener('hashchange', onHashChange)
     }
-  }, [])
+  })
 
   const steps = [
     {
