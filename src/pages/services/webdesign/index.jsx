@@ -11,6 +11,8 @@ import { ImgComparisonSlider } from '@img-comparison-slider/react'
 import { HexColorPicker } from 'react-colorful'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import DecryptedText from '@/components/DecryptedText'
+import GridMotion from '@/components/GridMotion'
 
 import webflowWhite from '@/images/logos/webflow-white.png'
 import webflowBlack from '@/images/logos/webflow-black.png'
@@ -21,6 +23,16 @@ import figma from '@/images/logos/figma.png'
 import meeting from '@/images/workflow/meeting.jpg'
 import planning from '@/images/workflow/planning.jpg'
 import wireframe from '@/images/workflow/wireframe.jpg'
+
+import webflowSite from '@/images/workflow/webflow.png'
+import website from '@/images/workflow/website.png'
+
+import project1 from '@/images/workflow/project1.png'
+import project2 from '@/images/workflow/project2.png'
+import project3 from '@/images/workflow/project3.png'
+import project4 from '@/images/workflow/project4.png'
+import project5 from '@/images/workflow/project5.png'
+import project6 from '@/images/workflow/project6.png'
 
 import imageExampleHero from '@/images/workflow/heroImageExample.jpg'
 
@@ -195,8 +207,18 @@ function WorkFlow() {
       href: '#workflow-design',
       content: <DesignStep />,
     },
-    { id: '03', name: 'Build', href: '#workflow-build' },
-    { id: '04', name: 'Launch & Support', href: '#workflow-launch' },
+    {
+      id: '03',
+      name: 'Build',
+      href: '#workflow-build',
+      content: <BuildStep />,
+    },
+    {
+      id: '04',
+      name: 'Launch & Support',
+      href: '#workflow-launch',
+      content: <LaunchStep />,
+    },
   ]
 
   if (currentHash === null) {
@@ -609,7 +631,7 @@ function DesignStep() {
     //   />
     // </ImgComparisonSlider>
     <div>
-      <section className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-6 lg:gap-y-8">
+      <section className="grid grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-x-6 lg:gap-y-8">
         <div className="lg:pr-4">
           <div className="inline-flex items-center gap-2">
             <DesignIcon className="size-6" />
@@ -781,6 +803,139 @@ function ExampleHeroSection(props) {
   )
 }
 
+function CodeIcon(props) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path
+        d="m10 9-3 3 3 3"
+        className="stroke-zinc-400 dark:stroke-zinc-500"
+      />
+      <path
+        d="m14 15 3-3-3-3"
+        className="stroke-zinc-400 dark:stroke-zinc-500"
+      />
+      <rect
+        x="3"
+        y="3"
+        width="18"
+        height="18"
+        rx="2"
+        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
+      />
+    </svg>
+  )
+}
+
+function BuildStep() {
+  const list = [
+    {
+      title: 'No-code meets custom',
+      text: 'Built in Webflow or Shopify with custom enhancements when needed.',
+    },
+    {
+      title: 'Clean, maintainable code',
+      text: 'A solid foundation for future growth and features.',
+    },
+  ]
+
+  return (
+    <div>
+      <section className="grid grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-x-6 lg:gap-y-8">
+        <div className="lg:pr-4">
+          <div className="inline-flex items-center gap-2">
+            <CodeIcon className="size-6" />
+            <DecryptedText
+              text="Build That Works"
+              animateOn="view"
+              sequential
+              revealDirection="start"
+              className="text-pretty text-xl font-semibold tracking-tight text-zinc-800 dark:text-zinc-100"
+              encryptedClassName="text-pretty text-xl font-semibold tracking-tight text-zinc-800 dark:text-zinc-100"
+            />
+          </div>
+          <DecryptedText
+            text="In this phase, I turn the approved design into a fast, responsive
+            website — built to perform smoothly across all devices and tailored
+            to your business needs. Everything is clean, scalable, and ready to
+            grow with you."
+            animateOn="view"
+            sequential
+            revealDirection="start"
+            speed={10}
+            parentClassName="mt-2 text-sm text-zinc-600 dark:text-zinc-400"
+          />
+        </div>
+        <div className="col-span-2 flex items-start gap-4 lg:col-span-1">
+          <ul
+            role="list"
+            className="max-w-sm space-y-4 text-sm text-zinc-600 dark:text-zinc-400 lg:mt-8"
+          >
+            {list.map((entry, entryIdx) => (
+              <li key={entry.text} className="flex gap-x-3 ">
+                <CheckCircleIcon
+                  aria-hidden="true"
+                  className="mt-1 size-5 flex-none text-teal-600"
+                />
+                <span>
+                  <strong className="font-semibold text-zinc-800 dark:text-zinc-100">
+                    {entry.title}.
+                  </strong>{' '}
+                  {entry.text}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="col-span-2 mt-5 lg:mt-0">
+          <ImgComparisonSlider>
+            <Image slot="first" src={webflowSite} />
+            <Image slot="second" src={website} />
+          </ImgComparisonSlider>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+function LaunchIcon(props) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path
+        d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"
+        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
+      />
+      <path
+        d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"
+        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
+      />
+      <path
+        d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"
+        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
+      />
+      <path
+        d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"
+        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
+      />
+    </svg>
+  )
+}
+
 function DiscoverStep() {
   const list = [
     {
@@ -819,7 +974,7 @@ function DiscoverStep() {
           </p>
           <ul
             role="list"
-            className="mt-8 max-w-sm space-y-8 text-sm text-zinc-600 dark:text-zinc-400"
+            className="mt-8 max-w-sm space-y-4 text-sm text-zinc-600 dark:text-zinc-400"
           >
             {list.map((entry, entryIdx) => (
               <li key={entry.text} className="flex gap-x-3 ">
@@ -863,6 +1018,67 @@ function DiscoverStep() {
               />
             </div>
           </div>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+function LaunchStep() {
+  const list = [
+    {
+      title: 'Smooth, stress-free launch',
+      text: 'I handle setup, testing, and go-live so everything runs perfectly.',
+    },
+    {
+      title: 'Performance & SEO checks',
+      text: 'Your site is optimized for speed, mobile, and discoverability.',
+    },
+    {
+      title: 'Support during and after launch',
+      text: 'I’m by your side to make adjustments, answer questions, and ensure everything feels right.',
+    },
+  ]
+
+  const items = [project1, project2, project3, project4, project5, project6]
+
+  return (
+    <div>
+      <section className="grid grid-cols-1 overflow-hidden lg:grid-cols-2 lg:gap-x-6 lg:gap-y-16">
+        <div className="lg:pr-4">
+          <div className="inline-flex items-center gap-2">
+            <LaunchIcon className="size-6" />
+            <h2 className="text-pretty text-xl font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+              Smooth Launch. Steady Support.
+            </h2>
+          </div>
+          <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+            Once everything is tested and approved, we go live. I handle all the
+            setup, optimization, and final checks to make sure your website
+            launches smoothly, performs well, and is ready for real users.
+          </p>
+          <ul
+            role="list"
+            className="mt-8 max-w-sm space-y-4 text-sm text-zinc-600 dark:text-zinc-400"
+          >
+            {list.map((entry, entryIdx) => (
+              <li key={entry.text} className="flex gap-x-3 ">
+                <CheckCircleIcon
+                  aria-hidden="true"
+                  className="mt-1 size-5 flex-none text-teal-600"
+                />
+                <span>
+                  <strong className="font-semibold text-zinc-800 dark:text-zinc-100">
+                    {entry.title}.
+                  </strong>{' '}
+                  {entry.text}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="mt-3 max-h-[25rem] overflow-hidden rounded-xl">
+          <GridMotion items={items} />
         </div>
       </section>
     </div>
