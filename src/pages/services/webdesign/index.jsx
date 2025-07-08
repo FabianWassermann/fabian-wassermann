@@ -166,7 +166,7 @@ function WhatIUse() {
           src={figma}
           width={158}
           height={48}
-          className="col-span-2 max-h-12 w-full object-contain object-left lg:col-span-1"
+          className="col-span-2 max-h-10 w-full object-contain object-left lg:col-span-1"
         />
       </div>
       <p className="relative z-10 mt-2 max-w-[80%] text-sm text-zinc-600 dark:text-zinc-400">
