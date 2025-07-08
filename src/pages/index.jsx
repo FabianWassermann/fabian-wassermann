@@ -111,10 +111,18 @@ function SocialLink({ icon: Icon, ...props }) {
 }
 
 function Newsletter() {
-  const [getHash, setHash] = useState('')
+  const [isContactActive, setIsContactActive] = useState(false)
 
   useEffect(() => {
-    setHash(window.location.hash)
+    const updateIsContactActive = () => {
+      setIsContactActive(window.location.hash.includes('contact'))
+      console.log(window.location.hash.includes('contact'))
+    }
+
+    updateIsContactActive()
+
+    window.addEventListener('hashchange', updateIsContactActive)
+    return () => window.removeEventListener('hashchange', updateIsContactActive)
   }, [])
 
   return (
@@ -141,9 +149,7 @@ function Newsletter() {
       id="contact"
       className={clsx(
         'rounded-2xl bg-white/50 p-6 ring-1 ring-zinc-100 dark:bg-zinc-900/50 dark:ring-zinc-700/40',
-        getHash.includes('contact')
-          ? 'ring-2 ring-teal-500 dark:ring-teal-500'
-          : ''
+        isContactActive ? 'ring-2 !ring-teal-500 dark:!ring-teal-500' : ''
       )}
     >
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
