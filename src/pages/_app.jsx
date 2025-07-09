@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 
-import { isMobile } from "@/lib/isMobile";
+import { isMobile } from '@/lib/isMobile'
 
 import '@/styles/tailwind.css'
 import 'focus-visible'
@@ -21,8 +21,7 @@ function usePrevious(value) {
 }
 
 function setupBlob() {
-  document
-  .getElementById('blob').classList.add("!block")
+  document.getElementById('blob').classList.add('!block')
 
   window.onclick = (e) => {
     document
@@ -72,7 +71,7 @@ export default function App({ Component, pageProps, router }) {
             id="content-back"
           >
             <div
-              className="absolute bg-gray-700 dark:bg-gray-400 hidden"
+              className="absolute hidden bg-gray-700 dark:bg-gray-400"
               id="blob"
               style={{
                 width: '150px',
