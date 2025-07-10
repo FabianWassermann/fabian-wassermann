@@ -20,21 +20,21 @@ import shopifyWhite from '@/images/logos/shopify_white.png'
 import shopifyBlack from '@/images/logos/shopify_black.png'
 import figma from '@/images/logos/figma.png'
 
-import meeting from '@/images/workflow/meeting.jpg'
-import planning from '@/images/workflow/planning.jpg'
-import wireframe from '@/images/workflow/wireframe.jpg'
+import meeting from '@/images/workflow/meeting.webp'
+import planning from '@/images/workflow/planning.webp'
+import wireframe from '@/images/workflow/wireframe.webp'
 
 import webflowSite from '@/images/workflow/webflow.png'
 import website from '@/images/workflow/website.png'
 
-import project1 from '@/images/workflow/project1.png'
-import project2 from '@/images/workflow/project2.png'
-import project3 from '@/images/workflow/project3.png'
-import project4 from '@/images/workflow/project4.png'
-import project5 from '@/images/workflow/project5.png'
-import project6 from '@/images/workflow/project6.png'
+import project1 from '@/images/workflow/project1.webp'
+import project2 from '@/images/workflow/project2.webp'
+import project3 from '@/images/workflow/project3.webp'
+import project4 from '@/images/workflow/project4.webp'
+import project5 from '@/images/workflow/project5.webp'
+import project6 from '@/images/workflow/project6.webp'
 
-import imageExampleHero from '@/images/workflow/heroImageExample.jpg'
+import imageExampleHero from '@/images/workflow/heroImageExample.webp'
 
 export default function WebdesignService() {
   return (
@@ -244,7 +244,7 @@ function WorkFlow() {
               {step.status === 'complete' ? (
                 <a href={step.href} className="group flex w-full items-center">
                   <span className="flex items-center px-6 py-4 text-sm font-medium">
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-teal-600 group-hover:bg-teal-700 dark:bg-teal-600 dark:group-hover:bg-teal-500">
+                    <span className="size-10 flex shrink-0 items-center justify-center rounded-full bg-teal-600 group-hover:bg-teal-700 dark:bg-teal-600 dark:group-hover:bg-teal-500">
                       <svg
                         data-slot="icon"
                         fill="currentColor"
@@ -271,7 +271,7 @@ function WorkFlow() {
                   aria-current="step"
                   className="flex items-center px-6 py-4 text-sm font-medium"
                 >
-                  <span className="flex size-10 shrink-0 items-center justify-center rounded-full border-2 border-teal-600 dark:border-teal-600">
+                  <span className="size-10 flex shrink-0 items-center justify-center rounded-full border-2 border-teal-600 dark:border-teal-600">
                     <span className="text-teal-600 dark:text-teal-600">
                       {step.id}
                     </span>
@@ -283,7 +283,7 @@ function WorkFlow() {
               ) : (
                 <a href={step.href} className="group flex items-center">
                   <span className="flex items-center px-6 py-4 text-sm font-medium">
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-full border-2 border-zinc-200 group-hover:border-zinc-400 dark:border-zinc-600/40 dark:group-hover:border-zinc-600">
+                    <span className="size-10 flex shrink-0 items-center justify-center rounded-full border-2 border-zinc-200 group-hover:border-zinc-400 dark:border-zinc-600/40 dark:group-hover:border-zinc-600">
                       <span className="text-zinc-600 dark:text-zinc-400">
                         {step.id}
                       </span>
@@ -525,7 +525,7 @@ function RadiusPicker({ radius, onChange }) {
           <label
             key={option.id}
             aria-label={option.name}
-            className="group relative flex items-center justify-center rounded-md bg-white/50 p-2 ring-1 ring-zinc-100 hover:ring-teal-500 has-[:checked]:ring-teal-500 dark:bg-zinc-900/50 dark:ring-zinc-700/40 dark:hover:ring-teal-400 dark:has-[:checked]:ring-teal-400"
+            className="has-[:checked]:ring-teal-500 dark:has-[:checked]:ring-teal-400 group relative flex items-center justify-center rounded-md bg-white/50 p-2 ring-1 ring-zinc-100 hover:ring-teal-500 dark:bg-zinc-900/50 dark:ring-zinc-700/40 dark:hover:ring-teal-400"
           >
             <input
               value={option.id}
@@ -536,12 +536,12 @@ function RadiusPicker({ radius, onChange }) {
               className="absolute inset-0 appearance-none focus:outline focus:outline-0 disabled:cursor-not-allowed"
             />
             {!option.icon && (
-              <span className="text-sm font-medium uppercase text-zinc-800 group-has-[:checked]:text-teal-500 dark:text-zinc-100 dark:group-has-[:checked]:text-teal-400">
+              <span className="group-has-[:checked]:text-teal-500 dark:group-has-[:checked]:text-teal-400 text-sm font-medium uppercase text-zinc-800 dark:text-zinc-100">
                 {option.name}
               </span>
             )}
             {option.icon}
-            <div className="pointer-events-none absolute inset-0 rounded-md shadow outline outline-black/5 group-hover:outline-teal-400/30 group-has-[:checked]:outline-teal-400/30 dark:outline-white/5 dark:group-hover:outline-teal-400/30 dark:group-has-[:checked]:outline-teal-400/30" />
+            <div className="group-has-[:checked]:outline-teal-400/30 dark:group-has-[:checked]:outline-teal-400/30 pointer-events-none absolute inset-0 rounded-md shadow outline outline-black/5 group-hover:outline-teal-400/30 dark:outline-white/5 dark:group-hover:outline-teal-400/30" />
           </label>
         ))}
       </div>
@@ -590,7 +590,7 @@ function FontFamilyPicker({ fontFamily, onChange }) {
           <label
             key={option.id}
             aria-label={option.name}
-            className="group relative flex items-center justify-center rounded-md bg-white/50 p-2 ring-1 ring-zinc-100 hover:ring-teal-500 has-[:checked]:ring-teal-500 dark:bg-zinc-900/50 dark:ring-zinc-700/40 dark:hover:ring-teal-400 dark:has-[:checked]:ring-teal-400"
+            className="has-[:checked]:ring-teal-500 dark:has-[:checked]:ring-teal-400 group relative flex items-center justify-center rounded-md bg-white/50 p-2 ring-1 ring-zinc-100 hover:ring-teal-500 dark:bg-zinc-900/50 dark:ring-zinc-700/40 dark:hover:ring-teal-400"
           >
             <input
               value={option.id}
@@ -601,12 +601,12 @@ function FontFamilyPicker({ fontFamily, onChange }) {
               className="absolute inset-0 appearance-none focus:outline focus:outline-0 disabled:cursor-not-allowed"
             />
             {!option.icon && (
-              <span className="whitespace-nowrap text-xs font-medium text-zinc-600 group-has-[:checked]:text-teal-500 dark:text-zinc-400 dark:group-has-[:checked]:text-teal-400">
+              <span className="group-has-[:checked]:text-teal-500 dark:group-has-[:checked]:text-teal-400 whitespace-nowrap text-xs font-medium text-zinc-600 dark:text-zinc-400">
                 {option.name}
               </span>
             )}
             {option.icon}
-            <div className="pointer-events-none absolute inset-0 rounded-md shadow outline outline-black/5 group-hover:outline-teal-400/30 group-has-[:checked]:outline-teal-400/30 dark:outline-white/5 dark:group-hover:outline-teal-400/30 dark:group-has-[:checked]:outline-teal-400/30" />
+            <div className="group-has-[:checked]:outline-teal-400/30 dark:group-has-[:checked]:outline-teal-400/30 pointer-events-none absolute inset-0 rounded-md shadow outline outline-black/5 group-hover:outline-teal-400/30 dark:outline-white/5 dark:group-hover:outline-teal-400/30" />
           </label>
         ))}
       </div>
@@ -731,7 +731,7 @@ function ExampleHeroSection(props) {
                       {navigation.map((item) => (
                         <a
                           key={item.name}
-                          className="cursor-pointer text-base/6 font-semibold text-gray-900"
+                          className="text-base/6 cursor-pointer font-semibold text-gray-900"
                         >
                           {item.name}
                         </a>
@@ -757,7 +757,7 @@ function ExampleHeroSection(props) {
                   <div className="relative px-6 py-12 sm:py-24 lg:px-8 lg:py-24 lg:pr-0">
                     <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
                       <div className="hidden sm:mb-10 sm:flex">
-                        <div className="relative rounded-full px-3 py-1 text-base/6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+                        <div className="text-base/6 relative rounded-full px-3 py-1 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                           The Big Summer Sale.{' '}
                           <a className="text-primary-600 cursor-pointer whitespace-nowrap font-semibold">
                             <span
@@ -771,7 +771,7 @@ function ExampleHeroSection(props) {
                       <h1 className="text-pretty text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
                         The Art of Fine Jewelry
                       </h1>
-                      <p className="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">
+                      <p className="text-pretty sm:text-xl/8 mt-8 text-lg font-medium text-gray-500">
                         Unrivaled craftsmanship, rare gemstones, and timeless
                         design come together in collections that exude
                         sophistication and prestige.
@@ -780,7 +780,7 @@ function ExampleHeroSection(props) {
                         <a className="bg-primary-600 hover:bg-primary-500 focus-visible:outline-primary-600 cursor-pointer rounded-md px-4 py-3 text-base font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                           Shop now
                         </a>
-                        <a className="cursor-pointer text-base/6 font-semibold text-gray-900">
+                        <a className="text-base/6 cursor-pointer font-semibold text-gray-900">
                           Explore Collections <span aria-hidden="true">→</span>
                         </a>
                       </div>
@@ -792,7 +792,7 @@ function ExampleHeroSection(props) {
                 <Image
                   alt=""
                   src={imageExampleHero}
-                  className="aspect-[3/2] object-cover lg:aspect-auto lg:size-full"
+                  className="lg:size-full aspect-[3/2] object-cover lg:aspect-auto"
                 />
               </div>
             </div>
@@ -882,7 +882,7 @@ function BuildStep() {
               <li key={entry.text} className="flex gap-x-3 ">
                 <CheckCircleIcon
                   aria-hidden="true"
-                  className="mt-1 size-5 flex-none text-teal-600"
+                  className="size-5 mt-1 flex-none text-teal-600"
                 />
                 <span>
                   <strong className="font-semibold text-zinc-800 dark:text-zinc-100">
@@ -980,7 +980,7 @@ function DiscoverStep() {
               <li key={entry.text} className="flex gap-x-3 ">
                 <CheckCircleIcon
                   aria-hidden="true"
-                  className="mt-1 size-5 flex-none text-teal-600"
+                  className="size-5 mt-1 flex-none text-teal-600"
                 />
                 <span>
                   <strong className="font-semibold text-zinc-800 dark:text-zinc-100">
@@ -999,14 +999,14 @@ function DiscoverStep() {
               <Image
                 alt=""
                 src={meeting}
-                className="block size-full object-cover"
+                className="size-full block object-cover"
               />
             </div>
             <div className="aspect-square overflow-hidden rounded-xl shadow-xl outline outline-1 -outline-offset-1 outline-black/10 lg:-mt-16">
               <Image
                 alt=""
                 src={planning}
-                className="block size-full object-cover"
+                className="size-full block object-cover"
               />
             </div>
             <div className="hidden lg:block"></div>
@@ -1014,7 +1014,7 @@ function DiscoverStep() {
               <Image
                 alt=""
                 src={wireframe}
-                className="block size-full object-cover"
+                className="size-full block object-cover"
               />
             </div>
           </div>
@@ -1065,7 +1065,7 @@ function LaunchStep() {
               <li key={entry.text} className="flex gap-x-3 ">
                 <CheckCircleIcon
                   aria-hidden="true"
-                  className="mt-1 size-5 flex-none text-teal-600"
+                  className="size-5 mt-1 flex-none text-teal-600"
                 />
                 <span>
                   <strong className="font-semibold text-zinc-800 dark:text-zinc-100">
