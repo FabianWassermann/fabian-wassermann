@@ -12,11 +12,11 @@ import logoLabradorVomSalzkofelblick from '@/images/logos/labrador-vom-salzkofel
 import logoAatsiRebalancing from '@/images/logos/aatsi-rebalancing.png'
 import logoTRElektrotechnik from '@/images/logos/tr-elektrotechnik.png'
 import logoKestAustria from '@/images/logos/kestaustria.png'
-import imageHundepensionBergparadies from '@/images/projects/hundepension.png'
-import imageSunnySoul from '@/images/projects/sunnysoul.png'
-import imageAatsiRebalancing from '@/images/projects/aatsi-rebalancing.png'
-import imageTRElektrotechnik from '@/images/projects/tr-elektrotechnik.png'
-import imageKestAustria from '@/images/projects/kestaustria.png'
+import imageHundepensionBergparadies from '@/images/projects/hundepension.webp'
+import imageSunnySoul from '@/images/projects/sunnysoul.webp'
+import imageAatsiRebalancing from '@/images/projects/aatsi-rebalancing.webp'
+import imageTRElektrotechnik from '@/images/projects/tr-elektrotechnik.webp'
+import imageKestAustria from '@/images/projects/kestaustria.webp'
 import React, { useState } from 'react'
 
 const projects = [
@@ -76,7 +76,10 @@ const projects = [
   {
     name: 'AATSI Crypto Indexing',
     description: 'This website is a demo page for showcasing purposes.',
-    link: { href: 'https://aatsi.fabian-wassermann.com/', label: 'www.aatsi.org' },
+    link: {
+      href: 'https://aatsi.fabian-wassermann.com/',
+      label: 'www.aatsi.org',
+    },
     logo: logoAatsiRebalancing,
     tags: ['VueJs', 'TailwindCSS', 'HTML5'],
     isImageShown: false,
