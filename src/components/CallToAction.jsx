@@ -1,9 +1,9 @@
 import { Button } from '@/components/Button'
 import clsx from 'clsx'
-import { useRouter } from 'next/router'
 
 export function CallToAction({ className, text, buttonText, size, clickUrl }) {
-  let router = useRouter()
+  const router =
+    typeof window !== 'undefined' ? require('next/router').useRouter() : null
 
   const theSize = size ?? 'medium'
 
