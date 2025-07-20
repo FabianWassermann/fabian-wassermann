@@ -1,0 +1,68 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import { CallToAction } from '@/components/CallToAction'
+import Image from 'next/image'
+import invoiceWorkflow from './invoice-workflow.png'
+
+export const meta = {
+  author: 'Fabian Wassermann',
+  date: '2025-07-18',
+  title: 'N8N Transformed My Automated Invoicing Process',
+  description:
+    'Learn how N8N helped automate my invoicing, saving time, reducing errors and improving payment speed.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+Automating repetitive tasks not only saves time but also minimizes errors and allows you to focus on what truly matters in your business.
+I'll now share how N8N has changed my invoicing workflow, making it not just easier, but also smarter.
+
+## What is N8N?
+
+N8N is an open-source workflow automation tool that allows you to connect various apps and services to automate workflows without programming knowledge.
+It supports a wide range of integrations, enabling you to chain tasks together.
+I have the necessary programming knowledge to automate workflows by code but doing it using N8N ist much faster.
+
+## How N8N Changed My Invoicing Process
+
+When I first started using N8N, my invoicing process was not that great. Here are some of the initial challenges I faced:
+
+- **Manual Data Entry:** I spent hours inputting information into spreadsheets.
+- **Error-prone Processes:** Manually generating invoices meant frequent mistakes that impacted cash flow.
+- **Delayed Payments:** The lengthy turnaround time for invoicing often resulted in delayed payments from clients.
+
+### Transitioning to Automation
+
+Here are the steps I took to automate my invoicing process:
+
+1. **Integration with Airtable:** I integrated N8N with my customer relationship management (CRM) system to pull client and related project data automatically. I use [Airtable](https://www.airtable.com/) as CRM system.
+2. **Time Trackings:** I use [Clockify](https://clockify.me/) for time tracking and don’t want to pay for premium features which include invoicing and changing rates of projects. Therefore I fetch all time trackings using the Clockify API and map them to the data in my CRM.
+3. **Automating Invoice Generation:** I added some N8N nodes that calc the sum of all time trackings per project and group them by tracking description. The next steps generate the invoice PDF and save it to my Onedrive and CRM system.
+4. **Email Dispatch:** I configured N8N to send invoices directly to my clients via email without requiring manual intervention. This settings is optional because in some cases I want to check the invoice before sending it.
+
+<Image src={invoiceWorkflow} />
+
+### Benefits of Automation
+
+The switch to automated invoicing resulted in some benefits:
+
+- **Increased Efficiency:** What used to take me hours now takes mere minutes.
+- **Reduced Errors:** Automated data pull minimizes human error, ensuring accuracy in client invoices.
+- **Faster Payments:** With invoices dispatched instantly, payment turnaround times have significantly decreased.
+
+## Conclusion
+
+N8N has revolutionized my invoicing process, making it more efficient and faster than before.
+If you’re ready to elevate your invoicing workflow and simplify it, give N8N a try or contact me and I can setup a flow that fits your needs.
+
+<CallToAction
+  text={
+    <>
+      Setup
+      <br />
+      Your Automation
+    </>
+  }
+  buttonText="Contact me"
+  size="small"
+  clickUrl="/#contact"
+/>

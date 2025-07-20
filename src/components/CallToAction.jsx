@@ -10,7 +10,7 @@ export function CallToAction({ className, text, buttonText, size, clickUrl }) {
   const sizes = {
     small: {
       titleClassName: 'text-3xl sm:text-4xl',
-      buttonClassName: 'h-14 px-10',
+      buttonClassName: 'h-14 px-8',
     },
     medium: {
       titleClassName: 'text-4xl sm:text-5xl',
