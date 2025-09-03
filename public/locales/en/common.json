@@ -1,0 +1,18 @@
+{
+  "menu": {
+    "open": "Menu",
+    "close": "Close menu"
+  },
+  "nav": {
+    "title": "Navigation",
+    "about": "About",
+    "articles": "Articles",
+    "projects": "Projects",
+    "services": "Services",
+    "uses": "Uses"
+  },
+  "meta": {
+    "homeTitle": "Fabian Wassermann - Software developer, freelancer, and amateur mountaineer",
+    "homeDescription": "I’m Fabian, a software developer based in Austria. I’m a freelancer doing everything from simple websites to bigger web applications."
+  }
+}

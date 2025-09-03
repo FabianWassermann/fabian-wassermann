@@ -4,6 +4,8 @@ import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 
 import { isMobile } from '@/lib/isMobile'
+import '@/lib/i18n'
+import i18next from 'i18next'
 
 import '@/styles/tailwind.css'
 import 'focus-visible'
@@ -61,6 +63,17 @@ function setupBlob() {
 
 export default function App({ Component, pageProps, router }) {
   let previousPathname = usePrevious(router.pathname)
+
+  // Ensure i18n language matches Next.js locale BEFORE first render
+  if (router?.locale && i18next.language !== router.locale) {
+    i18next.changeLanguage(router.locale)
+  }
+
+  useEffect(() => {
+    if (router?.locale && i18next.language !== router.locale) {
+      i18next.changeLanguage(router.locale)
+    }
+  }, [router?.locale])
 
   return (
     <>

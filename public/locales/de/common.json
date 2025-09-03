@@ -1,0 +1,20 @@
+{
+  "menu": {
+    "open": "Menü",
+    "close": "Menü schließen"
+  },
+  "nav": {
+    "title": "Navigation",
+    "about": "Über mich",
+    "articles": "Artikel",
+    "projects": "Projekte",
+    "services": "Leistungen",
+    "uses": "Verwendetes"
+  },
+  "meta": {
+    "homeTitle": "Fabian Wassermann - Softwareentwickler, Freelancer und Hobby-Bergsteiger",
+    "homeDescription": "Ich bin Fabian, ein Softwareentwickler aus Österreich. Ich bin Freelancer und realisiere alles von einfachen Websites bis hin zu größeren Webanwendungen."
+  }
+}
+
+

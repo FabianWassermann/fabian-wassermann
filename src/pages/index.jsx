@@ -27,6 +27,10 @@ import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
 import { useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useRouter } from 'next/router'
+import enCommon from '@/../public/locales/en/common.json'
+import deCommon from '@/../public/locales/de/common.json'
 
 function MailIcon(props) {
   return (
@@ -327,17 +331,14 @@ function Photos() {
 // I’m the founder and CEO of AATSI, where we develop crypto technologies that automate the asset trading for people to save time and make profits.
 
 export default function Home({ articles }) {
+  const { t } = useTranslation('common')
+  const router = useRouter()
+  const dict = router.locale === 'de' ? deCommon : enCommon
   return (
     <>
       <Head>
-        <title>
-          Fabian Wassermann - Software developer, freelancer, and amateur
-          mountaineer
-        </title>
-        <meta
-          name="description"
-          content="I’m Fabian, a software developer and entrepreneur based in Austria. I´m a freelancer doing everything from simple websites to bigger webapplications."
-        />
+        <title>{dict.meta.homeTitle}</title>
+        <meta name="description" content={dict.meta.homeDescription} />
         <meta name="keywords" content="Fabian, Wassermann" />
       </Head>
       <Container className="mt-9">
