@@ -263,7 +263,7 @@ export function Header() {
     const currentLocale = router.locale || i18n.language || 'en'
     const nextLocale = currentLocale === 'de' ? 'en' : 'de'
     const { asPath, pathname, query } = router
-    router.push({ pathname, query }, asPath, { locale: nextLocale })
+    router.replace({ pathname, query }, asPath, { locale: nextLocale })
   }
 
   useEffect(() => {
