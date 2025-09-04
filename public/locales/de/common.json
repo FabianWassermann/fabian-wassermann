@@ -103,6 +103,16 @@
         "name": "Kapitalertragssteuer-Anwendung",
         "description": "In Österreich müssen auf Kapitalerträge aus Aktien, Zinsen und Dividenden Steuern gezahlt werden. Diese App hilft dabei, Broker-Aktionen im Überblick zu behalten und unterstützt beim Erstellen der Steuererklärung."
       }
+    },
+    "projectPages": {
+      "taxApp": {
+        "name": "Steueranwendung",
+        "description": "Alle Neuigkeiten und Updates zur Steueranwendung, die ich entwickelt habe."
+      },
+      "billingSoftware": {
+        "name": "Rechnungssoftware",
+        "description": "Alle Neuigkeiten und Updates zur Rechnungssoftware, die ich für einen meiner Kunden entwickelt habe."
+      }
     }
   }
 }

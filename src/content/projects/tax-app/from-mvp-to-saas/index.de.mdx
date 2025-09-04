@@ -10,114 +10,114 @@ import tax from './tax.png'
 export const meta = {
   author: 'Fabian Wassermann',
   date: '2025-04-08',
-  title: 'Von MVP zu SaaS',
+  title: 'Vom MVP zum SAAS',
   description:
-    'Neues Frontend mit mehr Funktionen und besserer UI/UX erstellt.',
+    'Ein neues Frontend mit besseren Funktionen und größerer UI/UX erstellt.',
 }
 
 export default (props) => <ArticleLayout meta={meta} {...props} />
 
 ## Was ist ein MVP
 
-MVP steht für **Minimum Viable Product** — eine Version deines Produkts mit gerade genug Funktionen, um das Kernkonzept zu testen und Feedback von frühen Nutzer:innen zu sammeln. Es geht darum, die Idee mit minimalem Aufwand zu validieren, damit du schnell iterieren und das bauen kannst, was Nutzer:innen _wirklich_ brauchen.
+MVP steht für **Minimum Viable Product** — eine Version Ihres Produkts mit gerade genug Funktionen, um das Kernkonzept zu testen und Feedback von frühen Benutzern zu sammeln. Es geht darum, Ihre Idee mit minimalem Aufwand zu validieren, damit Sie schnell iterieren und das bauen können, was Benutzer _wirklich_ brauchen.
 
-## Aktualisierungen des Datenbankmodells
+## Datenbankmodell-Upgrades
 
-Einer der ersten großen Schritte auf dem Weg vom MVP zu einem robusteren SaaS-Produkt war die Verbesserung des Datenbankmodells.
-Ich wollte die Architektur zukunftssicher machen und das Hinzufügen neuer Funktionen später vereinfachen.
+Einer der ersten wichtigen Schritte beim Übergang vom MVP zu einem robusteren SaaS-Produkt war die Verbesserung des Datenbankmodells.
+Ich wollte die Architektur zukunftssicher machen und das Hinzufügen neuer Funktionen in der Zukunft einfacher gestalten.
 
-Das dauerte etwa zwei Wochen und das Modell
-wuchs **von 6 auf über 17 Tabellen**. Hier sind einige wichtige Änderungen und Ergänzungen:
+Das dauerte etwa zwei Wochen, und das Modell
+wuchs **von 6 auf über 17 Tabellen**. Hier sind einige bemerkenswerte Änderungen und Ergänzungen:
 
-- **Occurrence:** Zuvor _Operations_ genannt — für bessere Verständlichkeit und Erweiterbarkeit umbenannt.
+- **Occurrence:** Vorher _Operations_ genannt — umbenannt für bessere Klarheit und Erweiterbarkeit.
 - **Bank:** Erweitert, um nicht nur Broker, sondern auch Banken zu unterstützen.
-- **TaxRate:** Ermöglicht das Speichern von Steuersätzen für verschiedene Länder, Zeiträume und Steuerarten.
+- **TaxRate:** Ermöglicht das Speichern von Steuersätzen für verschiedene Länder, Zeiträume und Steuertypen.
 - **TaxType:** Unterscheidet zwischen Steuerkategorien wie _SPOT_ (Aktien, ETFs) und _INTEREST_.
-- **DoubleTaxationAgreement:** Unterstützt bilaterale Steuerabkommen — entscheidend für korrekte Dividendenbesteuerung.
-- **Assets:** Deckt Aktien, ETFs und Krypto ab. (Neugierig, woher die Daten kommen? Bleib dran!)
-- **AssetLinking:** Ermöglicht das Verknüpfen von Assets mit bestimmten Brokern für bessere Datenintegration.
+- **DoubleTaxationAgreement:** Unterstützt bilaterale Steuerabkommen — kritisch für genaue Dividendensteuerberechnungen.
+- **Assets:** Umfasst Aktien, ETFs und Krypto. (Neugierig, woher ich die Daten habe? Bleiben Sie dran!)
+- **AssetLinking:** Ermöglicht die Zuordnung von Assets zu bestimmten Brokern für bessere Datenintegration.
 
-## API- & Authentifizierungs-Updates
+## API & Authentifizierungs-Updates
 
 ### Bessere Authentifizierung mit Clerk
 
-Um Onboarding und Sicherheit zu verbessern, habe ich Clerk für die Benutzer-Authentifizierung integriert. Zwei Authentifizierungs-Middlewares wurden zur API hinzugefügt, wodurch ein nahtloses Onboarding für Clerk- und Nicht-Clerk-Nutzer:innen möglich ist. Das Ergebnis? Ein modernes, aufgeräumtes Login mit minimaler Reibung.
+Um die Benutzeronboarding und Sicherheit zu verbessern, habe ich Clerk für die Benutzerauthentifizierung integriert. Zwei Authentifizierungs-Middlewares wurden zur API hinzugefügt, die nahtloses Onboarding sowohl für Clerk- als auch für Nicht-Clerk-Benutzer ermöglichen. Das Ergebnis? Eine saubere, moderne Anmeldeerfahrung mit minimaler Reibung.
 
 <Image src={login} alt="" className="rounded-lg" />{' '}
 
-### Währungsumrechnung für korrekte Besteuerung
+### Währungsumrechnung für genaue Besteuerung
 
-Bei der Recherche zu Österreichs Kapitalertragsteuer habe ich eine wichtige Anforderung entdeckt:
-**Alle Fremdwährungstransaktionen müssen zum Kurs des Transaktionstags in EUR umgerechnet werden.**
+Während der Recherche zu Österreichs Kapitalertragssteuergesetzen entdeckte ich eine wichtige Anforderung:
+**Alle Fremdwährungstransaktionen müssen mit dem Wechselkurs am Transaktionsdatum in EUR umgerechnet werden.**
 
-Das stellt sicher, dass Gewinn- und Steuerberechnungen gemäß österreichischem Steuerrecht korrekt sind. Nach intensiver Lektüre und Recherche habe ich die Logik implementiert — Problem gelöst!
+Dies gewährleistet genaue Gewinn- und Steuerberechnungen gemäß österreichischem Steuerrecht. Nach intensivem Lesen und Recherche implementierte ich diese Logik — Problem gelöst!
 
 ## Frontend 2.0 – UI-Upgrade
 
 ### Komponentenbibliothek: shadcn-vue
 
-Für die UI habe ich shadcn-vue gewählt — eine Komponentenbibliothek auf Basis von Vue 3 und Tailwind CSS. Sie bietet leichte, vollständig anpassbare und zugängliche Komponenten. Im Gegensatz zu starreren Bibliotheken behalte ich Styling und Struktur unter Kontrolle und sorge gleichzeitig für eine großartige Developer- und User-Experience.
+Für die UI wählte ich shadcn-vue — eine Komponentenbibliothek, die auf Vue 3 und Tailwind CSS aufbaut. Sie bietet leichtgewichtige, vollständig anpassbare und zugängliche Komponenten. Im Gegensatz zu rigideren Bibliotheken lässt sie mich Styling und Struktur kontrollieren und gewährleistet dabei eine großartige Entwickler- und Benutzererfahrung.
 
-### Feature: Aktivitätenliste
+### Funktion: Aktivitätsliste
 
 <Image src={activities} alt="" className="rounded-lg" />{' '}
 
-Eine zentrale Liste aller Aktivitäten, darunter:
+Eine zentrale Liste aller Aktivitäten einschließlich:
 
 - Trades
 - Dividenden
 - Zinsen
 
-Nutzer:innen können Aktivitäten manuell erstellen, aktualisieren oder löschen – oder sie per Broker-CSV bzw. Excel importieren. Aktuell unterstützt:
+Benutzer können Aktivitäten manuell erstellen, aktualisieren oder löschen oder sie über Broker-CSV- oder Excel-Dateien importieren. Derzeit unterstützt:
 
-- **XTB – Cash Operations** (Dividenden, Zinsen, Trades)
-- **IBKR – Flex Query Orders** (Trades)
+- \*XTB - Bargeldoperationen\*\* (Dividenden, Zinsen, Trades)
+- **IBKR - Flex Query Orders** (Trades)
 
 <Image src={activitiyImport} alt="" className="rounded-lg" />{' '}
 
-Neue Broker-Integrationen sind in Arbeit!
+Neue Broker-Integrationen sind auf dem Weg!
 
-### Feature: Dashboard
+### Funktion: Dashboard
 
 <Image src={dashboard} alt="" className="rounded-lg" />{' '}
 
-Eine Echtzeit-Übersicht über deine Steuerverpflichtungen:
+Eine Echtzeit-Momentaufnahme Ihrer Steuerverpflichtungen:
 
 - Gewinn & Verlust (PnL)
-- Kapitalertragsteuer (KeSt)
+- Kapitalertragssteuer (KeSt)
 - Quellensteuer
-- KeSt-Ersparnisse über die Zeit
+- KeSt-Einsparungen im Laufe der Zeit
 
-Inklusive eines einfachen Diagramms zur Visualisierung deiner Steuerdaten-Trends.
+Enthält ein einfaches Diagramm, das Ihre Steuerdatentrends visualisiert.
 
-### Feature: Dividendensteuer sparen
+### Funktion: Dividendensteuer sparen
 
 <Image src={saveTax} alt="" className="rounded-lg" />{' '}
 
-Österreich hat **Doppelbesteuerungsabkommen** mit vielen Ländern, die bis zu **15 % Steuerreduktion** auf Dividenden erlauben. Die App erkennt das automatisch und wendet die Reduktion an — so sparst du Geld ohne manuellen Aufwand.
+Österreich hat **Doppelbesteuerungsabkommen** mit vielen Ländern, die eine **15%ige Steuerreduzierung** bei Dividenden ermöglichen. Die App erkennt dies automatisch und wendet den Abzug an — spart Ihnen Geld ohne manuellen Aufwand.
 
-### Feature: Steuererklärung vereinfachen
+### Funktion: Vereinfachen Sie Ihre Steuererklärung
 
 <Image src={tax} alt="" className="rounded-lg" />{' '}
 
 Diese Funktion bietet eine klare Übersicht über:
 
 - Steuerpflichtige Kategorien: **Zinsen, Dividenden, Trades**
-- Eine dynamische Tabelle mit allen Steuerfeldern, die du ausfüllen musst
-- Ein Hilfeformular und einen FAQ-Bereich unten zur Unterstützung bei der Abgabe
+- Eine dynamische Tabelle, die alle Steuerfelder zeigt, die Sie ausfüllen müssen
+- Ein Hilfeformular und FAQ-Bereich am unteren Rand zur Unterstützung bei der Einreichung
 
 ---
 
-## Bereit, deine Investment-Steuern zu vereinfachen?
+## Bereit, Ihre Investitionssteuern zu vereinfachen?
 
-Danke fürs Lesen! Wenn dich das Projekt interessiert oder du mehr entdecken möchtest:
+Vielen Dank für das Lesen! Wenn Sie am Projekt interessiert sind oder mehr erkunden möchten:
 
 <p>
-  Besuche die Website: <a href="https://kestaustria.at">kestaustria.at</a> <br />
-  Lege kostenlos ein Konto an:
+  Besuchen Sie die Website: <a href="https://kestaustria.at">kestaustria.at</a> <br />
+  Erstellen Sie ein kostenloses Konto:
   <a href="https://app.kestaustria.at">app.kestaustria.at</a>
-  </p>
+</p>
 
-Lass uns Investment-Steuern einfach machen.
+Lassen Sie uns Investitionssteuern einfach machen.
 
 

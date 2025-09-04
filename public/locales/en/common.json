@@ -104,6 +104,16 @@
         "name": "Capital Gains Tax Application",
         "description": "In Austria you have to pay tax on capital gains from stocks, interest and dividend. This app helps to have an overview over broker actions and supports filing tax declarations."
       }
+    },
+    "projectPages": {
+      "taxApp": {
+        "name": "Tax Application",
+        "description": "All news and updates about the Tax Application I made."
+      },
+      "billingSoftware": {
+        "name": "Billing Software",
+        "description": "All news and updates to the Billing Software I made for one of my clients."
+      }
     }
   }
 }

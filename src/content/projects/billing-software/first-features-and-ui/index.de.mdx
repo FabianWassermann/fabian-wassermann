@@ -1,0 +1,53 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import customerOverview from './customerOverview.png'
+import createPositions from './createPositions.png'
+
+export const meta = {
+  author: 'Fabian Wassermann',
+  date: '2023-09-01',
+  title: 'Erste Funktionen und Benutzeroberfläche',
+  description:
+    'Eine Software zum Verwalten von Kunden und zum Erstellen von Angeboten, Lieferscheinen und Rechnungen.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+## Die Funktionen
+
+Mein Kunde möchte Kunden und alle Dokumente für diese Kunden verwalten. Die Dokumente sollten
+bearbeitbar sein, damit er sie ändern kann, wenn er einen Fehler gemacht hat. Außerdem nutzt er einen Online-Shop, um Teile
+für seine Kunden zu bestellen, und er möchte eine Integration mit dieser Software. Zuletzt möchte er eine
+Rechnung aus einem früher erstellten Angebot mit nur einem Klick generieren können, und alles sollte miteinander verknüpft sein.
+
+## Entwicklungsprozess
+
+### Zeitmanagement
+
+Ich begann damit, einen Kunden und ein Projekt in Clockify zu erstellen und schätzte die Arbeitszeit für jede Funktion ab. Während der
+Entwicklung verfolgte ich meine Arbeitsstunden, um einen Überblick über alle Stunden zu haben, die ich für dieses Projekt aufwende.
+
+### Versionskontrolle
+
+GitHub ist immer eine gute Wahl für die Versionskontrolle wegen der Einfachheit. Ich habe nur ein großes
+Repository (Monorepo) erstellt, das den Frontend- und Backend-Code enthält. Außerdem habe ich mit GitHub Issues gearbeitet, um
+mehr Kontrolle über kleine Aufgaben zu haben, da ich allen Issues Beschreibung, Titel und Tags hinzufügen kann.
+Alles ist mit CI/CD verknüpft, sodass jede Codeänderung automatisch bereitgestellt wird.
+
+### Hosting
+
+- MongoDB: MongoDB Atlas
+- NodeJs Backend mit ExpressJS: https://railway.app/
+- VueJs Frontend: AWS Amplify
+
+## Benutzeroberfläche
+
+Ich zeige nur einige kleine UI-Komponenten, da ich nicht 100 Screenshots hinzufügen möchte.
+
+### Kundenübersicht
+
+<Image src={customerOverview} alt="" />
+
+### Positionen erstellen
+
+<Image src={createPositions} alt="" />
