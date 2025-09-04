@@ -390,14 +390,14 @@ export default function Home({ articles }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale }) {
   if (process.env.NODE_ENV === 'production') {
     await generateRssFeed()
   }
 
   return {
     props: {
-      articles: (await getAllArticles())
+      articles: (await getAllArticles(locale))
         .slice(0, 4)
         .map(({ component, ...meta }) => meta),
     },
