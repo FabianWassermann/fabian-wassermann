@@ -6,7 +6,7 @@ import { importProjectArticle } from './getAllArticlesOfProject'
 
 export async function getAllArticlesAndProjectArticles() {
   let articleFilenames = await glob(['*.mdx', '**/index.mdx'], {
-    cwd: path.join(process.cwd(), `src/pages/projects/`),
+    cwd: path.join(process.cwd(), `src/content/projects/`),
   })
 
   let articles = await Promise.all(

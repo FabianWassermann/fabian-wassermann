@@ -1,32 +1,20 @@
 import fs from 'fs'
 import path from 'path'
 import dynamic from 'next/dynamic'
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
 
 // We render the MDX module selected at build-time via a dynamic import path
 export default function ArticlePage({ slug, locale }) {
   const selectedLocale = locale || 'en'
-  const router = useRouter()
-  const [previousPathname, setPreviousPathname] = useState('/')
-  
-  useEffect(() => {
-    // Check if user came from articles page or home page
-    if (router.asPath.includes('/articles') && router.asPath !== `/articles/${slug}`) {
-      setPreviousPathname('/articles')
-    } else {
-      setPreviousPathname('/')
-    }
-  }, [router.asPath, slug])
+  const previousPathname = '/projects/tax-app'
   
   const MDXComponent = dynamic(() =>
     import(
       /* webpackInclude: /index(\.[a-z]{2})?\.mdx$/ */
-      `@/content/articles/${slug}/index.${selectedLocale}.mdx`
+      `@/content/projects/tax-app/${slug}/index.${selectedLocale}.mdx`
     ).catch(() =>
       import(
         /* webpackInclude: /index(\.[a-z]{2})?\.mdx$/ */
-        `@/content/articles/${slug}/index.mdx`
+        `@/content/projects/tax-app/${slug}/index.mdx`
       )
     )
   )
@@ -41,7 +29,7 @@ export async function getStaticProps({ params, locale }) {
 }
 
 export async function getStaticPaths() {
-  const contentDir = path.join(process.cwd(), 'src/content/articles')
+  const contentDir = path.join(process.cwd(), 'src/content/projects/tax-app')
   const paths = []
 
   if (fs.existsSync(contentDir)) {
