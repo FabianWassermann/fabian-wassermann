@@ -17,7 +17,9 @@
     "aboutTitle": "Über mich - Fabian Wassermann",
     "aboutDescription": "Ich bin Fabian Wassermann. Ich lebe in Österreich und entwickle großartige Software.",
     "articlesTitle": "Artikel - Fabian Wassermann",
-    "articlesDescription": "Alle meine ausführlichen Gedanken zu Programmierung, Webdesign und mehr – chronologisch gesammelt."
+    "articlesDescription": "Alle meine ausführlichen Gedanken zu Programmierung, Webdesign und mehr – chronologisch gesammelt.",
+    "projectsTitle": "Projekte - Fabian Wassermann",
+    "projectsDescription": "Dinge, die ich während meiner Freelancer-Laufbahn gemacht habe."
   },
   "home": {
     "hero": {
@@ -66,6 +68,42 @@
   "articles": {
     "title": "Artikel über Software und Webdesign.",
     "intro": "Alle meine ausführlichen Gedanken zu Programmierung, Webdesign und mehr – chronologisch gesammelt."
+  },
+  "projects": {
+    "title": "Dinge, die ich während meiner Freelancer-Laufbahn gemacht habe.",
+    "intro": "Ich habe im Laufe der Jahre an einigen kleinen Projekten gearbeitet, aber das sind die größeren Projekte, auf die ich am meisten stolz bin.",
+    "websiteSectionTitle": "Website-Projekte",
+    "applicationSectionTitle": "Anwendungsprojekte",
+    "items": {
+      "kest": {
+        "name": "KestAustria",
+        "description": "Website für eine Software zur Berechnung der Kapitalertragsteuer in Österreich. Die Seite gibt einen Überblick über die Funktionen."
+      },
+      "trElektrotechnik": {
+        "name": "TR Elektrotechnik",
+        "description": "Professionelle Website für einen Elektriker mit Fokus auf Photovoltaik, Infrarotheizung, Elektroinstallationen und Smart Home."
+      },
+      "hundepension": {
+        "name": "Hundepension Bergparadies",
+        "description": "Ich habe eine Website für ein nahegelegenes Hundehotel erstellt. Das ist eine meiner ersten Websites überhaupt."
+      },
+      "labrador": {
+        "name": "Labrador vom Salzkofelblick",
+        "description": "Diese Website ist für einen Hundezüchter. Sie haben die süßesten Hunde, die ich kenne."
+      },
+      "aatsi": {
+        "name": "AATSI Crypto Indexing",
+        "description": "Diese Website ist eine Demoseite zu Vorführzwecken."
+      },
+      "billing": {
+        "name": "Rechnungssoftware",
+        "description": "Eine Software zur Verwaltung von Kunden sowie zum Erstellen von Angeboten, Lieferscheinen und Rechnungen."
+      },
+      "taxApp": {
+        "name": "Kapitalertragssteuer-Anwendung",
+        "description": "In Österreich müssen auf Kapitalerträge aus Aktien, Zinsen und Dividenden Steuern gezahlt werden. Diese App hilft dabei, Broker-Aktionen im Überblick zu behalten und unterstützt beim Erstellen der Steuererklärung."
+      }
+    }
   }
 }
 

@@ -17,7 +17,9 @@
     "aboutTitle": "About - Fabian Wassermann",
     "aboutDescription": "I’m Fabian Wassermann. I live in Austria, where I build amazing software.",
     "articlesTitle": "Articles - Fabian Wassermann",
-    "articlesDescription": "All of my long-form thoughts on programming, webdesign, and more, collected in chronological order."
+    "articlesDescription": "All of my long-form thoughts on programming, webdesign, and more, collected in chronological order.",
+    "projectsTitle": "Projects - Fabian Wassermann",
+    "projectsDescription": "Things I’ve made during my freelance career."
   },
   "home": {
     "hero": {
@@ -67,5 +69,41 @@
   "articles": {
     "title": "Writing on software development, webdesign, and the software industry.",
     "intro": "All of my long-form thoughts on programming, webdesign, and more, collected in chronological order."
+  },
+  "projects": {
+    "title": "Things I’ve made during my freelance career.",
+    "intro": "I’ve worked on some little projects over the years but these are the bigger projects that I’m most proud of.",
+    "websiteSectionTitle": "Website Projects",
+    "applicationSectionTitle": "Application Projects",
+    "items": {
+      "kest": {
+        "name": "KestAustria",
+        "description": "Website for a Software calculating capital gain tax for Austrians. The website gives an overview over the features."
+      },
+      "trElektrotechnik": {
+        "name": "TR Elektrotechnik",
+        "description": "Professional website for an electrical engineer doing solar, infrared heating, electrical installations and smart home."
+      },
+      "hundepension": {
+        "name": "Hundepension Bergparadies",
+        "description": "I created a website for a dog hotel nearby. This is one of my first websites I’ve ever made."
+      },
+      "labrador": {
+        "name": "Labrador vom Salzkofelblick",
+        "description": "This website is for a dog breeder. They’ve got the sweetest dogs I know."
+      },
+      "aatsi": {
+        "name": "AATSI Crypto Indexing",
+        "description": "This website is a demo page for showcasing purposes."
+      },
+      "billing": {
+        "name": "Billing Software",
+        "description": "A software for manage customers and generate offers, delivery notes and invoices."
+      },
+      "taxApp": {
+        "name": "Capital Gains Tax Application",
+        "description": "In Austria you have to pay tax on capital gains from stocks, interest and dividend. This app helps to have an overview over broker actions and supports filing tax declarations."
+      }
+    }
   }
 }
