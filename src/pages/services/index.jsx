@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/components/Button'
 import { SimpleLayout } from '@/components/SimpleLayout'
@@ -9,6 +10,7 @@ import Link from 'next/link'
 
 function PricingCard1({ title, description, price, features }) {
   let router = useRouter()
+  const { t } = useTranslation()
 
   return (
     <>
@@ -27,7 +29,7 @@ function PricingCard1({ title, description, price, features }) {
               € {price}
             </span>
             <span className="ml-2 text-sm text-zinc-600 dark:text-zinc-400">
-              starting point
+              {t('services.pricing.startingPoint')}
             </span>
           </div>
           <ul className="mt-5">
@@ -37,7 +39,7 @@ function PricingCard1({ title, description, price, features }) {
           </ul>
         </div>
         <Button className="mt-5" onClick={() => router.replace('/#contact')}>
-          Contact me
+          {t('services.pricing.contactMe')}
         </Button>
       </div>
     </>
@@ -57,58 +59,21 @@ function PricingFeatureItem({ feature }) {
   )
 }
 
-const webdevTiers = [
-  {
-    title: 'Templated Webflow',
-    description: 'Webpages are produced using a Webflow template.',
-    price: '1500',
-    features: [
-      'Reflecting brand identity',
-      'Responsive and mobile-friendly',
-      'Content management',
-      'Basic search engine optimization',
-      'Contact form possible',
-    ],
-  },
-  {
-    title: 'Custom Webflow',
-    description: 'Webpages are made using custom Webflow programming.',
-    price: '2500',
-    features: [
-      'All of templated webflow tier',
-      'Unique and tailored design',
-      'Enhanced scalability and flexibility',
-      'Competitive advantage',
-      '404 redirecting',
-      'Photo sourcing help',
-    ],
-  },
-  {
-    title: 'Custom Composition',
-    description:
-      'All webpages are custom programmed to suit espacially your usecase.',
-    price: '3000',
-    features: [
-      'All of custom webflow tier',
-      'Highest possible customization',
-      'Custom features and functionality',
-      'Seampless integrations',
-      'Growth opportunity',
-    ],
-  },
-]
+
 
 export default function Services() {
+  const { t } = useTranslation()
+
   return (
     <>
       <Head>
-        <title>Services - Fabian Wassermann</title>
-        <meta name="description" content="Services I provide at a glance." />
+        <title>{t('services.meta.title')}</title>
+        <meta name="description" content={t('services.meta.description')} />
       </Head>
 
       <SimpleLayout
-        title="All services I offer at a glance."
-        intro="I offer multiple services using multiple technologies. Check them out!"
+        title={t('services.hero.title')}
+        intro={t('services.hero.intro')}
       >
         <ServicesBento />
         <CTASection />
@@ -297,6 +262,7 @@ function AutomationIcon(props) {
 
 function ServicesBento() {
   let router = useRouter()
+  const { t } = useTranslation()
 
   return (
     <div className="grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-2">
@@ -317,13 +283,11 @@ function ServicesBento() {
             <div className="mt-2 flex items-center gap-2">
               <GlobeIcon className="h-6 w-6 flex-none" />
               <p className="text-lg font-medium tracking-tight text-zinc-900 dark:text-zinc-100">
-                Webdesign and Development
+                {t('services.webdesign.title')}
               </p>
             </div>
             <p className="text-sm/6 mt-2 max-w-lg text-zinc-600 dark:text-zinc-400">
-              From responsive design to interactive features, I create visually
-              appealing and functional websites tailored to your needs. Elevate
-              your online presence with a user-friendly and engaging website.
+              {t('services.webdesign.description')}
             </p>
           </div>
         </div>
@@ -348,13 +312,11 @@ function ServicesBento() {
             <div className="mt-2 flex items-center gap-2">
               <CodeIcon className="h-6 w-6 flex-none" />
               <p className="text-lg font-medium tracking-tight text-zinc-900 dark:text-zinc-100">
-                Software Development
+                {t('services.software.title')}
               </p>
             </div>
             <p className="text-sm/6 mt-2 max-w-lg text-zinc-600 dark:text-zinc-400">
-              High-quality software solutions tailored to your unique business
-              requirements. From concept to deployment, I ensure the software is
-              robust, user-friendly, and built to grow with you.
+              {t('services.software.description')}
             </p>
           </div>
         </div>
@@ -377,17 +339,15 @@ function ServicesBento() {
             <div className="mt-2 flex items-center gap-2">
               <WrenchIcon className="h-6 w-6 flex-none" />
               <p className="text-lg font-medium tracking-tight text-zinc-900 dark:text-zinc-100">
-                Website Maintenance
+                {t('services.maintenance.title')}
               </p>
             </div>
             <p className="text-sm/6 mt-2 max-w-lg text-zinc-600 dark:text-zinc-400">
-              With my monthly support services, I&apos;ll take care of all your
-              web maintainance needs, making it easy for you to focus on what
-              you do best.
+              {t('services.maintenance.description')}
             </p>
           </div>
         </div>
-        <div className="pointer-events-none absolute inset-0 rounded-lg shadow outline outline-black/5 group-hover:outline-teal-500/30 dark:outline-white/5 dark:group-hover:outline-teal-400/30 lg:rounded-bl-[2rem]" />
+        <div className="pointer-events-none absolute inset-0 rounded-lg shadow outline outline-black/5 group-hover:outline-teal-500/30 dark:outline-white/5 dark:group-hover:ring-teal-400/30 lg:rounded-bl-[2rem]" />
       </button>
       <button
         className="group relative text-left lg:col-span-2"
@@ -404,13 +364,11 @@ function ServicesBento() {
             <div className="mt-2 flex items-center gap-2">
               <SEOIcon className="h-6 w-6 flex-none" />
               <p className="text-lg font-medium tracking-tight text-zinc-900 dark:text-zinc-100">
-                SEO Optimization
+                {t('services.seo.title')}
               </p>
             </div>
             <p className="text-sm/6 mt-2 max-w-lg text-zinc-600 dark:text-zinc-400">
-              From on-page optimization to keyword research and performance
-              tracking, I help drive organic traffic and boost your online
-              presence.
+              {t('services.seo.description')}
             </p>
           </div>
         </div>
@@ -433,13 +391,11 @@ function ServicesBento() {
             <div className="mt-2 flex items-center gap-2">
               <AutomationIcon className="h-6 w-6 flex-none" />
               <p className="text-lg font-medium tracking-tight text-zinc-900 dark:text-zinc-100">
-                Automation Solutions
+                {t('services.automation.title')}
               </p>
             </div>
             <p className="text-sm/6 mt-2 max-w-lg text-zinc-600 dark:text-zinc-400">
-              Automation workflows to streamline repetitive tasks and improve
-              efficiency. Help businesses save time, reduce errors, and boost
-              productivity.
+              {t('services.automation.description')}
             </p>
           </div>
         </div>
@@ -451,20 +407,21 @@ function ServicesBento() {
 
 function CTASection() {
   let router = useRouter()
+  const { t } = useTranslation()
 
   return (
     <div className="mt-28 lg:flex lg:items-center lg:justify-between">
       <h2 className="max-w-2xl text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-5xl">
-        Let&apos;s Connect
+        {t('services.cta.title')}
         <br />
-        Start our project today
+        {t('services.cta.subtitle')}
       </h2>
       <div className="mt-10 flex items-center gap-x-6 lg:mt-0 lg:shrink-0">
         <Button
           className="h-16 w-52 !rounded-full"
           onClick={() => router.replace('/#contact')}
         >
-          Contact me
+          {t('services.cta.button')}
         </Button>
       </div>
     </div>
@@ -472,18 +429,56 @@ function CTASection() {
 }
 
 function OLD() {
+  const { t } = useTranslation()
+  
+  const webdevTiers = [
+    {
+      title: t('services.tiers.templatedWebflow.title'),
+      description: t('services.tiers.templatedWebflow.description'),
+      price: t('services.tiers.templatedWebflow.price'),
+      features: [
+        t('services.tiers.templatedWebflow.features.0'),
+        t('services.tiers.templatedWebflow.features.1'),
+        t('services.tiers.templatedWebflow.features.2'),
+        t('services.tiers.templatedWebflow.features.3'),
+        t('services.tiers.templatedWebflow.features.4'),
+      ],
+    },
+    {
+      title: t('services.tiers.customWebflow.title'),
+      description: t('services.tiers.customWebflow.description'),
+      price: t('services.tiers.customWebflow.price'),
+      features: [
+        t('services.tiers.customWebflow.features.0'),
+        t('services.tiers.customWebflow.features.1'),
+        t('services.tiers.customWebflow.features.2'),
+        t('services.tiers.customWebflow.features.3'),
+        t('services.tiers.customWebflow.features.4'),
+        t('services.tiers.customWebflow.features.5'),
+      ],
+    },
+    {
+      title: t('services.tiers.customComposition.title'),
+      description: t('services.tiers.customComposition.description'),
+      price: t('services.tiers.customComposition.price'),
+      features: [
+        t('services.tiers.customComposition.features.0'),
+        t('services.tiers.customComposition.features.1'),
+        t('services.tiers.customComposition.features.2'),
+        t('services.tiers.customComposition.features.3'),
+        t('services.tiers.customComposition.features.4'),
+      ],
+    },
+  ]
+
   return (
     <div>
       <div>
         <h2 className="text-lg font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-          Website development
+          {t('services.webdev.title')}
         </h2>
         <p className="relative z-10 mt-2 max-w-[80%] text-sm text-zinc-600 dark:text-zinc-400">
-          I am a professional website developer offing the service of
-          implementing a webdesign. From responsive design to interactive
-          features, I create visually appealing and functional websites tailored
-          to your needs. Elevate your online presence with a user-friendly and
-          engaging website. Contact me today to discuss your project!
+          {t('services.webdev.description')}
         </p>
       </div>
 
@@ -501,16 +496,10 @@ function OLD() {
 
       <div className="mt-32">
         <h2 className="text-lg font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-          Website hosting and support
+          {t('services.hosting.title')}
         </h2>
         <p className="relative z-10 mt-2 max-w-[80%] text-sm text-zinc-600 dark:text-zinc-400">
-          Looking for reliable web hosting and top-notch support? Look no
-          further! I offer comprehensive web hosting services and dedicated
-          support for both new and existing websites. Whether you&apos;re
-          starting a new website or need reliable hosting and support for your
-          existing one, I have the expertise and resources to meet your needs.
-          Focus on your core business while we handle the technical aspects.
-          Contact me today to discuss your web hosting and support requirements!
+          {t('services.hosting.description')}
         </p>
       </div>
 
@@ -518,32 +507,29 @@ function OLD() {
         <div className="p-5">
           <div>
             <h3 className="text-lg font-semibold tracking-tight text-teal-500">
-              Monthly support
+              {t('services.hosting.monthlySupport.title')}
             </h3>
             <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-              Web hosting can be daunting, especially when starting out. But
-              fear not, I&apos;m here to help! With my monthly support services,
-              I&apos;ll take care of all your web hosting needs, making it easy
-              for you to focus on what you do best.
+              {t('services.hosting.monthlySupport.description')}
             </p>
           </div>
           <div className="mt-10">
             <div className="flex items-center gap-x-4">
               <h3 className="text-sm font-semibold text-zinc-800 dark:text-zinc-100">
-                What&apos;s included
+                {t('services.hosting.monthlySupport.whatsIncluded')}
               </h3>
               <div className="h-px flex-auto dark:bg-zinc-100/10" />
             </div>
             <div className="mt-3 grid grid-cols-2">
               <ul>
-                <PricingFeatureItem feature="Server configuration" />
-                <PricingFeatureItem feature="Domain management" />
-                <PricingFeatureItem feature="Security enhancements" />
+                <PricingFeatureItem feature={t('services.hosting.monthlySupport.features.serverConfig')} />
+                <PricingFeatureItem feature={t('services.hosting.monthlySupport.features.domainManagement')} />
+                <PricingFeatureItem feature={t('services.hosting.monthlySupport.features.securityEnhancements')} />
               </ul>
               <ul>
-                <PricingFeatureItem feature="Look for optimization" />
-                <PricingFeatureItem feature="Analytics and reporting" />
-                <PricingFeatureItem feature="Content delivery optimization" />
+                <PricingFeatureItem feature={t('services.hosting.monthlySupport.features.optimization')} />
+                <PricingFeatureItem feature={t('services.hosting.monthlySupport.features.analytics')} />
+                <PricingFeatureItem feature={t('services.hosting.monthlySupport.features.contentDelivery')} />
               </ul>
             </div>
           </div>
@@ -551,24 +537,24 @@ function OLD() {
 
         <div className="flex flex-col items-center justify-center rounded-xl border border-zinc-100 bg-white/50 py-10 px-16 dark:border-zinc-700/40 dark:bg-zinc-900/50">
           <h3 className="text-center text-sm font-semibold text-zinc-800 dark:text-zinc-100">
-            Get assistance now
+            {t('services.hosting.monthlySupport.getAssistance')}
           </h3>
           <div className="mt-5 truncate text-center text-base font-semibold">
             <span className="text-4xl tracking-tight text-zinc-800 dark:text-zinc-100">
-              € 100
+              € {t('services.hosting.monthlySupport.price')}
             </span>
             <span className="ml-2 text-sm text-zinc-600 dark:text-zinc-400">
-              / month
+              {t('services.hosting.monthlySupport.perMonth')}
             </span>
           </div>
           <Button
             className="mt-8 w-full"
             onClick={() => router.replace('/#contact')}
           >
-            Contact me
+            {t('services.hosting.monthlySupport.contactMe')}
           </Button>
           <p className="mt-2 text-center text-[0.7rem] text-zinc-600 dark:text-zinc-400">
-            * Final price depends on needs
+            {t('services.hosting.monthlySupport.priceNote')}
           </p>
         </div>
       </div>

@@ -233,5 +233,109 @@
         ]
       }
     }
+  },
+  "services": {
+    "meta": {
+      "title": "Services - Fabian Wassermann",
+      "description": "Services I provide at a glance."
+    },
+    "hero": {
+      "title": "All services I offer at a glance.",
+      "intro": "I offer multiple services using multiple technologies. Check them out!"
+    },
+    "pricing": {
+      "startingPoint": "starting point",
+      "contactMe": "Contact me"
+    },
+    "webdesign": {
+      "title": "Webdesign and Development",
+      "description": "From responsive design to interactive features, I create visually appealing and functional websites tailored to your needs. Elevate your online presence with a user-friendly and engaging website."
+    },
+    "software": {
+      "title": "Software Development",
+      "description": "High-quality software solutions tailored to your unique business requirements. From concept to deployment, I ensure the software is robust, user-friendly, and built to grow with you."
+    },
+    "maintenance": {
+      "title": "Website Maintenance",
+      "description": "With my monthly support services, I'll take care of all your web maintainance needs, making it easy for you to focus on what you do best."
+    },
+    "seo": {
+      "title": "SEO Optimization",
+      "description": "From on-page optimization to keyword research and performance tracking, I help drive organic traffic and boost your online presence."
+    },
+    "automation": {
+      "title": "Automation Solutions",
+      "description": "Automation workflows to streamline repetitive tasks and improve efficiency. Help businesses save time, reduce errors, and boost productivity."
+    },
+    "cta": {
+      "title": "Let's Connect",
+      "subtitle": "Start our project today",
+      "button": "Contact me"
+    },
+    "tiers": {
+      "templatedWebflow": {
+        "title": "Templated Webflow",
+        "description": "Webpages are produced using a Webflow template.",
+        "price": "1500",
+        "features": [
+          "Reflecting brand identity",
+          "Responsive and mobile-friendly",
+          "Content management",
+          "Basic search engine optimization",
+          "Contact form possible"
+        ]
+      },
+      "customWebflow": {
+        "title": "Custom Webflow",
+        "description": "Webpages are made using custom Webflow programming.",
+        "price": "2500",
+        "features": [
+          "All of templated webflow tier",
+          "Unique and tailored design",
+          "Enhanced scalability and flexibility",
+          "Competitive advantage",
+          "404 redirecting",
+          "Photo sourcing help"
+        ]
+      },
+      "customComposition": {
+        "title": "Custom Composition",
+        "description": "All webpages are custom programmed to suit espacially your usecase.",
+        "price": "3000",
+        "features": [
+          "All of custom webflow tier",
+          "Highest possible customization",
+          "Custom features and functionality",
+          "Seampless integrations",
+          "Growth opportunity"
+        ]
+      }
+    },
+    "webdev": {
+      "title": "Website development",
+      "description": "I am a professional website developer offing the service of implementing a webdesign. From responsive design to interactive features, I create visually appealing and functional websites tailored to your needs. Elevate your online presence with a user-friendly and engaging website. Contact me today to discuss your project!"
+    },
+    "hosting": {
+      "title": "Website hosting and support",
+      "description": "Looking for reliable web hosting and top-notch support? Look no further! I offer comprehensive web hosting services and dedicated support for both new and existing websites. Whether you're starting a new website or need reliable hosting and support for your existing one, I have the expertise and resources to meet your needs. Focus on your core business while we handle the technical aspects. Contact me today to discuss your web hosting and support requirements!",
+      "monthlySupport": {
+        "title": "Monthly support",
+        "description": "Web hosting can be daunting, especially when starting out. But fear not, I'm here to help! With my monthly support services, I'll take care of all your web hosting needs, making it easy for you to focus on what you do best.",
+        "whatsIncluded": "What's included",
+        "features": {
+          "serverConfig": "Server configuration",
+          "domainManagement": "Domain management",
+          "securityEnhancements": "Security enhancements",
+          "optimization": "Look for optimization",
+          "analytics": "Analytics and reporting",
+          "contentDelivery": "Content delivery optimization"
+        },
+        "getAssistance": "Get assistance now",
+        "price": "100",
+        "perMonth": "/ month",
+        "contactMe": "Contact me",
+        "priceNote": "* Final price depends on needs"
+      }
+    }
   }
 }
