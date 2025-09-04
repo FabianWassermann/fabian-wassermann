@@ -13,7 +13,59 @@
   },
   "meta": {
     "homeTitle": "Fabian Wassermann - Softwareentwickler, Freelancer und Hobby-Bergsteiger",
-    "homeDescription": "Ich bin Fabian, ein Softwareentwickler aus Österreich. Ich bin Freelancer und realisiere alles von einfachen Websites bis hin zu größeren Webanwendungen."
+    "homeDescription": "Ich bin Fabian, ein Softwareentwickler aus Österreich. Ich bin Freelancer und realisiere alles von einfachen Websites bis hin zu größeren Webanwendungen.",
+    "aboutTitle": "Über mich - Fabian Wassermann",
+    "aboutDescription": "Ich bin Fabian Wassermann. Ich lebe in Österreich und entwickle großartige Software.",
+    "articlesTitle": "Artikel - Fabian Wassermann",
+    "articlesDescription": "Alle meine ausführlichen Gedanken zu Programmierung, Webdesign und mehr – chronologisch gesammelt."
+  },
+  "home": {
+    "hero": {
+      "title": "Softwareentwickler, Freelancer und Hobby-Bergsteiger.",
+      "description": "Ich bin Fabian, ein auf Full-Stack-Entwicklung spezialisierter Softwareentwickler aus Österreich. Als Freelancer realisiere ich alles von einfachen Websites bis hin zu größeren Webanwendungen."
+    },
+    "social": {
+      "instagramAria": "Auf Instagram folgen",
+      "githubAria": "Auf GitHub folgen",
+      "linkedinAria": "Auf LinkedIn folgen"
+    },
+    "article": {
+      "readCta": "Artikel lesen"
+    },
+    "contact": {
+      "title": "Du möchtest mich kontaktieren?",
+      "description": "Schreib mir jederzeit gerne eine E-Mail. Wenn du möchtest, kannst du mit einer Nachricht ein Gespräch starten.",
+      "messagePlaceholder": "Nachricht",
+      "emailPlaceholder": "E-Mail-Adresse",
+      "send": "Senden"
+    },
+    "work": {
+      "title": "Arbeit"
+    },
+    "sr": {
+      "company": "Unternehmen",
+      "role": "Rolle",
+      "date": "Datum"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "Ich bin Fabian, lebe in Österreich und entwickle großartige Software."
+    },
+    "content": {
+      "p1": "Hallo! Ich bin Computer-Enthusiast mit einer Leidenschaft für alles rund um Technik. Schon früh haben mich Computer und deren Funktionsweise fasziniert, was mich zu einer beruflichen Laufbahn in diesem Bereich geführt hat. Neben meiner Liebe zu Computern verbringe ich gerne Zeit in der Natur, besonders in den Bergen. Außerdem bin ich sportbegeistert und treibe vielfältige Aktivitäten.",
+      "p2": "Beruflich bin ich als Freelancer tätig und spezialisiert auf die Entwicklung von Websites und Software. Ich habe Erfahrung mit einer Vielzahl von Projekten – von kleinen Websites bis hin zu größeren Webanwendungen. Ich möchte mich ständig weiterentwickeln und bin gespannt, wohin mich meine Leidenschaft für Computer und Technologie als Nächstes führt."
+    },
+    "social": {
+      "instagram": "Auf Instagram folgen",
+      "github": "Auf GitHub folgen",
+      "linkedin": "Auf LinkedIn folgen"
+    }
+  }
+  ,
+  "articles": {
+    "title": "Artikel über Software und Webdesign.",
+    "intro": "Alle meine ausführlichen Gedanken zu Programmierung, Webdesign und mehr – chronologisch gesammelt."
   }
 }
 

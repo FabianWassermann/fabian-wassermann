@@ -29,8 +29,6 @@ import { formatDate } from '@/lib/formatDate'
 import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'
-import enCommon from '@/../public/locales/en/common.json'
-import deCommon from '@/../public/locales/de/common.json'
 
 function MailIcon(props) {
   return (
@@ -92,6 +90,7 @@ function ArrowDownIcon(props) {
 }
 
 function Article({ article }) {
+  const { t } = useTranslation('common')
   return (
     <Card as="article">
       <Card.Title href={`/articles/${article.slug}`}>
@@ -101,7 +100,7 @@ function Article({ article }) {
         {formatDate(article.date)}
       </Card.Eyebrow>
       <Card.Description>{article.description}</Card.Description>
-      <Card.Cta>Read article</Card.Cta>
+      <Card.Cta>{t('home.article.readCta')}</Card.Cta>
     </Card>
   )
 }
@@ -116,6 +115,7 @@ function SocialLink({ icon: Icon, ...props }) {
 
 function Newsletter() {
   const [isContactActive, setIsContactActive] = useState(false)
+  const { t } = useTranslation('common')
 
   useEffect(() => {
     const updateIsContactActive = () => {
@@ -158,18 +158,17 @@ function Newsletter() {
     >
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
         <MailIcon className="h-6 w-6 flex-none" />
-        <span className="ml-3">You want to contact me?</span>
+        <span className="ml-3">{t('home.contact.title')}</span>
       </h2>
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        Feel free to send me an email at all time. If you want you can start a
-        conversation by sending me a message.
+        {t('home.contact.description')}
       </p>
       <div className="mb-4 mt-6">
         <input
           type="text"
           name="message"
-          placeholder="Message"
-          aria-label="Message"
+          placeholder={t('home.contact.messagePlaceholder')}
+          aria-label={t('home.contact.messagePlaceholder')}
           required
           className="w-full min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10 sm:text-sm"
         />
@@ -178,13 +177,13 @@ function Newsletter() {
         <input
           type="email"
           name="email"
-          placeholder="Email address"
-          aria-label="Email address"
+          placeholder={t('home.contact.emailPlaceholder')}
+          aria-label={t('home.contact.emailPlaceholder')}
           required
           className="min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10 sm:text-sm"
         />
         <Button type="submit" className="ml-4 flex-none">
-          Send
+          {t('home.contact.send')}
         </Button>
       </div>
     </form>
@@ -192,6 +191,7 @@ function Newsletter() {
 }
 
 function Resume() {
+  const { t } = useTranslation('common')
   let resume = [
     {
       company: 'Feratel Media Technologies',
@@ -230,7 +230,7 @@ function Resume() {
     <div className="rounded-2xl bg-white/50 p-6 ring-1 ring-zinc-100 dark:bg-zinc-900/50 dark:ring-zinc-700/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
         <BriefcaseIcon className="h-6 w-6 flex-none" />
-        <span className="ml-3">Work</span>
+        <span className="ml-3">{t('home.work.title')}</span>
       </h2>
       <ol className="mt-6 space-y-4">
         {resume.map((role, roleIndex) => (
@@ -244,15 +244,15 @@ function Resume() {
               />
             </div>
             <dl className="flex flex-auto flex-wrap gap-x-2">
-              <dt className="sr-only">Company</dt>
+              <dt className="sr-only">{t('home.sr.company')}</dt>
               <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
                 {role.company}
               </dd>
-              <dt className="sr-only">Role</dt>
+              <dt className="sr-only">{t('home.sr.role')}</dt>
               <dd className="text-xs text-zinc-500 dark:text-zinc-400">
                 {role.title}
               </dd>
-              <dt className="sr-only">Date</dt>
+              <dt className="sr-only">{t('home.sr.date')}</dt>
               <dd
                 className="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
                 aria-label={`${role.start.label ?? role.start} until ${
@@ -333,23 +333,20 @@ function Photos() {
 export default function Home({ articles }) {
   const { t } = useTranslation('common')
   const router = useRouter()
-  const dict = router.locale === 'de' ? deCommon : enCommon
   return (
     <>
       <Head>
-        <title>{dict.meta.homeTitle}</title>
-        <meta name="description" content={dict.meta.homeDescription} />
+        <title>{t('meta.homeTitle')}</title>
+        <meta name="description" content={t('meta.homeDescription')} />
         <meta name="keywords" content="Fabian, Wassermann" />
       </Head>
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Software developer, freelancer, and amateur mountaineer.
+            {t('home.hero.title')}
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Fabian, a software developer, specialized in full-stack
-            development, based in Austria. I´m a freelancer doing everything
-            from simple websites to bigger webapplications.
+            {t('home.hero.description')}
           </p>
           <div className="mt-6 flex gap-6">
             {/* <SocialLink
@@ -359,17 +356,17 @@ export default function Home({ articles }) {
             /> */}
             <SocialLink
               href="https://www.instagram.com/f4bianw/"
-              aria-label="Follow on Instagram"
+              aria-label={t('home.social.instagramAria')}
               icon={InstagramIcon}
             />
             <SocialLink
               href="https://github.com/FabianWassermann"
-              aria-label="Follow on GitHub"
+              aria-label={t('home.social.githubAria')}
               icon={GitHubIcon}
             />
             <SocialLink
               href="https://www.linkedin.com/in/fabian-wassermann-4b0064216/"
-              aria-label="Follow on LinkedIn"
+              aria-label={t('home.social.linkedinAria')}
               icon={LinkedInIcon}
             />
           </div>

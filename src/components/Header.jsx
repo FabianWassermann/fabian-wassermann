@@ -127,7 +127,7 @@ function MobileNavigation(props) {
                 <MobileNavItem href="/articles">{t('nav.articles')}</MobileNavItem>
                 <MobileNavItem href="/projects">{t('nav.projects')}</MobileNavItem>
                 <MobileNavItem href="/services">{t('nav.services')}</MobileNavItem>
-                <MobileNavItem href="/uses">{t('nav.uses')}</MobileNavItem>
+                {/* <MobileNavItem href="/uses">{t('nav.uses')}</MobileNavItem> */}
               </ul>
             </nav>
           </Popover.Panel>
@@ -169,7 +169,7 @@ function DesktopNavigation(props) {
         <NavItem href="/articles">{t('nav.articles')}</NavItem>
         <NavItem href="/projects">{t('nav.projects')}</NavItem>
         <NavItem href="/services">{t('nav.services')}</NavItem>
-        <NavItem href="/uses">{t('nav.uses')}</NavItem>
+        {/* <NavItem href="/uses">{t('nav.uses')}</NavItem> */}
       </ul>
     </nav>
   )

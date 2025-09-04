@@ -11,6 +11,8 @@ import {
   LinkedInIcon,
 } from '@/components/SocialIcons'
 import portraitImage from '@/images/portrait.webp'
+import { useTranslation } from 'react-i18next'
+import { useRouter } from 'next/router'
 
 function SocialLink({ className, href, children, icon: Icon }) {
   return (
@@ -38,14 +40,12 @@ function MailIcon(props) {
 }
 
 export default function About() {
+  const { t } = useTranslation('common')
   return (
     <>
       <Head>
-        <title>About - Fabian Wassermann</title>
-        <meta
-          name="description"
-          content="I’m Fabian Wassermann. I live in Asutria, where I build amazing software."
-        />
+        <title>{t('meta.aboutTitle')}</title>
+        <meta name="description" content={t('meta.aboutDescription')} />
       </Head>
       <Container className="mt-16 sm:mt-32">
         <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
@@ -61,27 +61,23 @@ export default function About() {
           </div>
           <div className="lg:order-first lg:row-span-2">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-              I’m Fabian Wassermann. I live in Austria, where I build amazing software.
+              {t('about.hero.title')}
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
-              <p>
-                Hi there! I am a computer enthusiast with a passion for all things tech. From a young age, I have been fascinated by computers and how they work, which led me to pursue a career in the field. In addition to my love for computers, I also enjoy spending time in the great outdoors, particularly in the mountains. I am an avid sports fan and enjoy participating in a variety of activities.
-              </p>
-              <p>
-                In my professional life, I am a freelancer who specializes in building websites and software. I have experience working on a wide range of projects, from small websites to larger web applications. I am always looking to learn and grow in my field, and I am excited to see where my passion for computers and technology will take me next.
-              </p>
+              <p>{t('about.content.p1')}</p>
+              <p>{t('about.content.p2')}</p>
             </div>
           </div>
           <div className="lg:pl-20">
             <ul role="list">
               <SocialLink href="https://www.instagram.com/f4bianw/" icon={InstagramIcon} className="mt-4">
-                Follow on Instagram
+                {t('about.social.instagram')}
               </SocialLink>
               <SocialLink href="https://github.com/FabianWassermann" icon={GitHubIcon} className="mt-4">
-                Follow on GitHub
+                {t('about.social.github')}
               </SocialLink>
               <SocialLink href="https://www.linkedin.com/in/fabian-wassermann-4b0064216/" icon={LinkedInIcon} className="mt-4">
-                Follow on LinkedIn
+                {t('about.social.linkedin')}
               </SocialLink>
               <SocialLink
                 href="mailto:fabian.wassermann04@gmail.com"

@@ -4,8 +4,10 @@ import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
+import { useTranslation } from 'react-i18next'
 
 function Article({ article }) {
+  const { t } = useTranslation('common')
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card className="md:col-span-3">
@@ -21,7 +23,7 @@ function Article({ article }) {
           {formatDate(article.date)}
         </Card.Eyebrow>
         <Card.Description>{article.description}</Card.Description>
-        <Card.Cta>Read article</Card.Cta>
+        <Card.Cta>{t('home.article.readCta')}</Card.Cta>
       </Card>
       <Card.Eyebrow
         as="time"
@@ -35,18 +37,16 @@ function Article({ article }) {
 }
 
 export default function ArticlesIndex({ articles }) {
+  const { t } = useTranslation('common')
   return (
     <>
       <Head>
-        <title>Articles - Fabian Wassermann</title>
-        <meta
-          name="description"
-          content="All of my long-form thoughts on programming, webdesign, and more, collected in chronological order."
-        />
+        <title>{t('meta.articlesTitle')}</title>
+        <meta name="description" content={t('meta.articlesDescription')} />
       </Head>
       <SimpleLayout
-        title="Writing on software development, webdesign, and the software industry."
-        intro="All of my long-form thoughts on programming, webdesign, and more, collected in chronological order."
+        title={t('articles.title')}
+        intro={t('articles.intro')}
       >
         <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
           <div className="flex max-w-3xl flex-col space-y-16">
@@ -60,10 +60,10 @@ export default function ArticlesIndex({ articles }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale }) {
   return {
     props: {
-      articles: (await getAllArticles()).map(({ component, ...meta }) => meta),
+      articles: (await getAllArticles(locale)).map(({ component, ...meta }) => meta),
     },
   }
 }

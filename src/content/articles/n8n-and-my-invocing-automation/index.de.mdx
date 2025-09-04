@@ -1,0 +1,70 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import { CallToAction } from '@/components/CallToAction'
+import Image from 'next/image'
+import invoiceWorkflow from './invoice-workflow.png'
+
+export const meta = {
+  author: 'Fabian Wassermann',
+  date: '2025-07-18',
+  title: 'N8N hat meinen automatisierten Rechnungsprozess verändert',
+  description:
+    'Erfahre, wie N8N meine Rechnungsstellung automatisiert hat – schneller, weniger Fehler, schnellere Zahlungen.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+Das Automatisieren wiederkehrender Aufgaben spart nicht nur Zeit, sondern reduziert Fehler und ermöglicht es dir, dich auf das Wesentliche in deinem Geschäft zu konzentrieren.
+Im Folgenden zeige ich, wie N8N meinen Rechnungs-Workflow verändert hat – nicht nur einfacher, sondern auch smarter.
+
+## Was ist N8N?
+
+N8N ist ein Open-Source-Tool für Workflow-Automatisierung, mit dem du verschiedene Apps und Dienste verbinden kannst, um Abläufe ohne Programmierkenntnisse zu automatisieren.
+Es unterstützt eine große Bandbreite an Integrationen, sodass sich Aufgabenketten flexibel zusammenstellen lassen.
+Ich habe die notwendigen Programmierkenntnisse, um Workflows per Code zu automatisieren, aber mit N8N geht es deutlich schneller.
+
+## Wie N8N meinen Rechnungsprozess verändert hat
+
+Als ich N8N zum ersten Mal nutzte, war mein Rechnungsprozess nicht besonders gut. Das waren die anfänglichen Herausforderungen:
+
+- **Manuelle Dateneingabe:** Ich verbrachte Stunden damit, Informationen in Tabellen einzutragen.
+- **Fehleranfällige Abläufe:** Das manuelle Erstellen von Rechnungen führte häufig zu Fehlern, die den Cashflow beeinträchtigten.
+- **Verzögerte Zahlungen:** Der lange Durchlauf bei der Rechnungsstellung führte oft zu verspäteten Zahlungen von Kunden.
+
+### Umstieg auf Automatisierung
+
+So bin ich bei der Automatisierung meines Rechnungsprozesses vorgegangen:
+
+1. **Integration mit Airtable:** Ich habe N8N mit meinem CRM-System verbunden, um Kunden- und Projektdaten automatisch abzurufen. Als CRM nutze ich [Airtable](https://www.airtable.com/).
+2. **Zeiterfassungen:** Ich nutze [Clockify](https://clockify.me/) für die Zeiterfassung und möchte nicht für Premium-Funktionen (z. B. Rechnungen, variable Projektsätze) bezahlen. Daher hole ich alle Zeiterfassungen über die Clockify-API ab und mappe sie auf die Daten in meinem CRM.
+3. **Automatisierte Rechnungserstellung:** Ich habe N8N-Nodes hinzugefügt, die die Summe aller Zeiterfassungen pro Projekt berechnen und nach Beschreibung gruppieren. Anschließend wird die Rechnungs-PDF generiert und in meinem OneDrive sowie im CRM gespeichert.
+4. **E-Mail-Versand:** Ich habe N8N so konfiguriert, dass Rechnungen direkt per E-Mail an meine Kunden gesendet werden – ohne manuellen Eingriff. Diese Einstellung ist optional, weil ich manche Rechnungen vorher prüfen möchte.
+
+<Image src={invoiceWorkflow} />
+
+### Vorteile der Automatisierung
+
+Der Umstieg auf automatisierte Rechnungsstellung brachte mehrere Vorteile:
+
+- **Höhere Effizienz:** Was früher Stunden dauerte, braucht jetzt nur noch Minuten.
+- **Weniger Fehler:** Der automatisierte Datenabruf minimiert menschliche Fehler und sorgt für korrekte Rechnungen.
+- **Schnellere Zahlungen:** Durch den sofortigen Versand haben sich die Zahlungszeiten deutlich verkürzt.
+
+## Fazit
+
+N8N hat meinen Rechnungsprozess grundlegend verbessert – effizienter und schneller als zuvor.
+Wenn du deinen Rechnungs-Workflow auf das nächste Level heben und vereinfachen möchtest, probiere N8N aus oder kontaktiere mich – ich richte dir gerne einen passenden Flow ein.
+
+<CallToAction
+  text={
+    <>
+      Starte
+      <br />
+      deine Automatisierung
+    </>
+  }
+  buttonText="Kontaktiere mich"
+  size="small"
+  clickUrl="/#contact"
+/>
+
+

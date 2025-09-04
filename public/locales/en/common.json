@@ -13,6 +13,59 @@
   },
   "meta": {
     "homeTitle": "Fabian Wassermann - Software developer, freelancer, and amateur mountaineer",
-    "homeDescription": "I’m Fabian, a software developer based in Austria. I’m a freelancer doing everything from simple websites to bigger web applications."
+    "homeDescription": "I’m Fabian, a software developer based in Austria. I’m a freelancer doing everything from simple websites to bigger web applications.",
+    "aboutTitle": "About - Fabian Wassermann",
+    "aboutDescription": "I’m Fabian Wassermann. I live in Austria, where I build amazing software.",
+    "articlesTitle": "Articles - Fabian Wassermann",
+    "articlesDescription": "All of my long-form thoughts on programming, webdesign, and more, collected in chronological order."
+  },
+  "home": {
+    "hero": {
+      "title": "Software developer, freelancer, and amateur mountaineer.",
+      "description": "I’m Fabian, a software developer, specialized in full-stack development, based in Austria. I´m a freelancer doing everything from simple websites to bigger webapplications."
+    },
+    "social": {
+      "instagramAria": "Follow on Instagram",
+      "githubAria": "Follow on GitHub",
+      "linkedinAria": "Follow on LinkedIn"
+    },
+    "article": {
+      "readCta": "Read article"
+    },
+    "contact": {
+      "title": "You want to contact me?",
+      "description": "Feel free to send me an email at all time. If you want you can start a conversation by sending me a message.",
+      "messagePlaceholder": "Message",
+      "emailPlaceholder": "Email address",
+      "send": "Send"
+    },
+    "work": {
+      "title": "Work"
+    },
+    "sr": {
+      "company": "Company",
+      "role": "Role",
+      "date": "Date"
+    }
+  }
+  ,
+  "about": {
+    "hero": {
+      "title": "I’m Fabian. I live in Austria, where I build amazing software."
+    },
+    "content": {
+      "p1": "Hi there! I am a computer enthusiast with a passion for all things tech. From a young age, I have been fascinated by computers and how they work, which led me to pursue a career in the field. In addition to my love for computers, I also enjoy spending time in the great outdoors, particularly in the mountains. I am an avid sports fan and enjoy participating in a variety of activities.",
+      "p2": "In my professional life, I am a freelancer who specializes in building websites and software. I have experience working on a wide range of projects, from small websites to larger web applications. I am always looking to learn and grow in my field, and I am excited to see where my passion for computers and technology will take me next."
+    },
+    "social": {
+      "instagram": "Follow on Instagram",
+      "github": "Follow on GitHub",
+      "linkedin": "Follow on LinkedIn"
+    }
+  }
+  ,
+  "articles": {
+    "title": "Writing on software development, webdesign, and the software industry.",
+    "intro": "All of my long-form thoughts on programming, webdesign, and more, collected in chronological order."
   }
 }
