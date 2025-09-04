@@ -114,6 +114,153 @@
         "description": "Alle Neuigkeiten und Updates zur Rechnungssoftware, die ich für einen meiner Kunden entwickelt habe."
       }
     }
+  },
+  "webdesign": {
+    "meta": {
+      "title": "Webdesign - Fabian Wassermann",
+      "description": "Webdesign und Entwicklung."
+    },
+    "hero": {
+      "title": "Webdesign und Entwicklung",
+      "intro": "Von responsivem Design bis hin zu interaktiven Funktionen erstelle ich visuell ansprechende und funktionale Websites, die auf Ihre Bedürfnisse zugeschnitten sind. Heben Sie Ihre Online-Präsenz mit einer benutzerfreundlichen und fesselnden Website hervor."
+    },
+    "whatIUse": {
+      "title": "Was ich verwende",
+      "description": "Ich integriere auch benutzerdefinierten Code, um bei Bedarf zusätzliche Funktionalität und Leistung zu bringen."
+    },
+    "workflow": {
+      "title": "Arbeitsablauf"
+    },
+    "cta": {
+      "title": "Lassen Sie uns über Ihre Website sprechen",
+      "button": "Kontaktieren Sie mich"
+    },
+    "steps": {
+      "discover": {
+        "id": "01",
+        "name": "Entdecken",
+        "title": "Entdecken Sie Ihre Ziele und Vision",
+        "description": "Bevor ich etwas designe, ist es entscheidend Ihr Unternehmen, Ziele und Zielgruppe zu verstehen. Dieser Schritt setzt die Richtung für alles, was folgt — und stellt sicher, dass die finale Website nicht nur schön, sondern effektiv und auf Ihre Bedürfnisse abgestimmt ist.",
+        "items": [
+          {
+            "title": "Geschäftsziele",
+            "text": "Was soll die Website erreichen? (z.B. Produkte verkaufen, Leads generieren, Arbeit präsentieren)"
+          },
+          {
+            "title": "Zielgruppe",
+            "text": "Für wen ist die Seite? Das Verständnis ihrer Bedürfnisse hilft, Design und Inhalt zu gestalten."
+          },
+          {
+            "title": "Inhalt & Seiten",
+            "text": "Welche Art von Seiten brauchen Sie (z.B. Home, Über uns, Dienstleistungen) und was sollen sie sagen?"
+          },
+          {
+            "title": "Markenstil oder Inspiration",
+            "text": "Haben Sie ein Logo, Markenfarben oder Websites, die Sie lieben? Das leitet die visuelle Richtung."
+          }
+        ]
+      },
+      "design": {
+        "id": "02",
+        "name": "Design",
+        "title": "Design, das sich richtig anfühlt",
+        "description": "In der Designphase gestalte ich das Aussehen und Gefühl Ihrer Website. Basierend auf dem, was wir im Entdeckungsschritt herausgefunden haben, plane ich das Layout, strukturiere den Inhalt und bringe Ihre Marke mit Farben, Typografie und visuellen Elementen zum Leben, die mit Ihrer Zielgruppe in Verbindung stehen.",
+        "radius": "Radius",
+        "font": "Schriftart",
+        "radiusOptions": {
+          "square": "eckig",
+          "round": "abgerundet",
+          "circle": "rund"
+        },
+        "fontOptions": {
+          "arial": "Arial",
+          "timesNewRoman": "Times New Roman",
+          "courierNew": "Courier New"
+        },
+        "example": {
+          "navigation": [
+            "Ringe",
+            "Halsketten",
+            "Ohrringe",
+            "Armbänder",
+            "Verkauf"
+          ],
+          "badge": "Der große Sommerschlussverkauf.",
+          "shopNow": "Jetzt kaufen",
+          "cta": "Jetzt kaufen",
+          "explore": "Kollektionen erkunden",
+          "title": "Die Kunst des feinen Schmucks",
+          "subtitle": "Unvergleichliche Handwerkskunst, seltene Edelsteine und zeitloses Design vereinen sich in Kollektionen, die Eleganz und Prestige ausstrahlen.",
+          "companyName": "Ihr Unternehmen",
+          "openMenu": "Hauptmenü öffnen"
+        }
+      },
+      "build": {
+        "id": "03",
+        "name": "Bauen",
+        "title": "Bauen, das funktioniert",
+        "description": "In dieser Phase verwandle ich das genehmigte Design in eine schnelle, responsive Website — gebaut, um reibungslos auf allen Geräten zu funktionieren und auf Ihre Geschäftsbedürfnisse zugeschnitten. Alles ist sauber, skalierbar und bereit, mit Ihnen zu wachsen.",
+        "items": [
+          {
+            "title": "No-Code trifft auf Custom",
+            "text": "Gebaut in Webflow oder Shopify mit benutzerdefinierten Verbesserungen bei Bedarf."
+          },
+          {
+            "title": "Sauberer, wartbarer Code",
+            "text": "Ein solides Fundament für zukünftiges Wachstum und Funktionen."
+          }
+        ]
+      },
+      "launch": {
+        "id": "04",
+        "name": "Start & Support",
+        "title": "Reibungsloser Start. Steadiger Support.",
+        "description": "Sobald alles getestet und genehmigt ist, gehen wir live. Ich kümmere mich um alle Einrichtungen, Optimierungen und finalen Checks, um sicherzustellen, dass Ihre Website reibungslos startet, gut funktioniert und bereit für echte Benutzer ist.",
+        "items": [
+          {
+            "title": "Reibungsloser, stressfreier Start",
+            "text": "Ich kümmere mich um Einrichtung, Tests und Go-Live, damit alles perfekt läuft."
+          },
+          {
+            "title": "Performance & SEO-Checks",
+            "text": "Ihre Seite ist für Geschwindigkeit, Mobile und Auffindbarkeit optimiert."
+          },
+          {
+            "title": "Support während und nach dem Start",
+            "text": "Ich bin an Ihrer Seite, um Anpassungen vorzunehmen, Fragen zu beantworten und sicherzustellen, dass sich alles richtig anfühlt."
+          }
+        ]
+      }
+    }
+  },
+  "resume": {
+    "feratel": {
+      "company": "Feratel Media Technologies",
+      "title": "IT-Schnittstellen-Support"
+    },
+    "neednect": {
+      "company": "NeedNect - Solutions",
+      "title": "Fullstack-Entwickler"
+    },
+    "hs2n": {
+      "company": "hs2n Informationstechnologie GmbH",
+      "title": "C# Software Engineer"
+    },
+    "consens": {
+      "company": "Consens Zeiterfassung GmbH",
+      "title": "Praktikant"
+    },
+    "dates": {
+      "present": "Gegenwärtig",
+      "feb2025": "Feb 2025",
+      "may2022": "Mai 2022",
+      "jan2025": "Jan. 2025",
+      "jul2020": "Jul. 2020",
+      "jul2021": "Jul. 2021",
+      "jul2019": "Jul. 2019",
+      "aug2019": "Aug. 2019",
+      "until": "bis"
+    }
   }
 }
 

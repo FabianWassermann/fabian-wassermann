@@ -115,5 +115,123 @@
         "description": "All news and updates to the Billing Software I made for one of my clients."
       }
     }
+  },
+  "webdesign": {
+    "meta": {
+      "title": "Webdesign - Fabian Wassermann",
+      "description": "Webdesign and Development."
+    },
+    "hero": {
+      "title": "Webdesign and Development",
+      "intro": "From responsive design to interactive features, I create visually appealing and functional websites tailored to your needs. Elevate your online presence with a user-friendly and engaging website."
+    },
+    "whatIUse": {
+      "title": "What I use",
+      "description": "I also integrate custom code to bring extra functionality and performance when needed."
+    },
+    "workflow": {
+      "title": "Workflow"
+    },
+    "cta": {
+      "title": "Let's talk About your website",
+      "button": "Contact me"
+    },
+    "steps": {
+      "discover": {
+        "id": "01",
+        "name": "Discover",
+        "title": "Discover Your Goals and Vision",
+        "description": "Before designing anything, it's crucial to understand your business, goals, and audience. This step sets the direction for everything that follows — ensuring the final website isn't just beautiful, but effective and aligned with your needs.",
+        "items": [
+          {
+            "title": "Business Goals",
+            "text": "What should the website achieve? (e.g. sell products, get leads, showcase work)"
+          },
+          {
+            "title": "Target Audience",
+            "text": "Who is the site for? Understanding their needs helps shape the design and content."
+          },
+          {
+            "title": "Content & Pages",
+            "text": "What kind of pages do you need (e.g. Home, About, Services), and what should they say?"
+          },
+          {
+            "title": "Brand Style or Inspiration",
+            "text": "Do you have a logo, brand colors, or websites you love? This guides the visual direction."
+          }
+        ]
+      },
+      "design": {
+        "id": "02",
+        "name": "Design",
+        "title": "Design That Feels Right",
+        "description": "During the design phase, I shape the look and feel of your website. Based on what we uncovered in the discovery step, I plan the layout, structure the content, and bring your brand to life with colors, typography, and visuals that connect with your audience.",
+        "radius": "Radius",
+        "font": "Font",
+        "radiusOptions": {
+          "square": "square",
+          "round": "round",
+          "circle": "circle"
+        },
+        "fontOptions": {
+          "arial": "Arial",
+          "timesNewRoman": "Times New Roman",
+          "courierNew": "Courier New"
+        },
+        "example": {
+          "navigation": [
+            "Rings",
+            "Necklaces",
+            "Earrings",
+            "Bracelets",
+            "Sale"
+          ],
+          "badge": "The Big Summer Sale.",
+          "shopNow": "Shop now",
+          "cta": "Shop now",
+          "explore": "Explore Collections",
+          "title": "The Art of Fine Jewelry",
+          "subtitle": "Unrivaled craftsmanship, rare gemstones, and timeless design come together in collections that exude sophistication and prestige.",
+          "companyName": "Your Company",
+          "openMenu": "Open main menu"
+        }
+      },
+      "build": {
+        "id": "03",
+        "name": "Build",
+        "title": "Build That Works",
+        "description": "In this phase, I turn the approved design into a fast, responsive website — built to perform smoothly across all devices and tailored to your business needs. Everything is clean, scalable, and ready to grow with you.",
+        "items": [
+          {
+            "title": "No-code meets custom",
+            "text": "Built in Webflow or Shopify with custom enhancements when needed."
+          },
+          {
+            "title": "Clean, maintainable code",
+            "text": "A solid foundation for future growth and features."
+          }
+        ]
+      },
+      "launch": {
+        "id": "04",
+        "name": "Launch & Support",
+        "title": "Smooth Launch. Steady Support.",
+        "description": "Once everything is tested and approved, we go live. I handle all the setup, optimization, and final checks to make sure your website launches smoothly, performs well, and is ready for real users.",
+        "items": [
+          {
+            "title": "Smooth, stress-free launch",
+            "text": "I handle setup, testing, and go-live so everything runs perfectly."
+          },
+          {
+            "title": "Performance & SEO checks",
+            "text": "Your site is optimized for speed, mobile, and discoverability."
+          },
+          {
+            "title": "Support during and after launch",
+            "text": "I'm by your side to make adjustments, answer questions, and ensure everything feels right."
+          }
+        ]
+      }
+    }
   }
 }
