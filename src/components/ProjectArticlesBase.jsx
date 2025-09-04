@@ -3,8 +3,10 @@ import Head from 'next/head'
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { formatDate } from '@/lib/formatDate'
+import { useTranslation } from 'react-i18next'
 
 function Article({ article, projectPath }) {
+  const { t } = useTranslation('common')
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card className="md:col-span-3">
@@ -20,7 +22,7 @@ function Article({ article, projectPath }) {
           {formatDate(article.date)}
         </Card.Eyebrow>
         <Card.Description>{article.description}</Card.Description>
-        <Card.Cta>Read project report</Card.Cta>
+        <Card.Cta>{t('home.article.readCta')}</Card.Cta>
       </Card>
       <Card.Eyebrow
         as="time"

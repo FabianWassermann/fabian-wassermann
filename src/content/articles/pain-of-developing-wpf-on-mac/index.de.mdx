@@ -1,0 +1,74 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import wpfVisualStudio from './wpf_visual_studio.png'
+import azureVisualStudioSearch from './azure_visual_studio_search.png'
+import azureVisualStudioVersioning from './azure_visual_studio_versioning.png'
+import azureStart from './azure_start.png'
+import microsoftRemoteDesktop from './microsoft_remote_desktop.png'
+
+export const meta = {
+  author: 'Fabian Wassermann',
+  date: '2023-01-25',
+  title: 'Die Schmerzen, WPF auf macOS (Apple Silicon) zu entwickeln',
+  description:
+    'Eine Lösung, wenn du WPF mit Visual Studio entwickeln musst, aber auf einem Mac mit Apple Silicon arbeitest.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+Eine Lösung, wenn du WPF mit Visual Studio entwickeln musst, aber auf einem Mac mit Apple Silicon arbeitest.
+
+<Image src={wpfVisualStudio} alt="" />
+
+## Was ist WPF?
+
+WPF (Windows Presentation Foundation) ist ein grafisches Subsystem für Windows, das
+Benutzeroberflächen (UI) bereitstellt und Entwicklern ermöglicht, visuell anspruchsvolle Anwendungen zu erstellen. Es wurde
+erstmals 2006 als Teil des .NET-Frameworks eingeführt.
+
+## Das Problem
+
+Die Entwicklung von WPF auf Mac mit Apple Silicon (z. B. M1) ist schwierig, weil WPF
+speziell für Windows entworfen wurde und nativ auf Windows-Betriebssystemen läuft. Auf dem Mac
+ist Hardwarevirtualisierung erforderlich, was zu Leistungsproblemen führen und die Funktionalität
+mancher Features einschränken kann.
+
+## Lösung 1
+
+Für diese Lösung benötigst du ein Azure-Konto oder ein Konto bei einem anderen Hosting-Anbieter.
+Wenn du Schüler oder Student bist, hast du eventuell 100 USD oder mehr pro Jahr an Guthaben. Ansonsten
+trägst du die laufenden Kosten für deine Entwicklungsstunden selbst.
+
+### Schritt 1: Azure Visual Studio
+
+<Image src={azureVisualStudioSearch} alt="" />
+
+Suche nach "Visual Studio" und klicke auf die Version von Visual Studio, die du verwenden möchtest.
+
+<Image src={azureVisualStudioVersioning} alt="" />
+
+Wähle anschließend die Community-Edition, wenn du keinen Zugang zu einer höheren Stufe hast.
+
+Im nächsten Schritt musst du Einstellungen für deinen Server angeben.
+Die wichtigste Einstellung ist, eingehende Ports für RDP zu erlauben, damit du dich verbinden kannst.
+
+<Image src={azureStart} alt="" />
+
+Starte den Server.
+
+### Schritt 2: Remote-Desktop-App installieren
+
+Um dich zu verbinden und deinen Server zu sehen, kannst du eine Remote-Desktop-App verwenden, die du aus dem App Store herunterladen kannst.
+Meine persönliche Präferenz ist die Microsoft Remote Desktop App.
+
+<Image src={microsoftRemoteDesktop} alt="" />
+
+Klicke auf "PC hinzufügen", gib die IP deines Servers ein und klicke auf "Hinzufügen".
+Glückwunsch, du bist mit deinem Cloud-Server verbunden und bereit, mit dem vorinstallierten Visual Studio zu arbeiten.
+
+## Lösung 2
+
+Falls du noch einen älteren Windows-Rechner besitzt, kannst du ihn als Server verwenden, indem du ihn in deinem Heimnetzwerk betreibst und nach außen verfügbar machst.
+Du kannst auf deinen eigenen Windows-Rechner auf die gleiche Weise zugreifen wie auf den Azure-Server.
+
+

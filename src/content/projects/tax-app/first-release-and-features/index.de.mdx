@@ -1,0 +1,172 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import documentUpload from "./documentUpload.png"
+import signIn from "./signin.png"
+import signUp from "./signup.png"
+import headerNavContent from "./headerNavContent.png"
+import operationList from "./operationList.png"
+import taxOverview from "./taxOverview.png"
+import yearFilter from "./yearFilter.png"
+
+export const meta = {
+  author: 'Fabian Wassermann',
+  date: '2024-12-16',
+  title: 'Erste Veröffentlichung und Funktionen',
+  description:
+    'Diese Software wurde ursprünglich für mich selbst und einen Freund von mir entwickelt. Wir investieren gerne in Aktien, aber Steuern in Österreich sind nicht immer einfach zu machen. Diese Anwendung macht unser Leben einfacher.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+## KeSt in Österreich ist nicht so einfach
+
+In Österreich müssen Sie KeSt (Kapitalertragssteuer) bezahlen, auf Englisch "Capital gains tax". 
+In einigen Fällen müssen Sie **27,5%** bezahlen, in anderen **25%**. Bei Dividenden müssen Sie prüfen,
+in welchem Land das Unternehmen ansässig ist und daher die Dividenden auszahlt. Für einige Länder hat Österreich
+ein **Doppelbesteuerungsabkommen**. In diesen Fällen müssen Sie nur einen bestimmten Teil der KeSt bezahlen.
+
+Einfaches Beispiel zum Verständnis der KeSt: Sie verkaufen **Microsoft** und die verkaufte Position ist **100 EUR im Gewinn**. Dann müssen Sie **27,50 EUR** (27,5%) bezahlen.
+
+## Warum ich bestimmte Technologien gewählt habe
+
+- Für das Frontend wollte ich **VueJs** verwenden, weil ich sehr einfach schöne UIs erstellen kann. 
+- Mit **ExpressJs** im Backend kann ich eine einfache API einrichten. 
+- **MongoDB** für einfache Datenverwaltung, weil es schnell und einfach zu verwenden ist.
+
+## Datenbankmodell-Setup
+
+Zunächst musste ich das gesamte Datenmodell verstehen, damit ich mit der Modellierung der Datenbank beginnen kann. Ich habe eine Liste von allem erstellt, was ich speichern muss.
+
+- **Benutzer:** Benutzeranmeldedaten für grundlegende Authentifizierung
+- **Broker:** Broker-Namen und -Einstellungen
+  - **Dateitypen:** Jeder Broker hat verschiedene Dateitypen
+- **Operationen:** Ein Handel (Kauf und Verkauf von Aktien), Erhalt von Dividenden oder Zinsen.
+  - **Operationstyp:** Zeigt an, ob die Operation ein Handel, eine Dividende oder Zinsen war.
+  - **Währung:** Ich muss verfolgen, welche Währung für eine Operation verwendet wurde.
+- **Handel:** Zusätzliche Daten für eine Handelsoperation.
+- **Dividende:** Zusätzliche Daten für eine Dividendenoperation.
+- **Zinsen:** Zusätzliche Daten für eine Zinsoperation.
+
+Nach dieser grundlegenden Liste war es Zeit, das PrismaORM-Schema zu erstellen und einige Datenbankeinschränkungen für die Geschäftslogik hinzuzufügen.
+
+## API-Setup
+
+### Authentifizierung
+
+In meiner Karriere habe ich bereits einige **Authentifizierungs**-Abläufe erstellt,
+daher war das Erstellen einer sicheren API, die nur von angemeldeten Benutzern aufgerufen werden kann, eine wirklich unkomplizierte Aufgabe.
+Jeder Benutzer hat einen Benutzernamen und ein Passwort. Das **Passwort wird gehasht und gesalzen**, bevor es in der Datenbank gespeichert wird.
+
+Für den Authentifizierungsablauf verwende ich zwei signierte **JWT-Token - ein Access- und ein Refresh-Token**. Wenn Sie mehr über die Arbeit
+mit JWT-Token und das Erstellen von Authentifizierungsabläufen lernen möchten, schreiben Sie mir einfach oder fragen Sie ChatGPT.
+
+### Endpunkte
+
+| Pfad    | Gibt zurück |
+| -------- | ------- |
+| /health  | HTTP 200 wenn der Server läuft    |
+| /brokers | Liste aller Broker     |
+| /operations    | Liste aller Operationen des angemeldeten Benutzers    |
+| /extractDataFromFile    | Akzeptiert Base64-String der Dateiinhalte und den Dateityp. Daten werden in der Datenbank gespeichert.    |
+| /simpleTaxReport    | Gibt einen Steuerbericht (Übersicht) zurück.   |
+| /download/operations/:fileType    | Gibt eine Datei mit allen Operationen des aktuell angemeldeten Benutzers zurück. FileType kann xlsx oder csv sein.   |
+
+## Frontend-Setup
+
+Das Frontend-Setup ist nur eine Starter-VueJs-Vorlage, die ich mir vor einigen Monaten selbst erstellt habe. Ich habe eine grundlegende Anmelde- und Registrierungsseite hinzugefügt und sie mit dem Backend verbunden.
+
+<div className="flex gap-2 flex-col sm:flex-row">
+  <Image src={signUp} alt="" className="shrink min-w-0 h-full" /> 
+  <Image src={signIn} alt="" className="shrink min-w-0 h-full" />
+</div>
+
+Ich habe auch eine einfache Möglichkeit erstellt, die Access- und Refresh-Token vom Backend mit einer Bibliothek namens axios zu handhaben.
+
+```ts
+const httpAutoAToken = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+  headers: { "Content-Type": "application/json" },
+  withCredentials: true,
+});
+
+httpAutoAToken.interceptors.request.use(
+  async function (config) {
+    let token = store.getters.accessToken;
+    if (token) config.headers.Authorization = `Bearer ${token}`;
+    return config;
+  },
+  async function (error) {
+    return Promise.reject(error);
+  }
+);
+
+httpAutoAToken.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  async function (error) {
+    const response = error.response;
+
+    if (response.status === 403) {
+      // versuchen zu erneuern
+      try {
+        await store.dispatch("refreshAccessToken");
+        // Anfrage wiederholen
+        return Promise.resolve(httpAutoAToken.request(error.config));
+      } catch (refreshError) {
+        await store.dispatch("logout");
+        router.push({ name: "login" });
+      }
+    }
+
+    return Promise.reject(error);
+  }
+);
+```
+
+Ich habe eine schöne Navigation, einen Header und einen coolen Inhaltsbereich hinzugefügt.
+
+{/* TODO: add this to browser */}
+<Image src={headerNavContent} alt="" />
+
+
+## Funktion 1: Broker-Dokument-Upload
+
+Ich verwende den XTB-Broker für Investitionen und Capital.com für den Handel, daher waren die ersten Broker, die ich integriert habe, XTB und Capital.com.
+Sie könnten die APIs der Broker verwenden, aber für die erste Veröffentlichung wollte ich es mit den Dokumentexporten der Broker zum Laufen bringen.
+XTB und Capital.com unterstützen **CSV-Dateiexport** der geschlossenen Trades und zusätzlich im Fall von XTB Bargeldoperationen.
+
+Zunächst wollte ich eine einfache Möglichkeit zum Hochladen der Datei erstellen, also habe ich eine einfache und grundlegende UI erstellt, die es Ihnen ermöglicht, den Broker
+und den Typ des Dokuments auszuwählen, das Sie hochladen möchten (Wie ich sagte: Jeder Broker kann verschiedene Dokumenttypen haben).
+
+<Image src={documentUpload} alt="" />
+
+Nach dem Hochladen des Dokuments werden alle Daten aus der Datei extrahiert und im richtigen Format in die Datenbank geschrieben.
+
+## Funktion 2: Operation CRUD und Export
+
+<div className="flex flex-col sm:flex-row gap-2 sm:gap-5">
+  <Image src={operationList} alt="" className="shrink min-w-0 h-full flex-1"  />
+  <span className="flex-1">
+    Alle Operationen können auf der Operationsseite angezeigt werden. Ein **Filter** kann mit den oberen Buttons alle, Aktien, Dividenden und Zinsen angewendet werden. 
+    Durch Auswahl einer Operation können die Buttons **Aktualisieren** und **Löschen** am unteren Rand der Seite geklickt werden. Zusätzliche Operationen können **hinzugefügt** werden, indem Sie einfach auf den Erstellen-Button klicken.
+    Der **Export**-Button ermöglicht es dem Benutzer, alle Operationen als CSV- oder XLSX-Datei zu exportieren.
+  </span>
+</div>
+
+## Funktion 3: Steuerübersicht
+
+<Image src={taxOverview} alt="" />
+
+Die drei wichtigsten Zahlen werden auf der Übersichtsseite angezeigt: **Gewinn**, **Steuern** und **Nettogewinn**.
+Oben können Sie nach Aktien, Dividenden und Zinsen filtern.
+
+## Funktion 4: Jahresfilter
+
+<Image src={yearFilter} alt="" />
+
+Ein einfaches Dropdown-Menü lässt Sie ein Jahr auswählen, und nur Operationen und Daten aus dem ausgewählten Jahr werden angezeigt.
+
+-------
+
+Das sind die ersten wenigen Funktionen der neuen Steuer-App. Wenn Sie neue Ideen für Funktionen haben, lassen Sie es mich bitte wissen.

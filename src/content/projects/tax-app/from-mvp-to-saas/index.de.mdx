@@ -1,0 +1,123 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import activities from './activities.png'
+import dashboard from './dashboard.png'
+import activitiyImport from './activitiyImport.png'
+import login from './login.png'
+import saveTax from './saveTax.png'
+import tax from './tax.png'
+
+export const meta = {
+  author: 'Fabian Wassermann',
+  date: '2025-04-08',
+  title: 'Vom MVP zum SAAS',
+  description:
+    'Ein neues Frontend mit besseren Funktionen und größerer UI/UX erstellt.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+## Was ist ein MVP
+
+MVP steht für **Minimum Viable Product** — eine Version Ihres Produkts mit gerade genug Funktionen, um das Kernkonzept zu testen und Feedback von frühen Benutzern zu sammeln. Es geht darum, Ihre Idee mit minimalem Aufwand zu validieren, damit Sie schnell iterieren und das bauen können, was Benutzer _wirklich_ brauchen.
+
+## Datenbankmodell-Upgrades
+
+Einer der ersten wichtigen Schritte beim Übergang vom MVP zu einem robusteren SaaS-Produkt war die Verbesserung des Datenbankmodells.
+Ich wollte die Architektur zukunftssicher machen und das Hinzufügen neuer Funktionen in der Zukunft einfacher gestalten.
+
+Das dauerte etwa zwei Wochen, und das Modell
+wuchs **von 6 auf über 17 Tabellen**. Hier sind einige bemerkenswerte Änderungen und Ergänzungen:
+
+- **Occurrence:** Vorher _Operations_ genannt — umbenannt für bessere Klarheit und Erweiterbarkeit.
+- **Bank:** Erweitert, um nicht nur Broker, sondern auch Banken zu unterstützen.
+- **TaxRate:** Ermöglicht das Speichern von Steuersätzen für verschiedene Länder, Zeiträume und Steuertypen.
+- **TaxType:** Unterscheidet zwischen Steuerkategorien wie _SPOT_ (Aktien, ETFs) und _INTEREST_.
+- **DoubleTaxationAgreement:** Unterstützt bilaterale Steuerabkommen — kritisch für genaue Dividendensteuerberechnungen.
+- **Assets:** Umfasst Aktien, ETFs und Krypto. (Neugierig, woher ich die Daten habe? Bleiben Sie dran!)
+- **AssetLinking:** Ermöglicht die Zuordnung von Assets zu bestimmten Brokern für bessere Datenintegration.
+
+## API & Authentifizierungs-Updates
+
+### Bessere Authentifizierung mit Clerk
+
+Um die Benutzeronboarding und Sicherheit zu verbessern, habe ich Clerk für die Benutzerauthentifizierung integriert. Zwei Authentifizierungs-Middlewares wurden zur API hinzugefügt, die nahtloses Onboarding sowohl für Clerk- als auch für Nicht-Clerk-Benutzer ermöglichen. Das Ergebnis? Eine saubere, moderne Anmeldeerfahrung mit minimaler Reibung.
+
+<Image src={login} alt="" className="rounded-lg" />{' '}
+
+### Währungsumrechnung für genaue Besteuerung
+
+Während der Recherche zu Österreichs Kapitalertragssteuergesetzen entdeckte ich eine wichtige Anforderung:
+**Alle Fremdwährungstransaktionen müssen mit dem Wechselkurs am Transaktionsdatum in EUR umgerechnet werden.**
+
+Dies gewährleistet genaue Gewinn- und Steuerberechnungen gemäß österreichischem Steuerrecht. Nach intensivem Lesen und Recherche implementierte ich diese Logik — Problem gelöst!
+
+## Frontend 2.0 – UI-Upgrade
+
+### Komponentenbibliothek: shadcn-vue
+
+Für die UI wählte ich shadcn-vue — eine Komponentenbibliothek, die auf Vue 3 und Tailwind CSS aufbaut. Sie bietet leichtgewichtige, vollständig anpassbare und zugängliche Komponenten. Im Gegensatz zu rigideren Bibliotheken lässt sie mich Styling und Struktur kontrollieren und gewährleistet dabei eine großartige Entwickler- und Benutzererfahrung.
+
+### Funktion: Aktivitätsliste
+
+<Image src={activities} alt="" className="rounded-lg" />{' '}
+
+Eine zentrale Liste aller Aktivitäten einschließlich:
+
+- Trades
+- Dividenden
+- Zinsen
+
+Benutzer können Aktivitäten manuell erstellen, aktualisieren oder löschen oder sie über Broker-CSV- oder Excel-Dateien importieren. Derzeit unterstützt:
+
+- \*XTB - Bargeldoperationen\*\* (Dividenden, Zinsen, Trades)
+- **IBKR - Flex Query Orders** (Trades)
+
+<Image src={activitiyImport} alt="" className="rounded-lg" />{' '}
+
+Neue Broker-Integrationen sind auf dem Weg!
+
+### Funktion: Dashboard
+
+<Image src={dashboard} alt="" className="rounded-lg" />{' '}
+
+Eine Echtzeit-Momentaufnahme Ihrer Steuerverpflichtungen:
+
+- Gewinn & Verlust (PnL)
+- Kapitalertragssteuer (KeSt)
+- Quellensteuer
+- KeSt-Einsparungen im Laufe der Zeit
+
+Enthält ein einfaches Diagramm, das Ihre Steuerdatentrends visualisiert.
+
+### Funktion: Dividendensteuer sparen
+
+<Image src={saveTax} alt="" className="rounded-lg" />{' '}
+
+Österreich hat **Doppelbesteuerungsabkommen** mit vielen Ländern, die eine **15%ige Steuerreduzierung** bei Dividenden ermöglichen. Die App erkennt dies automatisch und wendet den Abzug an — spart Ihnen Geld ohne manuellen Aufwand.
+
+### Funktion: Vereinfachen Sie Ihre Steuererklärung
+
+<Image src={tax} alt="" className="rounded-lg" />{' '}
+
+Diese Funktion bietet eine klare Übersicht über:
+
+- Steuerpflichtige Kategorien: **Zinsen, Dividenden, Trades**
+- Eine dynamische Tabelle, die alle Steuerfelder zeigt, die Sie ausfüllen müssen
+- Ein Hilfeformular und FAQ-Bereich am unteren Rand zur Unterstützung bei der Einreichung
+
+---
+
+## Bereit, Ihre Investitionssteuern zu vereinfachen?
+
+Vielen Dank für das Lesen! Wenn Sie am Projekt interessiert sind oder mehr erkunden möchten:
+
+<p>
+  Besuchen Sie die Website: <a href="https://kestaustria.at">kestaustria.at</a> <br />
+  Erstellen Sie ein kostenloses Konto:
+  <a href="https://app.kestaustria.at">app.kestaustria.at</a>
+</p>
+
+Lassen Sie uns Investitionssteuern einfach machen.
+
+

@@ -1,0 +1,177 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import timeTracker from "./timeTracker.png"
+import positionGenerator from "./positionGenerator.png"
+import newPages from "./newPages.png"
+import invoicesOverview from "./invoicesOverview.png"
+import filter from "./filter.png"
+import quickViewAndDownload from "./quickViewAndDownload.png"
+import paymentReminder from "./paymentReminder.png"
+import paymentReminderButton from "./paymentReminderButton.png"
+import paymentReminderDocument from "./paymentReminderDocument.png"
+import positionOrder from "./positionOrder.png"
+import customerSettings from "./customerSettings.png"
+
+export const meta = {
+  author: 'Fabian Wassermann',
+  date: '2024-12-11',
+  title: 'Übersicht der letzten 14 Monate',
+  description:
+    'Ein Jahr Bug-Fixes und eine Menge neuer Funktionen später. Dies ist eine Übersicht der letzten 14 Monate bezüglich dieses Projekts.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+## Statistiken
+
+<div className="flex items-center gap-2">
+  In den letzten 14 Monaten habe ich **64 Stunden und 30 Minuten** an diesem Projekt gearbeitet. 
+  Das ist nicht viel, aber genug für einige coole neue Sachen.
+  <Image src={timeTracker} alt="" />
+</div>
+
+Nach **197 Commits**, **69 Pull Requests** und **82 geschlossenen Issues** bin ich stolz darauf, Ihnen eine großartige Übersicht aller neuen Funktionen zu zeigen.
+
+## Neue Funktionen
+
+In den folgenden Abschnitten werde ich die neuen Funktionen der Software beschreiben. Funktionen wie **Text nach Tabelle**, **Redesign von Dokumenten** und **hilfreiche UI-Ergänzungen**, um nur einige zu nennen, haben es nicht in die folgende Funktionsliste geschafft, da sie zu klein sind, um sie zu erwähnen.
+
+### Funktion 1: Dokumentübersichtsseiten
+
+<Image src={newPages} alt="" />
+
+Die Navigation wurde größer. Jetzt gibt es Übersichtsseiten für **Rechnungen**, **Angebote** und **Lieferscheine**.
+Das folgende Bild zeigt die Rechnungsübersichtsseite, ich musste einige Teile zensieren. Die anderen Übersichtsseiten sind fast gleich, aber mit verschiedenen Status.
+
+<Image src={invoicesOverview} alt="" />
+
+### Funktion 2: Dokumentstatus
+
+Dokumente haben jetzt Status. Hier ist eine Liste aller Status:
+
+- **Rechnungen:** bezahlt / nicht bezahlt
+- **Rechnungen:** gesendet / nicht gesendet
+- **Angebote:** in Rechnung umgewandelt / nicht in Rechnung umgewandelt
+- **Lieferscheine:** in Rechnung umgewandelt / nicht in Rechnung umgewandelt
+
+### Funktion 3: Filter auf der Rechnungsübersichtsseite
+
+<Image src={filter} alt="" />
+
+Rechnungen können nach Datumsbereichen oder nach Zahlungsstatus gefiltert werden.
+
+### Funktion 4: Schnellansicht und Download
+
+<Image src={quickViewAndDownload} alt="" />
+
+Durch Klicken auf das Auge öffnet sich ein neuer Tab, der das Dokument anzeigt. Der Download-Button ist, denke ich, leicht zu verstehen.
+
+### Funktion 5: Zahlungsdaten verfolgen
+
+<Image src={paymentReminder} alt="" />
+
+Wenn eine Rechnung an den Kunden gesendet wurde, aber nicht bezahlt ist, verfolgt die App die Tage zwischen dem Senden und dem Erhalten der Zahlung.
+Wenn die Rechnung nach 30 Tagen vom Kunden nicht bezahlt wurde, wird eine kleine Uhr sichtbar und beim Darüberfahren zeigt ein Tooltip
+an, wie viele Tage die Rechnung nicht bezahlt wurde.
+
+Es gibt ein zweites rotes Ausrufezeichen-Symbol. Dieses wird angezeigt, wenn die Rechnung länger als 6 Wochen nicht bezahlt wurde.
+
+### Funktion 6: Zahlungserinnerungen generieren
+
+<Image src={paymentReminderButton} alt="" />
+
+Wenn der Kunde die Rechnung nicht bezahlt hat und das Fälligkeitsdatum überschritten hat, wird eine neue Aktion im Mehr-Menü verfügbar - Zahlungserinnerung generieren.
+Durch Klicken auf diesen Button wird ein fertiges Zahlungserinnerungsdokument generiert, das wie folgt aussieht.
+
+<Image src={paymentReminderDocument} alt="" />
+
+### Funktion 7: Positionsreihenfolge ändern
+
+<Image src={positionOrder} alt="" />
+
+Durch Klicken auf den Pfeil-Button werden die beiden Positionen den Platz tauschen. Mit dieser Funktion kann der Benutzer die Positionsreihenfolge eines Dokuments modifizieren.
+
+### Funktion 8: Standardeinstellungen für Kunden
+
+<Image src={customerSettings} alt="" />
+
+Jeder Kunde kann verschiedene Standardeinstellungen haben.
+Kunden können einen festen Arbeitszeitrabatt oder einen festen Rabatt für Teile erhalten. Diese Seite ist dafür gedacht, das Leben zu erleichtern, wenn man mit vielen Kunden arbeitet.
+
+## Bugs 🐛
+
+Schauen wir uns die Bugs an. 
+Weil Bugs in jeder Software sind und ich möchte einige Bugs diskutieren, die ich nach der ersten Veröffentlichung der Software behoben habe.
+
+### Bug 1 - Positionsgenerator Tastaturnavigation
+
+<Image src={positionGenerator} alt="" />
+
+Wenn Sie mehr als ein paar Positionen zu einer Rechnung eingeben müssen, möchten Sie sicherlich eine ordentliche Tastaturnavigation für diese Eingaben haben.
+
+Anfangs sollte der Cursor-Fokus auf der ersten Eingabe (Artikelnummer-Eingabe) liegen. 
+Beim Klicken auf **Enter** in der ersten Eingabe sollte der Suchbutton ausgelöst werden,
+der automatisch einige Daten in die nächsten Felder rechts ausfüllt. Drücken von **Tab** sollte den 
+Cursor-Fokus von der ersten Eingabe Schritt für Schritt zur letzten Eingabe bewegen. Während der Cursor-Fokus auf einer dieser Eingaben liegt,
+sollte Drücken von **Enter** den Button auf der linken Seite (Erstellen-Button) auslösen.
+
+Das HTML, CSS und JS, das ich codiert habe, respektierte dieses Verhalten nicht, aber ich werde Ihnen jetzt zeigen, wie ich es behoben habe.
+
+```ts
+<input
+  @keyup.enter="createPosition"
+/>
+```
+
+Dies ist der Event-Listener, der auf allen Eingaben außer der ersten liegt. Wenn die **Enter**-Taste in einer dieser Eingaben gedrückt wird, wird die Position erstellt. Für die erste Eingabe habe ich *createPosition* 
+durch die *searchAndFillData* Funktion ersetzt.
+
+```ts
+function createPosition() {
+  ...
+  articleNumberInputRef.value.focus();
+  ...
+}
+```
+
+Nach der Positionserstellung wird die neue Artikelnummer-Eingabe durch Code fokussiert. 
+Dieses Verhalten ermöglicht es dem Benutzer, viele Positionen nur mit der Tastatur einzugeben.
+
+### Bug 2 - Datenbankmodell eindeutige Nummer von Dokumenten
+
+Jedes Dokument hat seine eigene eindeutige Nummer. Für Rechnungen zum Beispiel haben die Nummern das folgende Format: **nummer/yyyy**.
+Die erste Rechnung des nächsten Jahres wäre **001/2025** und die zweite Rechnung **002/2025**. Um diese Geschäftslogik zu gewährleisten, habe ich 
+eine eindeutige Einschränkung für das Nummernfeld im Datenbankmodell hinzugefügt.
+
+```ts
+number String @unique
+```
+
+Wenn der Benutzer eine Rechnung löscht, die wichtig war, wäre sie für immer weg. Um zu verhindern, dass der Benutzer wichtige 
+Dokumente löscht, wurde ein **isDeleted** Flag zum Datenbankmodell hinzugefügt. Wenn der Benutzer versucht, eine Rechnung zu löschen, wird der Backend
+die Rechnung nicht löschen, sondern das **isDeleted** Flag auf den aktuellen Zeitstempel setzen. Die Rechnung ist jetzt archiviert, aber nicht endgültig gelöscht.
+
+Wenn der Benutzer eine neue Rechnung erstellen möchte, sollte die Nummer der archivierten Rechnung zur Verwendung frei sein. Aber das Speichern einer anderen Rechnung mit 
+derselben Nummer würde die eindeutige Einschränkung verletzen.
+
+In den meisten relationalen Datenbanken sind diese Verhaltensweisen einfach zu implementieren, aber mit PrismaORM und MongoDB kann das noch nicht gemacht werden.
+Ich habe mich gewundert, wie ein großer ORM wie Prisma nichts dafür hat, dies zu handhaben, und ich habe ein offenes [Issue](https://github.com/prisma/prisma/issues/6974) gefunden, das jetzt fast 4 Jahre alt ist.
+
+Ich habe schließlich die eindeutige Einschränkung entfernt. Dieser Teil der Geschäftslogik muss jetzt vom Backend gehandhabt werden.
+
+```ts
+number String
+```
+
+### Bug 3 - Arbeitszeitrabatt richtig berechnen
+
+```js
+worktimeDiscount =
+      (worktimeTotal * worktimeDiscountPercentage) / 100;
+```
+
+Um es klar zu machen, eine einfache Arbeitszeitrabattberechnung ist einfach und das ist nicht der Fehler, den ich gemacht habe.
+Ich habe den Rabatt nur auf die erste Arbeitszeitposition angewendet und nicht auf jede. Das ist eine einfache Behebung mit einer grundlegenden for-Schleife.
+
+
+Vielen Dank für das Lesen dieses Software-Updates!

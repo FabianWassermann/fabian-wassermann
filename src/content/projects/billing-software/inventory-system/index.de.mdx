@@ -1,0 +1,111 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import page from './page.png'
+import setInitialStock from './setInitialStock.png'
+import stockLevelList from './stockLevelList.png'
+import stockLevelListActions from './stockLevelListActions.png'
+import stockSpotModal from './stockSpotModal.png'
+import bookingHistory from './bookingHistory.png'
+import partOverview from './partOverview.png'
+import partManagement from './partManagement.png'
+import createPart from './createPart.png'
+
+export const meta = {
+  author: 'Fabian Wassermann',
+  date: '2025-06-18',
+  title: 'Lagersystem',
+  description:
+    'Neues Update der Software beinhaltet ein Lagersystem zur Verwaltung aller Bestände.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+## Die Idee
+
+Mein Kunde möchte alle seine Ersatzteile in seinem Lager und LKW verfolgen.
+Er möchte alle seine Ersatzteile verwalten, einschließlich der Bewegung von Teilen vom
+Lager zum LKW. In Zukunft möchte er Teile durch Rechnungen verbrauchen, sodass der
+Lagerbestand automatisch ändert, wenn er Teile verwendet hat.
+
+## Erste Schritte
+
+Zunächst brauchen wir eine neue Seite für das Lagersystem.
+
+<Image src={page} alt="" />
+
+Meine Gedanken darüber, was der Benutzer machen möchte:
+
+- Lagerbestände sehen
+- Historie der Buchungen sehen
+- Buchungen erstellen
+
+## Funktion 1: Anfangsbestand festlegen
+
+Zunächst muss mein Kunde den Anfangsbestand jedes Teils festlegen.
+
+<Image src={setInitialStock} alt="" />
+
+Dies würde **1 Teil** mit der Nummer **202458E** zum **Lager** hinzufügen.
+
+## Funktion 2: Lagerbestandsliste
+
+Eine Übersicht über die Teile eines Lagerstandorts mit Auswahloption für Aktionen.
+
+<div className="relative">
+  <Image src={stockLevelList} alt="" />
+  <Image
+    src={stockLevelListActions}
+    alt=""
+    className="absolute right-0 bottom-0 mb-5 shadow ring-1 ring-gray-300"
+  />
+</div>
+
+## Funktion 3: Lagerbestand ändern
+
+Wenn mein Kunde einen Fehler beim Zählen der Teile gemacht hat und einen Lagerbestand ändern muss, kann er das einfach tun.
+
+Durch Klicken auf den "Lagerstand anpassen" Button kann der Lagerbestand auf jeden beliebigen Wert geändert werden.
+
+## Funktion 4: Lagerort ändern
+
+Mein Kunde organisiert alle Teile in Kisten auf Regalen und möchte verfolgen, wo sich welches Teil befindet.
+
+Durch Klicken auf den "Ort anpassen" Button kann der Lagerort geändert werden.
+
+<Image src={stockSpotModal} alt="" />
+
+## Funktion 5: Buchungshistorie
+
+Mein Kunde kann die gesamte Buchungshistorie eines Lagerstandorts wie das Lager oder den LKW einsehen.
+Jede Buchung enthält Informationen über den Typ, Teile, zugehörige Lagerstandorte und Datum.
+
+<Image src={bookingHistory} alt="" />
+
+## Funktion 6: Teilseite
+
+Der Benutzer kann auf eine Teilzeile in der Tabelle klicken und öffnet eine Übersichtsseite, die mehr Details über dieses eine Teil zeigt.
+
+Die Übersicht zeigt, wie viele Teile sich in allen Lagerstandorten befinden und alle Buchungen, die mit diesem Teil zusammenhängen.
+
+<Image src={partOverview} alt="" />
+
+## Funktion 7: Teile vom Lager zum LKW bringen
+
+Der Benutzer kann auf "Aktionen" > "Umladen" klicken und alle Teile auswählen, die er zum LKW oder zurück zum Lager transferieren möchte.
+
+## Funktion 8: Teilverwaltung
+
+Einige Teile sind nicht in unserem System, da wir nur einige Teile des mulag Online-Shops importiert haben.
+Aber mein Kunde möchte mehr Teile zum System hinzufügen, also habe ich einen Teilmanager erstellt.
+
+<Image src={partManagement} alt="" className="max-w-lg" />
+
+Der Benutzer kann Teile erstellen und aktualisieren.
+Es gibt verschiedene Typen, da mulag-Artikel die Preise mit dem mulag-Shop synchronisieren müssen.
+
+<Image src={createPart} alt="" className="max-w-lg" />
+
+---
+
+Das ist nicht alles für dieses Update und weitere Funktionen sind in der Entwicklung.
+Vielen Dank für das Lesen dieses Software-Updates!

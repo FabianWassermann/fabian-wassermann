@@ -1,0 +1,43 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import tailwindcssCover from './tailwindcss_cover.jpg'
+
+export const meta = {
+  author: 'Fabian Wassermann',
+  date: '2022-12-25',
+  title: 'Warum ich Tailwind so mag',
+  description:
+    'Tailwind CSS ist ein Utility-First-CSS-Framework, das durch Einfachheit und Flexibilität überzeugt.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+Tailwind CSS ist ein Utility-First-CSS-Framework, das in den letzten Jahren aufgrund seiner Einfachheit und Flexibilität stark an Popularität gewonnen hat.
+
+<Image src={tailwindcssCover} alt="" />
+
+## Wie es funktioniert
+
+Tailwind CSS stellt eine Sammlung von Low-Level-Utility-Klassen bereit, mit denen sich individuelle Designs erstellen lassen. Diese Utility-Klassen werden per `class`-Attribute auf HTML-Elemente angewendet.
+
+Hier ein Beispiel, wie man mit Tailwind CSS einen Button stylen könnte:
+
+```html
+<button class="rounded-full bg-blue-500 py-2 px-4 font-bold text-white">
+  Klick mich
+</button>
+```
+
+In diesem Beispiel setzt `bg-blue-500` die Hintergrundfarbe auf Blau, `text-white` die Textfarbe auf Weiß, und `font-bold` macht den Text fett. `py-2` und `px-4` fügen vertikale und horizontale Abstände hinzu, während `rounded-full` die Ecken abrundet.
+
+## Dinge, die ich an Tailwind mag
+
+1. **Keine vorgefertigten Komponenten:** Statt vorgefertigter Komponenten liefert Tailwind Utility-Klassen, mit denen du dein eigenes Design baust.
+2. **Hochgradig anpassbar:** Dank Konfigurationsdatei lassen sich Farben, Abstände, Typografie und mehr auf dein Designsystem zuschneiden.
+3. **Leicht zu lernen:** Einfache Syntax, vertraute CSS-Konzepte, kleiner Lernaufwand.
+4. **Performanceorientiert:** Tailwind erzeugt nur die CSS-Regeln, die du brauchst – schlank und schnell.
+5. **Standardmäßig responsiv:** Viele Utilities unterstützen Responsive-Design out of the box.
+
+Insgesamt ist Tailwind CSS eine großartige Wahl, wenn du flexibel, schnell und strukturiert individuelle Oberflächen bauen willst.
+
+

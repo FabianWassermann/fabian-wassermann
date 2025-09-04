@@ -1,0 +1,341 @@
+{
+  "menu": {
+    "open": "Menu",
+    "close": "Close menu"
+  },
+  "nav": {
+    "title": "Navigation",
+    "about": "About",
+    "articles": "Articles",
+    "projects": "Projects",
+    "services": "Services",
+    "uses": "Uses"
+  },
+  "meta": {
+    "homeTitle": "Fabian Wassermann - Software developer, freelancer, and amateur mountaineer",
+    "homeDescription": "I’m Fabian, a software developer based in Austria. I’m a freelancer doing everything from simple websites to bigger web applications.",
+    "aboutTitle": "About - Fabian Wassermann",
+    "aboutDescription": "I’m Fabian Wassermann. I live in Austria, where I build amazing software.",
+    "articlesTitle": "Articles - Fabian Wassermann",
+    "articlesDescription": "All of my long-form thoughts on programming, webdesign, and more, collected in chronological order.",
+    "projectsTitle": "Projects - Fabian Wassermann",
+    "projectsDescription": "Things I’ve made during my freelance career."
+  },
+  "home": {
+    "hero": {
+      "title": "Software developer, freelancer, and amateur mountaineer.",
+      "description": "I’m Fabian, a software developer, specialized in full-stack development, based in Austria. I´m a freelancer doing everything from simple websites to bigger webapplications."
+    },
+    "social": {
+      "instagramAria": "Follow on Instagram",
+      "githubAria": "Follow on GitHub",
+      "linkedinAria": "Follow on LinkedIn"
+    },
+    "article": {
+      "readCta": "Read article"
+    },
+    "contact": {
+      "title": "You want to contact me?",
+      "description": "Feel free to send me an email at all time. If you want you can start a conversation by sending me a message.",
+      "messagePlaceholder": "Message",
+      "emailPlaceholder": "Email address",
+      "send": "Send"
+    },
+    "work": {
+      "title": "Work"
+    },
+    "sr": {
+      "company": "Company",
+      "role": "Role",
+      "date": "Date"
+    }
+  }
+  ,
+  "about": {
+    "hero": {
+      "title": "I’m Fabian. I live in Austria, where I build amazing software."
+    },
+    "content": {
+      "p1": "Hi there! I am a computer enthusiast with a passion for all things tech. From a young age, I have been fascinated by computers and how they work, which led me to pursue a career in the field. In addition to my love for computers, I also enjoy spending time in the great outdoors, particularly in the mountains. I am an avid sports fan and enjoy participating in a variety of activities.",
+      "p2": "In my professional life, I am a freelancer who specializes in building websites and software. I have experience working on a wide range of projects, from small websites to larger web applications. I am always looking to learn and grow in my field, and I am excited to see where my passion for computers and technology will take me next."
+    },
+    "social": {
+      "instagram": "Follow on Instagram",
+      "github": "Follow on GitHub",
+      "linkedin": "Follow on LinkedIn"
+    }
+  }
+  ,
+  "articles": {
+    "title": "Writing on software development, webdesign, and the software industry.",
+    "intro": "All of my long-form thoughts on programming, webdesign, and more, collected in chronological order."
+  },
+  "projects": {
+    "title": "Things I’ve made during my freelance career.",
+    "intro": "I’ve worked on some little projects over the years but these are the bigger projects that I’m most proud of.",
+    "websiteSectionTitle": "Website Projects",
+    "applicationSectionTitle": "Application Projects",
+    "items": {
+      "kest": {
+        "name": "KestAustria",
+        "description": "Website for a Software calculating capital gain tax for Austrians. The website gives an overview over the features."
+      },
+      "trElektrotechnik": {
+        "name": "TR Elektrotechnik",
+        "description": "Professional website for an electrical engineer doing solar, infrared heating, electrical installations and smart home."
+      },
+      "hundepension": {
+        "name": "Hundepension Bergparadies",
+        "description": "I created a website for a dog hotel nearby. This is one of my first websites I’ve ever made."
+      },
+      "labrador": {
+        "name": "Labrador vom Salzkofelblick",
+        "description": "This website is for a dog breeder. They’ve got the sweetest dogs I know."
+      },
+      "aatsi": {
+        "name": "AATSI Crypto Indexing",
+        "description": "This website is a demo page for showcasing purposes."
+      },
+      "billing": {
+        "name": "Billing Software",
+        "description": "A software for manage customers and generate offers, delivery notes and invoices."
+      },
+      "taxApp": {
+        "name": "Capital Gains Tax Application",
+        "description": "In Austria you have to pay tax on capital gains from stocks, interest and dividend. This app helps to have an overview over broker actions and supports filing tax declarations."
+      }
+    },
+    "projectPages": {
+      "taxApp": {
+        "name": "Tax Application",
+        "description": "All news and updates about the Tax Application I made."
+      },
+      "billingSoftware": {
+        "name": "Billing Software",
+        "description": "All news and updates to the Billing Software I made for one of my clients."
+      }
+    }
+  },
+  "webdesign": {
+    "meta": {
+      "title": "Webdesign - Fabian Wassermann",
+      "description": "Webdesign and Development."
+    },
+    "hero": {
+      "title": "Webdesign and Development",
+      "intro": "From responsive design to interactive features, I create visually appealing and functional websites tailored to your needs. Elevate your online presence with a user-friendly and engaging website."
+    },
+    "whatIUse": {
+      "title": "What I use",
+      "description": "I also integrate custom code to bring extra functionality and performance when needed."
+    },
+    "workflow": {
+      "title": "Workflow"
+    },
+    "cta": {
+      "title": "Let's talk About your website",
+      "button": "Contact me"
+    },
+    "steps": {
+      "discover": {
+        "id": "01",
+        "name": "Discover",
+        "title": "Discover Your Goals and Vision",
+        "description": "Before designing anything, it's crucial to understand your business, goals, and audience. This step sets the direction for everything that follows — ensuring the final website isn't just beautiful, but effective and aligned with your needs.",
+        "items": [
+          {
+            "title": "Business Goals",
+            "text": "What should the website achieve? (e.g. sell products, get leads, showcase work)"
+          },
+          {
+            "title": "Target Audience",
+            "text": "Who is the site for? Understanding their needs helps shape the design and content."
+          },
+          {
+            "title": "Content & Pages",
+            "text": "What kind of pages do you need (e.g. Home, About, Services), and what should they say?"
+          },
+          {
+            "title": "Brand Style or Inspiration",
+            "text": "Do you have a logo, brand colors, or websites you love? This guides the visual direction."
+          }
+        ]
+      },
+      "design": {
+        "id": "02",
+        "name": "Design",
+        "title": "Design That Feels Right",
+        "description": "During the design phase, I shape the look and feel of your website. Based on what we uncovered in the discovery step, I plan the layout, structure the content, and bring your brand to life with colors, typography, and visuals that connect with your audience.",
+        "radius": "Radius",
+        "font": "Font",
+        "radiusOptions": {
+          "square": "square",
+          "round": "round",
+          "circle": "circle"
+        },
+        "fontOptions": {
+          "arial": "Arial",
+          "timesNewRoman": "Times New Roman",
+          "courierNew": "Courier New"
+        },
+        "example": {
+          "navigation": [
+            "Rings",
+            "Necklaces",
+            "Earrings",
+            "Bracelets",
+            "Sale"
+          ],
+          "badge": "The Big Summer Sale.",
+          "shopNow": "Shop now",
+          "cta": "Shop now",
+          "explore": "Explore Collections",
+          "title": "The Art of Fine Jewelry",
+          "subtitle": "Unrivaled craftsmanship, rare gemstones, and timeless design come together in collections that exude sophistication and prestige.",
+          "companyName": "Your Company",
+          "openMenu": "Open main menu"
+        }
+      },
+      "build": {
+        "id": "03",
+        "name": "Build",
+        "title": "Build That Works",
+        "description": "In this phase, I turn the approved design into a fast, responsive website — built to perform smoothly across all devices and tailored to your business needs. Everything is clean, scalable, and ready to grow with you.",
+        "items": [
+          {
+            "title": "No-code meets custom",
+            "text": "Built in Webflow or Shopify with custom enhancements when needed."
+          },
+          {
+            "title": "Clean, maintainable code",
+            "text": "A solid foundation for future growth and features."
+          }
+        ]
+      },
+      "launch": {
+        "id": "04",
+        "name": "Launch & Support",
+        "title": "Smooth Launch. Steady Support.",
+        "description": "Once everything is tested and approved, we go live. I handle all the setup, optimization, and final checks to make sure your website launches smoothly, performs well, and is ready for real users.",
+        "items": [
+          {
+            "title": "Smooth, stress-free launch",
+            "text": "I handle setup, testing, and go-live so everything runs perfectly."
+          },
+          {
+            "title": "Performance & SEO checks",
+            "text": "Your site is optimized for speed, mobile, and discoverability."
+          },
+          {
+            "title": "Support during and after launch",
+            "text": "I'm by your side to make adjustments, answer questions, and ensure everything feels right."
+          }
+        ]
+      }
+    }
+  },
+  "services": {
+    "meta": {
+      "title": "Services - Fabian Wassermann",
+      "description": "Services I provide at a glance."
+    },
+    "hero": {
+      "title": "All services I offer at a glance.",
+      "intro": "I offer multiple services using multiple technologies. Check them out!"
+    },
+    "pricing": {
+      "startingPoint": "starting point",
+      "contactMe": "Contact me"
+    },
+    "webdesign": {
+      "title": "Webdesign and Development",
+      "description": "From responsive design to interactive features, I create visually appealing and functional websites tailored to your needs. Elevate your online presence with a user-friendly and engaging website."
+    },
+    "software": {
+      "title": "Software Development",
+      "description": "High-quality software solutions tailored to your unique business requirements. From concept to deployment, I ensure the software is robust, user-friendly, and built to grow with you."
+    },
+    "maintenance": {
+      "title": "Website Maintenance",
+      "description": "With my monthly support services, I'll take care of all your web maintainance needs, making it easy for you to focus on what you do best."
+    },
+    "seo": {
+      "title": "SEO Optimization",
+      "description": "From on-page optimization to keyword research and performance tracking, I help drive organic traffic and boost your online presence."
+    },
+    "automation": {
+      "title": "Automation Solutions",
+      "description": "Automation workflows to streamline repetitive tasks and improve efficiency. Help businesses save time, reduce errors, and boost productivity."
+    },
+    "cta": {
+      "title": "Let's Connect",
+      "subtitle": "Start our project today",
+      "button": "Contact me"
+    },
+    "tiers": {
+      "templatedWebflow": {
+        "title": "Templated Webflow",
+        "description": "Webpages are produced using a Webflow template.",
+        "price": "1500",
+        "features": [
+          "Reflecting brand identity",
+          "Responsive and mobile-friendly",
+          "Content management",
+          "Basic search engine optimization",
+          "Contact form possible"
+        ]
+      },
+      "customWebflow": {
+        "title": "Custom Webflow",
+        "description": "Webpages are made using custom Webflow programming.",
+        "price": "2500",
+        "features": [
+          "All of templated webflow tier",
+          "Unique and tailored design",
+          "Enhanced scalability and flexibility",
+          "Competitive advantage",
+          "404 redirecting",
+          "Photo sourcing help"
+        ]
+      },
+      "customComposition": {
+        "title": "Custom Composition",
+        "description": "All webpages are custom programmed to suit espacially your usecase.",
+        "price": "3000",
+        "features": [
+          "All of custom webflow tier",
+          "Highest possible customization",
+          "Custom features and functionality",
+          "Seampless integrations",
+          "Growth opportunity"
+        ]
+      }
+    },
+    "webdev": {
+      "title": "Website development",
+      "description": "I am a professional website developer offing the service of implementing a webdesign. From responsive design to interactive features, I create visually appealing and functional websites tailored to your needs. Elevate your online presence with a user-friendly and engaging website. Contact me today to discuss your project!"
+    },
+    "hosting": {
+      "title": "Website hosting and support",
+      "description": "Looking for reliable web hosting and top-notch support? Look no further! I offer comprehensive web hosting services and dedicated support for both new and existing websites. Whether you're starting a new website or need reliable hosting and support for your existing one, I have the expertise and resources to meet your needs. Focus on your core business while we handle the technical aspects. Contact me today to discuss your web hosting and support requirements!",
+      "monthlySupport": {
+        "title": "Monthly support",
+        "description": "Web hosting can be daunting, especially when starting out. But fear not, I'm here to help! With my monthly support services, I'll take care of all your web hosting needs, making it easy for you to focus on what you do best.",
+        "whatsIncluded": "What's included",
+        "features": {
+          "serverConfig": "Server configuration",
+          "domainManagement": "Domain management",
+          "securityEnhancements": "Security enhancements",
+          "optimization": "Look for optimization",
+          "analytics": "Analytics and reporting",
+          "contentDelivery": "Content delivery optimization"
+        },
+        "getAssistance": "Get assistance now",
+        "price": "100",
+        "perMonth": "/ month",
+        "contactMe": "Contact me",
+        "priceNote": "* Final price depends on needs"
+      }
+    }
+  }
+}

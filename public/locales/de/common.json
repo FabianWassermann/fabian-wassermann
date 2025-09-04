@@ -1,0 +1,371 @@
+{
+  "menu": {
+    "open": "Menü",
+    "close": "Menü schließen"
+  },
+  "nav": {
+    "title": "Navigation",
+    "about": "Über mich",
+    "articles": "Artikel",
+    "projects": "Projekte",
+    "services": "Leistungen",
+    "uses": "Verwendetes"
+  },
+  "meta": {
+    "homeTitle": "Fabian Wassermann - Softwareentwickler, Freelancer und Hobby-Bergsteiger",
+    "homeDescription": "Ich bin Fabian, ein Softwareentwickler aus Österreich. Ich bin Freelancer und realisiere alles von einfachen Websites bis hin zu größeren Webanwendungen.",
+    "aboutTitle": "Über mich - Fabian Wassermann",
+    "aboutDescription": "Ich bin Fabian Wassermann. Ich lebe in Österreich und entwickle großartige Software.",
+    "articlesTitle": "Artikel - Fabian Wassermann",
+    "articlesDescription": "Alle meine ausführlichen Gedanken zu Programmierung, Webdesign und mehr – chronologisch gesammelt.",
+    "projectsTitle": "Projekte - Fabian Wassermann",
+    "projectsDescription": "Dinge, die ich während meiner Freelancer-Laufbahn gemacht habe."
+  },
+  "home": {
+    "hero": {
+      "title": "Softwareentwickler, Freelancer und Hobby-Bergsteiger.",
+      "description": "Ich bin Fabian, ein auf Full-Stack-Entwicklung spezialisierter Softwareentwickler aus Österreich. Als Freelancer realisiere ich alles von einfachen Websites bis hin zu größeren Webanwendungen."
+    },
+    "social": {
+      "instagramAria": "Auf Instagram folgen",
+      "githubAria": "Auf GitHub folgen",
+      "linkedinAria": "Auf LinkedIn folgen"
+    },
+    "article": {
+      "readCta": "Artikel lesen"
+    },
+    "contact": {
+      "title": "Du möchtest mich kontaktieren?",
+      "description": "Schreib mir jederzeit gerne eine E-Mail. Wenn du möchtest, kannst du mit einer Nachricht ein Gespräch starten.",
+      "messagePlaceholder": "Nachricht",
+      "emailPlaceholder": "E-Mail-Adresse",
+      "send": "Senden"
+    },
+    "work": {
+      "title": "Arbeit"
+    },
+    "sr": {
+      "company": "Unternehmen",
+      "role": "Rolle",
+      "date": "Datum"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "Ich bin Fabian, lebe in Österreich und entwickle großartige Software."
+    },
+    "content": {
+      "p1": "Hallo! Ich bin Computer-Enthusiast mit einer Leidenschaft für alles rund um Technik. Schon früh haben mich Computer und deren Funktionsweise fasziniert, was mich zu einer beruflichen Laufbahn in diesem Bereich geführt hat. Neben meiner Liebe zu Computern verbringe ich gerne Zeit in der Natur, besonders in den Bergen. Außerdem bin ich sportbegeistert und treibe vielfältige Aktivitäten.",
+      "p2": "Beruflich bin ich als Freelancer tätig und spezialisiert auf die Entwicklung von Websites und Software. Ich habe Erfahrung mit einer Vielzahl von Projekten – von kleinen Websites bis hin zu größeren Webanwendungen. Ich möchte mich ständig weiterentwickeln und bin gespannt, wohin mich meine Leidenschaft für Computer und Technologie als Nächstes führt."
+    },
+    "social": {
+      "instagram": "Auf Instagram folgen",
+      "github": "Auf GitHub folgen",
+      "linkedin": "Auf LinkedIn folgen"
+    }
+  }
+  ,
+  "articles": {
+    "title": "Artikel über Software und Webdesign.",
+    "intro": "Alle meine ausführlichen Gedanken zu Programmierung, Webdesign und mehr – chronologisch gesammelt."
+  },
+  "projects": {
+    "title": "Dinge, die ich während meiner Freelancer-Laufbahn gemacht habe.",
+    "intro": "Ich habe im Laufe der Jahre an einigen kleinen Projekten gearbeitet, aber das sind die größeren Projekte, auf die ich am meisten stolz bin.",
+    "websiteSectionTitle": "Website-Projekte",
+    "applicationSectionTitle": "Anwendungsprojekte",
+    "items": {
+      "kest": {
+        "name": "KestAustria",
+        "description": "Website für eine Software zur Berechnung der Kapitalertragsteuer in Österreich. Die Seite gibt einen Überblick über die Funktionen."
+      },
+      "trElektrotechnik": {
+        "name": "TR Elektrotechnik",
+        "description": "Professionelle Website für einen Elektriker mit Fokus auf Photovoltaik, Infrarotheizung, Elektroinstallationen und Smart Home."
+      },
+      "hundepension": {
+        "name": "Hundepension Bergparadies",
+        "description": "Ich habe eine Website für ein nahegelegenes Hundehotel erstellt. Das ist eine meiner ersten Websites überhaupt."
+      },
+      "labrador": {
+        "name": "Labrador vom Salzkofelblick",
+        "description": "Diese Website ist für einen Hundezüchter. Sie haben die süßesten Hunde, die ich kenne."
+      },
+      "aatsi": {
+        "name": "AATSI Crypto Indexing",
+        "description": "Diese Website ist eine Demoseite zu Vorführzwecken."
+      },
+      "billing": {
+        "name": "Rechnungssoftware",
+        "description": "Eine Software zur Verwaltung von Kunden sowie zum Erstellen von Angeboten, Lieferscheinen und Rechnungen."
+      },
+      "taxApp": {
+        "name": "Kapitalertragssteuer-Anwendung",
+        "description": "In Österreich müssen auf Kapitalerträge aus Aktien, Zinsen und Dividenden Steuern gezahlt werden. Diese App hilft dabei, Broker-Aktionen im Überblick zu behalten und unterstützt beim Erstellen der Steuererklärung."
+      }
+    },
+    "projectPages": {
+      "taxApp": {
+        "name": "Steueranwendung",
+        "description": "Alle Neuigkeiten und Updates zur Steueranwendung, die ich entwickelt habe."
+      },
+      "billingSoftware": {
+        "name": "Rechnungssoftware",
+        "description": "Alle Neuigkeiten und Updates zur Rechnungssoftware, die ich für einen meiner Kunden entwickelt habe."
+      }
+    }
+  },
+  "webdesign": {
+    "meta": {
+      "title": "Webdesign - Fabian Wassermann",
+      "description": "Webdesign und Entwicklung."
+    },
+    "hero": {
+      "title": "Webdesign und Entwicklung",
+      "intro": "Von responsivem Design bis hin zu interaktiven Funktionen erstelle ich visuell ansprechende und funktionale Websites, die auf deine Bedürfnisse zugeschnitten sind. Hebe deine Online-Präsenz mit einer benutzerfreundlichen und fesselnden Website hervor."
+    },
+    "whatIUse": {
+      "title": "Was ich verwende",
+      "description": "Ich integriere auch benutzerdefinierten Code, um bei Bedarf zusätzliche Funktionalität und Leistung zu bringen."
+    },
+    "workflow": {
+      "title": "Arbeitsablauf"
+    },
+    "cta": {
+      "title": "Reden wir über deine Website",
+      "button": "Kontaktiere mich"
+    },
+    "steps": {
+      "discover": {
+        "id": "01",
+        "name": "Entdecken",
+        "title": "Entdecken deiner Ziele und Visionen",
+        "description": "Bevor ich etwas designe, ist es entscheidend das Unternehmen, Ziele und Zielgruppe zu verstehen. Dieser Schritt setzt die Richtung für alles, was folgt — und stellt sicher, dass die finale Website nicht nur schön, sondern effektiv und auf deine Bedürfnisse abgestimmt ist.",
+        "items": [
+          {
+            "title": "Geschäftsziele",
+            "text": "Was soll die Website erreichen? (z.B. Produkte verkaufen, Leads generieren, Arbeit präsentieren)"
+          },
+          {
+            "title": "Zielgruppe",
+            "text": "Für wen ist die Seite? Das Verständnis ihrer Bedürfnisse hilft, Design und Inhalt zu gestalten."
+          },
+          {
+            "title": "Inhalt & Seiten",
+            "text": "Welche Art von Seiten werden gebraucht (z.B. Home, Über uns, Dienstleistungen) und was sollen diese bewirken?"
+          },
+          {
+            "title": "Markenstil oder Inspiration",
+            "text": "Hast du ein Logo, Markenfarben oder Websites, das du liebst? Das leitet die visuelle Richtung."
+          }
+        ]
+      },
+      "design": {
+        "id": "02",
+        "name": "Design",
+        "title": "Design, das sich richtig anfühlt",
+        "description": "In der Designphase gestalte ich das Aussehen und Gefühl Ihrer Website. Basierend auf dem, was wir im Entdeckungsschritt herausgefunden haben, plane ich das Layout, strukturiere den Inhalt und bringe deine Marke mit Farben, Typografie und visuellen Elementen zum Leben, die mit deine Zielgruppe in Verbindung stehen.",
+        "radius": "Radius",
+        "font": "Schriftart",
+        "radiusOptions": {
+          "square": "eckig",
+          "round": "abgerundet",
+          "circle": "rund"
+        },
+        "fontOptions": {
+          "arial": "Arial",
+          "timesNewRoman": "Times New Roman",
+          "courierNew": "Courier New"
+        },
+        "example": {
+          "navigation": [
+            "Ringe",
+            "Halsketten",
+            "Ohrringe",
+            "Armbänder",
+            "Verkauf"
+          ],
+          "badge": "Der große Sommerschlussverkauf.",
+          "shopNow": "Jetzt kaufen",
+          "cta": "Jetzt kaufen",
+          "explore": "Kollektionen erkunden",
+          "title": "Die Kunst des feinen Schmucks",
+          "subtitle": "Unvergleichliche Handwerkskunst, seltene Edelsteine und zeitloses Design vereinen sich in Kollektionen, die Eleganz und Prestige ausstrahlen.",
+          "companyName": "Ihr Unternehmen",
+          "openMenu": "Hauptmenü öffnen"
+        }
+      },
+      "build": {
+        "id": "03",
+        "name": "Bauen",
+        "title": "Bauen, das funktioniert",
+        "description": "In dieser Phase verwandle ich das genehmigte Design in eine schnelle, responsive Website — gebaut, um reibungslos auf allen Geräten zu funktionieren und auf deine Geschäftsbedürfnisse zugeschnitten. Alles ist sauber, skalierbar und bereit, mit Ihnen zu wachsen.",
+        "items": [
+          {
+            "title": "No-Code trifft auf Custom",
+            "text": "Gebaut in Webflow oder Shopify mit benutzerdefinierten Verbesserungen bei Bedarf."
+          },
+          {
+            "title": "Sauberer, wartbarer Code",
+            "text": "Ein solides Fundament für zukünftiges Wachstum und Funktionen."
+          }
+        ]
+      },
+      "launch": {
+        "id": "04",
+        "name": "Start & Support",
+        "title": "Reibungsloser Start. Steadiger Support.",
+        "description": "Sobald alles getestet und genehmigt ist, gehen wir live. Ich kümmere mich um alle Einrichtungen, Optimierungen und finalen Checks, um sicherzustellen, dass deine Website reibungslos startet, gut funktioniert und bereit für echte Benutzer ist.",
+        "items": [
+          {
+            "title": "Reibungsloser, stressfreier Start",
+            "text": "Ich kümmere mich um Einrichtung, Tests und Go-Live, damit alles perfekt läuft."
+          },
+          {
+            "title": "Performance & SEO-Checks",
+            "text": "Deine Seite ist für Geschwindigkeit, Mobile und Auffindbarkeit optimiert."
+          },
+          {
+            "title": "Support während und nach dem Start",
+            "text": "Ich bin an deiner Seite, um Anpassungen vorzunehmen, Fragen zu beantworten und sicherzustellen, dass sich alles richtig anfühlt."
+          }
+        ]
+      }
+    }
+  },
+  "resume": {
+    "feratel": {
+      "company": "Feratel Media Technologies",
+      "title": "IT-Schnittstellen-Support"
+    },
+    "neednect": {
+      "company": "NeedNect - Solutions",
+      "title": "Fullstack-Entwickler"
+    },
+    "hs2n": {
+      "company": "hs2n Informationstechnologie GmbH",
+      "title": "C# Software Engineer"
+    },
+    "consens": {
+      "company": "Consens Zeiterfassung GmbH",
+      "title": "Praktikant"
+    },
+    "dates": {
+      "present": "Gegenwärtig",
+      "feb2025": "Feb 2025",
+      "may2022": "Mai 2022",
+      "jan2025": "Jan. 2025",
+      "jul2020": "Jul. 2020",
+      "jul2021": "Jul. 2021",
+      "jul2019": "Jul. 2019",
+      "aug2019": "Aug. 2019",
+      "until": "bis"
+    }
+  },
+  "services": {
+    "meta": {
+      "title": "Leistungen - Fabian Wassermann",
+      "description": "Alle Leistungen, die ich anbiete, auf einen Blick."
+    },
+    "hero": {
+      "title": "Alle Leistungen, auf einen Blick.",
+      "intro": "Ich biete verschiedene Leistungen mit verschiedenen Technologien an. Schaue sie dir an!"
+    },
+    "pricing": {
+      "startingPoint": "Startpunkt",
+      "contactMe": "Kontaktiere mich"
+    },
+    "webdesign": {
+      "title": "Webdesign und Entwicklung",
+      "description": "Von responsivem Design bis hin zu interaktiven Funktionen erstelle ich visuell ansprechende und funktionale Websites, die auf deine Bedürfnisse zugeschnitten sind. Hebe deine Online-Präsenz mit einer benutzerfreundlichen und fesselnden Website hervor."
+    },
+    "software": {
+      "title": "Softwareentwicklung",
+      "description": "Hochwertige Softwarelösungen, die auf deine einzigartigen Geschäftsanforderungen zugeschnitten sind. Von der Konzeption bis zur Bereitstellung stelle ich sicher, dass die Software robust, benutzerfreundlich und für Ihr Wachstum konzipiert ist."
+    },
+    "maintenance": {
+      "title": "Website-Wartung",
+      "description": "Mit meinen monatlichen Support-Services kümmere ich mich um alle deine Web-Wartungsbedürfnisse, damit du dich auf das konzentrieren können, was du am Besten kannst."
+    },
+    "seo": {
+      "title": "SEO-Optimierung",
+      "description": "Von der On-Page-Optimierung bis hin zu Keyword-Recherche und Performance-Tracking helfe ich dabei, organischen Traffic zu generieren und deine Online-Präsenz zu stärken."
+    },
+    "automation": {
+      "title": "Automatisierungslösungen",
+      "description": "Automatisierungsworkflows zur Rationalisierung wiederkehrender Aufgaben und Verbesserung der Effizienz. Unternehmen dabei helfen, Zeit zu sparen, Fehler zu reduzieren und die Produktivität zu steigern."
+    },
+    "cta": {
+      "title": "Melde dich bei mir",
+      "subtitle": "Starten wir noch heute",
+      "button": "Kontaktiere mich"
+    },
+    "tiers": {
+      "templatedWebflow": {
+        "title": "Webflow-Vorlage",
+        "description": "Webseiten werden mit einer Webflow-Vorlage erstellt.",
+        "price": "1500",
+        "features": [
+          "Widerspiegelung der Markenidentität",
+          "Responsiv und mobilfreundlich",
+          "Content-Management",
+          "Grundlegende Suchmaschinenoptimierung",
+          "Kontaktformular möglich"
+        ]
+      },
+      "customWebflow": {
+        "title": "Individuelles Webflow",
+        "description": "Webseiten werden mit individueller Webflow-Programmierung erstellt.",
+        "price": "2500",
+        "features": [
+          "Alle Funktionen der Webflow-Vorlage",
+          "Einzigartiges und maßgeschneidertes Design",
+          "Verbesserte Skalierbarkeit und Flexibilität",
+          "Wettbewerbsvorteil",
+          "404-Weiterleitung",
+          "Hilfe bei der Fotobeschaffung"
+        ]
+      },
+      "customComposition": {
+        "title": "Individuelle Komposition",
+        "description": "Alle Webseiten werden individuell programmiert, um besonders deinen Anwendungsfall zu erfüllen.",
+        "price": "3000",
+        "features": [
+          "Alle Funktionen der individuellen Webflow-Stufe",
+          "Höchstmögliche Individualisierung",
+          "Individuelle Funktionen und Funktionalität",
+          "Nahtlose Integrationen",
+          "Wachstumschancen"
+        ]
+      }
+    },
+    "webdev": {
+      "title": "Website-Entwicklung",
+      "description": "Ich bin ein professioneller Website-Entwickler, der den Service der Implementierung eines Webdesigns anbietet. Von responsivem Design bis hin zu interaktiven Funktionen erstelle ich visuell ansprechende und funktionale Websites, die auf Ihre Bedürfnisse zugeschnitten sind. Hebe die Online-Präsenz mit einer benutzerfreundlichen und fesselnden Website hervor. Kontaktiere mich noch heute, um Ihr Projekt zu besprechen!"
+    },
+    "hosting": {
+      "title": "Website-Hosting und Support",
+      "description": "Suchst du nach zuverlässigem Web-Hosting und erstklassigem Support? Ich biete umfassende Web-Hosting-Services und engagierten Support für neue und bestehende Websites. Egal, ob Sie eine neue Website starten oder zuverlässiges Hosting und Support für Ihre bestehende benötigen, ich habe die Expertise und Ressourcen, um Ihre Bedürfnisse zu erfüllen. Konzentrieren Sie sich auf Ihr Kerngeschäft, während wir uns um die technischen Aspekte kümmern. Kontaktieren Sie mich noch heute, um Ihre Web-Hosting- und Support-Anforderungen zu besprechen!",
+      "monthlySupport": {
+        "title": "Monatlicher Support",
+        "description": "Web-Hosting kann entmutigend sein, besonders wenn man gerade erst anfängt. Aber keine Sorge, ich bin hier, um zu helfen! Mit meinen monatlichen Support-Services kümmere ich mich um alle Ihre Web-Hosting-Bedürfnisse, damit Sie sich auf das konzentrieren können, was Sie am besten können.",
+        "whatsIncluded": "Was ist inbegriffen",
+        "features": {
+          "serverConfig": "Server-Konfiguration",
+          "domainManagement": "Domain-Verwaltung",
+          "securityEnhancements": "Sicherheitsverbesserungen",
+          "optimization": "Nach Optimierung suchen",
+          "analytics": "Analysen und Berichterstattung",
+          "contentDelivery": "Content-Delivery-Optimierung"
+        },
+        "getAssistance": "Jetzt Hilfe erhalten",
+        "price": "100",
+        "perMonth": "/ Monat",
+        "contactMe": "Kontaktiere mich",
+        "priceNote": "* Endpreis hängt von den Bedürfnissen ab"
+      }
+    }
+  }
+}
+
+

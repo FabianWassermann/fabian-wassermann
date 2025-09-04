@@ -13,6 +13,7 @@ import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import DecryptedText from '@/components/DecryptedText'
 import GridMotion from '@/components/GridMotion'
+import { useTranslation } from 'react-i18next'
 
 import webflowWhite from '@/images/logos/webflow-white.png'
 import webflowBlack from '@/images/logos/webflow-black.png'
@@ -37,23 +38,23 @@ import project6 from '@/images/workflow/project6.webp'
 import imageExampleHero from '@/images/workflow/heroImageExample.webp'
 
 export default function WebdesignService() {
+  const { t } = useTranslation('common')
+  
   return (
     <>
       <Head>
-        <title>Webdesign - Fabian Wassermann</title>
-        <meta name="description" content="Webdesign and Development." />
+        <title>{t('webdesign.meta.title')}</title>
+        <meta name="description" content={t('webdesign.meta.description')} />
       </Head>
 
       <SimpleLayout
         icon={<GlobeIcon className="-ml-2 h-16 w-16" />}
-        title="Webdesign and Development"
-        intro=" From responsive design to interactive features, I create visually
-              appealing and functional websites tailored to your needs. Elevate
-              your online presence with a user-friendly and engaging website."
+        title={t('webdesign.hero.title')}
+        intro={t('webdesign.hero.intro')}
       >
         <div className="mb-16">
           <h2 className="mb-5 text-2xl font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-            What I use
+            {t('webdesign.whatIUse.title')}
           </h2>
           {/* <p className="relative z-10 mt-2 max-w-[80%] text-sm text-zinc-600 dark:text-zinc-400">
             I design in Figma, build in Webflow or Shopify, and enhance with
@@ -64,7 +65,7 @@ export default function WebdesignService() {
 
         <div>
           <h2 className="mb-5 text-2xl font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-            Workflow
+            {t('webdesign.workflow.title')}
           </h2>
 
           <WorkFlow />
@@ -104,20 +105,19 @@ function GlobeIcon(props) {
 
 function CTASection() {
   let router = useRouter()
+  const { t } = useTranslation('common')
 
   return (
     <div className="mt-28 lg:flex lg:items-center lg:justify-between">
       <h2 className="max-w-2xl text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-5xl">
-        Let&apos;s talk
-        <br />
-        About your website
+        {t('webdesign.cta.title')}
       </h2>
       <div className="mt-10 flex items-center gap-x-6 lg:mt-0 lg:shrink-0">
         <Button
           className="h-16 w-52 !rounded-full"
           onClick={() => router.replace('/#contact')}
         >
-          Contact me
+          {t('webdesign.cta.button')}
         </Button>
       </div>
     </div>
@@ -125,6 +125,8 @@ function CTASection() {
 }
 
 function WhatIUse() {
+  const { t } = useTranslation('common')
+  
   return (
     <div className="mx-auto max-w-2xl lg:max-w-none">
       {/* <h3 className="text-lg/8 font-semibold text-zinc-900 dark:text-zinc-100">
@@ -170,8 +172,7 @@ function WhatIUse() {
         />
       </div>
       <p className="relative z-10 mt-2 max-w-[80%] text-sm text-zinc-600 dark:text-zinc-400">
-        I also integrate custom code to bring extra functionality and
-        performance when needed.
+        {t('webdesign.whatIUse.description')}
       </p>
     </div>
   )
@@ -179,6 +180,7 @@ function WhatIUse() {
 
 function WorkFlow() {
   const [currentHash, setCurrentHash] = useState(null)
+  const { t } = useTranslation('common')
 
   useEffect(() => {
     setCurrentHash(window.location.hash || steps[0].href)
@@ -196,26 +198,26 @@ function WorkFlow() {
 
   const steps = [
     {
-      id: '01',
-      name: 'Discover',
+      id: t('webdesign.steps.discover.id'),
+      name: t('webdesign.steps.discover.name'),
       href: '#workflow-discover',
       content: <DiscoverStep />,
     },
     {
-      id: '02',
-      name: 'Design',
+      id: t('webdesign.steps.design.id'),
+      name: t('webdesign.steps.design.name'),
       href: '#workflow-design',
       content: <DesignStep />,
     },
     {
-      id: '03',
-      name: 'Build',
+      id: t('webdesign.steps.build.id'),
+      name: t('webdesign.steps.build.name'),
       href: '#workflow-build',
       content: <BuildStep />,
     },
     {
-      id: '04',
-      name: 'Launch & Support',
+      id: t('webdesign.steps.launch.id'),
+      name: t('webdesign.steps.launch.name'),
       href: '#workflow-launch',
       content: <LaunchStep />,
     },
@@ -479,25 +481,26 @@ function CircleIcon(props) {
 
 function RadiusPicker({ radius, onChange }) {
   const [selectedRadius, setSelectedRadius] = useState(radius || 'circle')
+  const { t } = useTranslation('common')
 
   const radiusOptions = [
     {
       id: 'square',
-      name: 'square',
+      name: t('webdesign.steps.design.radiusOptions.square'),
       icon: (
         <SquareIcon className="size-6" isActive={selectedRadius === 'square'} />
       ),
     },
     {
       id: 'round',
-      name: 'round',
+      name: t('webdesign.steps.design.radiusOptions.round'),
       icon: (
         <RoundIcon className="size-6" isActive={selectedRadius === 'round'} />
       ),
     },
     {
       id: 'circle',
-      name: 'circle',
+      name: t('webdesign.steps.design.radiusOptions.circle'),
       icon: (
         <CircleIcon className="size-6" isActive={selectedRadius === 'circle'} />
       ),
@@ -517,7 +520,7 @@ function RadiusPicker({ radius, onChange }) {
     <fieldset aria-label="Radius">
       <div className="flex items-center justify-between">
         <div className="text-sm/6 font-medium text-zinc-800 dark:text-zinc-100">
-          Radius
+          {t('webdesign.steps.design.radius')}
         </div>
       </div>
       <div className="mt-2 grid grid-cols-3 gap-3">
@@ -553,19 +556,20 @@ function FontFamilyPicker({ fontFamily, onChange }) {
   const [selectedFontFamily, setSelectedFontFamily] = useState(
     fontFamily || 'Arial'
   )
+  const { t } = useTranslation('common')
 
   const fontFamilyOptions = [
     {
       id: 'Arial',
-      name: 'Arial',
+      name: t('webdesign.steps.design.fontOptions.arial'),
     },
     {
       id: 'Times New Roman',
-      name: 'Times New Roman',
+      name: t('webdesign.steps.design.fontOptions.timesNewRoman'),
     },
     {
       id: 'Courier New',
-      name: 'Courier New',
+      name: t('webdesign.steps.design.fontOptions.courierNew'),
     },
   ]
 
@@ -582,7 +586,7 @@ function FontFamilyPicker({ fontFamily, onChange }) {
     <fieldset aria-label="Font">
       <div className="flex items-center justify-between">
         <div className="text-sm/6 font-medium text-zinc-800 dark:text-zinc-100">
-          Font
+          {t('webdesign.steps.design.font')}
         </div>
       </div>
       <div className="mt-2 flex gap-3">
@@ -618,6 +622,7 @@ function DesignStep() {
   const [color, setColor] = useState('#ffae00')
   const [radius, setRadius] = useState('circle')
   const [fontFamily, setFontFamily] = useState('Arial')
+  const { t } = useTranslation('common')
 
   return (
     // <ImgComparisonSlider>
@@ -636,14 +641,11 @@ function DesignStep() {
           <div className="inline-flex items-center gap-2">
             <DesignIcon className="size-6" />
             <h2 className="text-pretty text-xl font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-              Design That Feels Right
+              {t('webdesign.steps.design.title')}
             </h2>
           </div>
           <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-            During the design phase, I shape the look and feel of your website.
-            Based on what we uncovered in the discovery step, I plan the layout,
-            structure the content, and bring your brand to life with colors,
-            typography, and visuals that connect with your audience.
+            {t('webdesign.steps.design.description')}
           </p>
         </div>
         <div className="flex items-start gap-4 lg:row-span-2">
@@ -668,12 +670,13 @@ function DesignStep() {
 }
 
 function ExampleHeroSection(props) {
+  const { t } = useTranslation('common')
   const navigation = [
-    { name: 'Rings', href: '#' },
-    { name: 'Necklaces', href: '#' },
-    { name: 'Earrings', href: '#' },
-    { name: 'Bracelets', href: '#' },
-    { name: 'Sale', href: '#' },
+    { name: t('webdesign.steps.design.example.navigation.0'), href: '#' },
+    { name: t('webdesign.steps.design.example.navigation.1'), href: '#' },
+    { name: t('webdesign.steps.design.example.navigation.2'), href: '#' },
+    { name: t('webdesign.steps.design.example.navigation.3'), href: '#' },
+    { name: t('webdesign.steps.design.example.navigation.4'), href: '#' },
   ]
 
   const { fontFamily, radius, colorHex, ...restProps } = props
@@ -696,7 +699,7 @@ function ExampleHeroSection(props) {
                     className="flex items-center justify-between lg:justify-start"
                   >
                     <a className="-m-1.5 cursor-pointer p-1.5">
-                      <span className="sr-only">Your Company</span>
+                      <span className="sr-only">{t('webdesign.steps.design.example.companyName')}</span>
                       <svg
                         viewBox="0 0 24 24"
                         fill="none"
@@ -724,7 +727,7 @@ function ExampleHeroSection(props) {
                       type="button"
                       className="-m-2.5 rounded-md p-2.5 text-gray-700 lg:hidden"
                     >
-                      <span className="sr-only">Open main menu</span>
+                      <span className="sr-only">{t('webdesign.steps.design.example.openMenu')}</span>
                       <Bars3Icon aria-hidden="true" className="size-6" />
                     </button>
                     <div className="hidden lg:ml-8 lg:flex lg:gap-x-12">
@@ -758,30 +761,28 @@ function ExampleHeroSection(props) {
                     <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
                       <div className="hidden sm:mb-10 sm:flex">
                         <div className="text-base/6 relative rounded-full px-3 py-1 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                          The Big Summer Sale.{' '}
+                          {t('webdesign.steps.design.example.badge')}{' '}
                           <a className="text-primary-600 cursor-pointer whitespace-nowrap font-semibold">
                             <span
                               aria-hidden="true"
                               className="absolute inset-0"
                             />
-                            Shop now <span aria-hidden="true">&rarr;</span>
+                            {t('webdesign.steps.design.example.shopNow')} <span aria-hidden="true">&rarr;</span>
                           </a>
                         </div>
                       </div>
                       <h1 className="text-pretty text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
-                        The Art of Fine Jewelry
+                        {t('webdesign.steps.design.example.title')}
                       </h1>
                       <p className="text-pretty sm:text-xl/8 mt-8 text-lg font-medium text-gray-500">
-                        Unrivaled craftsmanship, rare gemstones, and timeless
-                        design come together in collections that exude
-                        sophistication and prestige.
+                        {t('webdesign.steps.design.example.subtitle')}
                       </p>
                       <div className="mt-10 flex items-center gap-x-6">
                         <a className="bg-primary-600 hover:bg-primary-500 focus-visible:outline-primary-600 cursor-pointer rounded-md px-4 py-3 text-base font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-                          Shop now
+                          {t('webdesign.steps.design.example.cta')}
                         </a>
                         <a className="text-base/6 cursor-pointer font-semibold text-gray-900">
-                          Explore Collections <span aria-hidden="true">→</span>
+                          {t('webdesign.steps.design.example.explore')} <span aria-hidden="true">→</span>
                         </a>
                       </div>
                     </div>
@@ -835,14 +836,15 @@ function CodeIcon(props) {
 }
 
 function BuildStep() {
+  const { t } = useTranslation('common')
   const list = [
     {
-      title: 'No-code meets custom',
-      text: 'Built in Webflow or Shopify with custom enhancements when needed.',
+      title: t('webdesign.steps.build.items.0.title'),
+      text: t('webdesign.steps.build.items.0.text'),
     },
     {
-      title: 'Clean, maintainable code',
-      text: 'A solid foundation for future growth and features.',
+      title: t('webdesign.steps.build.items.1.title'),
+      text: t('webdesign.steps.build.items.1.text'),
     },
   ]
 
@@ -853,7 +855,7 @@ function BuildStep() {
           <div className="inline-flex items-center gap-2">
             <CodeIcon className="size-6" />
             <DecryptedText
-              text="Build That Works"
+              text={t('webdesign.steps.build.title')}
               animateOn="view"
               sequential
               revealDirection="start"
@@ -862,10 +864,7 @@ function BuildStep() {
             />
           </div>
           <DecryptedText
-            text="In this phase, I turn the approved design into a fast, responsive
-            website — built to perform smoothly across all devices and tailored
-            to your business needs. Everything is clean, scalable, and ready to
-            grow with you."
+            text={t('webdesign.steps.build.description')}
             animateOn="view"
             sequential
             revealDirection="start"
@@ -937,22 +936,23 @@ function LaunchIcon(props) {
 }
 
 function DiscoverStep() {
+  const { t } = useTranslation('common')
   const list = [
     {
-      title: 'Business Goals',
-      text: 'What should the website achieve? (e.g. sell products, get leads, showcase work)',
+      title: t('webdesign.steps.discover.items.0.title'),
+      text: t('webdesign.steps.discover.items.0.text'),
     },
     {
-      title: 'Target Audience',
-      text: 'Who is the site for? Understanding their needs helps shape the design and content.',
+      title: t('webdesign.steps.discover.items.1.title'),
+      text: t('webdesign.steps.discover.items.1.text'),
     },
     {
-      title: 'Content & Pages',
-      text: 'What kind of pages do you need (e.g. Home, About, Services), and what should they say?',
+      title: t('webdesign.steps.discover.items.2.title'),
+      text: t('webdesign.steps.discover.items.2.text'),
     },
     {
-      title: 'Brand Style or Inspiration',
-      text: 'Do you have a logo, brand colors, or websites you love? This guides the visual direction.',
+      title: t('webdesign.steps.discover.items.3.title'),
+      text: t('webdesign.steps.discover.items.3.text'),
     },
   ]
 
@@ -963,14 +963,11 @@ function DiscoverStep() {
           <div className="inline-flex items-center gap-2">
             <SpeakIcon className="size-6" />
             <h2 className="text-pretty text-xl font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-              Discover Your Goals and Vision
+              {t('webdesign.steps.discover.title')}
             </h2>
           </div>
           <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-            Before designing anything, it&apos;s crucial to understand your
-            business, goals, and audience. This step sets the direction for
-            everything that follows — ensuring the final website isn’t just
-            beautiful, but effective and aligned with your needs.
+            {t('webdesign.steps.discover.description')}
           </p>
           <ul
             role="list"
@@ -1025,17 +1022,18 @@ function DiscoverStep() {
 }
 
 function LaunchStep() {
+  const { t } = useTranslation('common')
   const list = [
     {
-      title: 'Smooth, stress-free launch',
-      text: 'I handle setup, testing, and go-live so everything runs perfectly.',
+      title: t('webdesign.steps.launch.items.0.title'),
+      text: t('webdesign.steps.launch.items.0.text'),
     },
     {
-      title: 'Performance & SEO checks',
-      text: 'Your site is optimized for speed, mobile, and discoverability.',
+      title: t('webdesign.steps.launch.items.1.title'),
+      text: t('webdesign.steps.launch.items.1.text'),
     },
     {
-      title: 'Support during and after launch',
+      title: t('webdesign.steps.launch.items.2.title'),
       text: 'I’m by your side to make adjustments, answer questions, and ensure everything feels right.',
     },
   ]
@@ -1049,13 +1047,11 @@ function LaunchStep() {
           <div className="inline-flex items-center gap-2">
             <LaunchIcon className="size-6" />
             <h2 className="text-pretty text-xl font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-              Smooth Launch. Steady Support.
+              {t('webdesign.steps.launch.title')}
             </h2>
           </div>
           <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-            Once everything is tested and approved, we go live. I handle all the
-            setup, optimization, and final checks to make sure your website
-            launches smoothly, performs well, and is ready for real users.
+            {t('webdesign.steps.launch.description')}
           </p>
           <ul
             role="list"

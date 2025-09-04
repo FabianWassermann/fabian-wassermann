@@ -18,12 +18,11 @@ import imageAatsiRebalancing from '@/images/projects/aatsi-rebalancing.webp'
 import imageTRElektrotechnik from '@/images/projects/tr-elektrotechnik.webp'
 import imageKestAustria from '@/images/projects/kestaustria.webp'
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const projects = [
   {
-    name: 'KestAustria',
-    description:
-      'Website for a Software calculating capital gain tax for Austrians. The website gives an overview over the features.',
+    id: 'kest',
     link: {
       href: 'https://www.kestaustria.at/',
       label: 'kestaustria.at',
@@ -34,9 +33,7 @@ const projects = [
     image: imageKestAustria,
   },
   {
-    name: 'TR Elektrotechnik',
-    description:
-      'Professional website for an electrical engineer doing solar, infrared heating, electrical installations and smart home.',
+    id: 'trElektrotechnik',
     link: {
       href: 'https://www.tr-elektrotechnik.at/',
       label: 'tr-elektrotechnik.at',
@@ -47,9 +44,7 @@ const projects = [
     image: imageTRElektrotechnik,
   },
   {
-    name: 'Hundepension Bergparadies',
-    description:
-      'I created a website for a dog hotel nearby. This is one of my first websites I´ve ever made.',
+    id: 'hundepension',
     link: {
       href: 'https://www.hundepensionbergparadies.at/',
       label: 'hundepensionbergparadies.at',
@@ -60,9 +55,7 @@ const projects = [
     image: imageHundepensionBergparadies,
   },
   {
-    name: 'Labrador vom Salzkofelblick',
-    description:
-      'This website is for a dog breeder. They´ve got the sweetest dogs I know.',
+    id: 'labrador',
     link: {
       href: 'https://www.labrador-vom-salzkofelblick.at/',
       label: 'labrador-vom-salzkofelblick.at',
@@ -74,8 +67,7 @@ const projects = [
     additionalImageClasses: '!w-3/4 !h-auto',
   },
   {
-    name: 'AATSI Crypto Indexing',
-    description: 'This website is a demo page for showcasing purposes.',
+    id: 'aatsi',
     link: {
       href: 'https://aatsi.fabian-wassermann.com/',
       label: 'www.aatsi.org',
@@ -90,9 +82,7 @@ const projects = [
 
 const applicationProjects = [
   {
-    name: 'Billing Software',
-    description:
-      'A software for manage customers and generate offers, delivery notes and invoices.',
+    id: 'billing',
     link: {
       href: '/projects/billing-software',
       label: '/projects/billing-software',
@@ -100,9 +90,7 @@ const applicationProjects = [
     tags: ['ExpressJs', 'VueJs', 'Prisma ORM', 'MongoDB'],
   },
   {
-    name: 'Capital Gains Tax Application',
-    description:
-      'In Austria you have to pay tax on capital gains from stocks, interest and dividend. This app helps to have an overview over broker actions and supports filing tax declarations.',
+    id: 'taxApp',
     link: {
       href: '/projects/tax-app',
       label: '/projects/tax-app',
@@ -163,25 +151,23 @@ function Tag({ tagName }) {
 }
 
 export default function Projects() {
+  const { t } = useTranslation('common')
   const [, updateState] = React.useState()
   const forceUpdate = React.useCallback(() => updateState({}), [])
 
   return (
     <>
       <Head>
-        <title>Projects - Fabian Wassermann</title>
-        <meta
-          name="description"
-          content="Things I’ve made during my freelance career."
-        />
+        <title>{t('meta.projectsTitle')}</title>
+        <meta name="description" content={t('meta.projectsDescription')} />
       </Head>
       <SimpleLayout
-        title="Things I’ve made during my freelance career."
-        intro="I’ve worked on some little projects over the years but these are the bigger projects that I’m most proud of."
+        title={t('projects.title')}
+        intro={t('projects.intro')}
       >
         <div>
           <h2 className="mb-8 text-lg font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-            Website Projects
+            {t('projects.websiteSectionTitle')}
           </h2>
           <ul
             role="list"
@@ -219,14 +205,18 @@ export default function Projects() {
                   </button>
                 </div>
                 <h2 className="mt-6 mb-2 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-                  <Card.Link href={project.link.href}>{project.name}</Card.Link>
+                  <Card.Link href={project.link.href}>
+                    {t(`projects.items.${project.id}.name`, { defaultValue: project.name })}
+                  </Card.Link>
                 </h2>
                 <div className="z-10 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <Tag tagName={tag} key={tag}></Tag>
                   ))}
                 </div>
-                <Card.Description>{project.description}</Card.Description>
+                <Card.Description>
+                  {t(`projects.items.${project.id}.description`, { defaultValue: project.description })}
+                </Card.Description>
                 <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
                   <LinkIcon className="h-6 w-6 flex-none" />
                   <span className="ml-2">{project.link.label}</span>
@@ -259,7 +249,7 @@ export default function Projects() {
         </div>
         <div className="mt-24">
           <h2 className="mb-8 text-lg font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-            Application Projects
+            {t('projects.applicationSectionTitle')}
           </h2>
           <ul
             role="list"
@@ -271,7 +261,7 @@ export default function Projects() {
                   <div>
                     <h2 className="mb-2 text-base font-semibold text-zinc-800 dark:text-zinc-100">
                       <Card.Link href={project.link.href}>
-                        {project.name}
+                        {t(`projects.items.${project.id}.name`, { defaultValue: project.name })}
                       </Card.Link>
                     </h2>
                     <div className="relative z-10 flex flex-wrap gap-2">
@@ -308,8 +298,9 @@ export default function Projects() {
                     </button>
                   ) : null}
                 </div>
-
-                <Card.Description>{project.description}</Card.Description>
+                <Card.Description>
+                  {t(`projects.items.${project.id}.description`, { defaultValue: project.description })}
+                </Card.Description>
                 <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
                   <LinkIcon className="h-6 w-6 flex-none" />
                   <span className="ml-2">{project.link.label}</span>

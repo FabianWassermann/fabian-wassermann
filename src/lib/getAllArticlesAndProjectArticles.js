@@ -4,9 +4,9 @@ import * as path from 'path'
 import { getAllArticles } from './getAllArticles'
 import { importProjectArticle } from './getAllArticlesOfProject'
 
-export async function getAllArticlesAndProjectArticles() {
+export async function getAllArticlesAndProjectArticles(locale = 'en') {
   let articleFilenames = await glob(['*.mdx', '**/index.mdx'], {
-    cwd: path.join(process.cwd(), `src/pages/projects/`),
+    cwd: path.join(process.cwd(), `src/content/projects/`),
   })
 
   let articles = await Promise.all(
@@ -16,11 +16,11 @@ export async function getAllArticlesAndProjectArticles() {
         `${articleName}/`,
         ''
       )
-      return importProjectArticle(articleName, articleFilenameWithoutName)
+      return importProjectArticle(articleName, articleFilenameWithoutName, locale)
     })
   )
 
-  const allArticles = [...(await getAllArticles()), ...articles]
+  const allArticles = [...(await getAllArticles(locale)), ...articles]
 
   return allArticles.sort((a, z) => new Date(z.date) - new Date(a.date))
 }
