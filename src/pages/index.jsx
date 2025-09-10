@@ -29,6 +29,9 @@ import { formatDate } from '@/lib/formatDate'
 import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { SplitText } from 'gsap/SplitText'
 
 function MailIcon(props) {
   return (
@@ -281,34 +284,73 @@ function Resume() {
 
 function Photos() {
   let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
+  const containerRef = useRef(null)
 
   useEffect(() => {
-    window.addEventListener('scroll', (e) => {
-      // let offset = document.getElementById("photos").getBoundingClientRect().top;
-      // document.getElementById("photos").style.transform = `translateX(${0 - window.scrollY}px)`;
-      if (!document.getElementById('photos')) return
-      document
-        .getElementById('photos')
-        .animate([{ transform: `translateX(${0 - window.scrollY / 2}px)` }], {
-          delay: 100,
-          duration: 500,
-          iterations: 1,
-          easing: 'cubic-bezier(.17,.67,.96,.59)',
-          fill: 'forwards',
-        })
-    })
-  })
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger)
+
+    // Create infinite scroll animation
+    const startInfiniteScroll = () => {
+      // Create a timeline for the infinite scroll
+      const scrollTimeline = gsap.timeline({ repeat: -1 })
+
+      // Calculate total width of all images plus gaps
+      const totalWidth = 6 * (288 + 32) // 6 images * (288px width + 32px gap)
+
+      // Animate the container to create infinite scroll effect
+      scrollTimeline.to(containerRef.current, {
+        x: -totalWidth,
+        duration: 50, // 50 seconds for one complete cycle
+        ease: 'none',
+        onComplete: () => {
+          // Reset position for seamless loop
+          gsap.set(containerRef.current, { x: 0 })
+        },
+      })
+    }
+
+    startInfiniteScroll()
+
+    // Cleanup function
+    return () => {
+      gsap.killTweensOf(containerRef.current)
+    }
+  }, [])
 
   return (
     <div className="relative mx-auto mt-16 max-w-[90rem] overflow-hidden py-3 before:absolute before:left-0 before:top-0 before:z-10 before:hidden before:h-full before:w-10 before:bg-gradient-to-r before:from-zinc-50 before:to-[rgba(0,0,0,0)] after:absolute after:right-0 after:top-0 after:z-10 after:hidden after:h-full after:w-10 after:bg-gradient-to-r after:from-[rgba(0,0,0,0)] after:to-zinc-50 before:dark:from-[rgba(0,0,0,1)] after:dark:to-[rgba(0,0,0,1)] sm:mt-20 before:sm:block after:sm:block">
       <div
-        id="photos"
+        ref={containerRef}
+        data-photos-container
         className="-my-4 flex w-fit justify-center gap-5 overflow-hidden py-4 sm:gap-8"
       >
+        {/* First set of images */}
         {[image1, image2, image3, image4, image5, image6].map(
           (image, imageIndex) => (
             <div
-              key={image.src}
+              key={`first-${image.src}`}
+              data-photo
+              className={clsx(
+                'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl',
+                rotations[imageIndex % rotations.length]
+              )}
+              style={{ opacity: 0 }} // Initially hidden
+            >
+              <Image
+                src={image}
+                alt=""
+                sizes="(min-width: 640px) 18rem, 11rem"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </div>
+          )
+        )}
+        {/* Duplicate set for seamless infinite scroll */}
+        {[image1, image2, image3, image4, image5, image6].map(
+          (image, imageIndex) => (
+            <div
+              key={`second-${image.src}`}
               className={clsx(
                 'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl',
                 rotations[imageIndex % rotations.length]
@@ -333,22 +375,230 @@ function Photos() {
 export default function Home({ articles }) {
   const { t } = useTranslation('common')
   const router = useRouter()
+  const heroTitleRef = useRef(null)
+  const heroDescriptionRef = useRef(null)
+  const socialLinksRef = useRef(null)
+  const photosRef = useRef(null)
+
+  useEffect(() => {
+    // Register GSAP plugins
+    gsap.registerPlugin(ScrollTrigger, SplitText)
+
+    // Create master timeline with a small delay for smooth loading
+    const masterTimeline = gsap.timeline({ delay: 0.2 })
+
+    // Phase 1: Avatar Animation (first)
+    const avatarElement = document.querySelector('[aria-label="Home"]')
+    if (avatarElement) {
+      // Set initial state - avatar starts big with high quality rendering
+      gsap.set(avatarElement, {
+        scale: 0, // Reduced from 10 to maintain better quality
+        opacity: 0,
+        // Force high quality rendering during animation
+        imageRendering: 'high-quality',
+        transformOrigin: 'center center',
+        // Use will-change to optimize for animations
+        willChange: 'transform, opacity',
+      })
+
+      // Add avatar animation to timeline with better quality settings
+      masterTimeline.to(avatarElement, {
+        scale: 1,
+        opacity: 1,
+        duration: 1, // Slightly longer for smoother animation
+        ease: 'power3.out', // Smoother easing curve
+        // Force hardware acceleration for smoother animation
+        force3D: true,
+        // Use transform3d for better performance
+        transformOrigin: 'center center',
+      })
+    }
+
+    // Phase 2: Title Animation
+    if (heroTitleRef.current) {
+      // Add the split class to the title element
+      heroTitleRef.current.classList.add('split')
+
+      // Split the text into words and characters
+      const titleSplit = SplitText.create(heroTitleRef.current, {
+        type: 'words',
+      })
+
+      // Get computed styles from the original title
+      const titleComputedStyle = window.getComputedStyle(heroTitleRef.current)
+      const titleLetterSpacing = titleComputedStyle.letterSpacing
+
+      // Set initial state with GSAP's built-in properties
+      gsap.set(
+        titleSplit.words,
+        {
+          overflow: 'hidden',
+          display: 'inline',
+          letterSpacing: titleLetterSpacing,
+          y: 100,
+          autoAlpha: 0,
+        },
+        '-=0.5'
+      )
+
+      // Add title animation to timeline (starts after avatar)
+      masterTimeline.to(
+        titleSplit.words,
+        {
+          duration: 3,
+          y: 0,
+          autoAlpha: 1,
+          stagger: 0.05,
+          ease: 'power2.out',
+        },
+        '-=0.5'
+      ) // Start 0.2 seconds before avatar animation ends
+    }
+
+    // Phase 3: Description Animation
+    if (heroDescriptionRef.current) {
+      // Add the split class to the description element
+      heroDescriptionRef.current.classList.add('split')
+
+      // Split the text into words and characters
+      const descSplit = SplitText.create(heroDescriptionRef.current, {
+        type: 'words',
+      })
+
+      // Get computed styles from the original description
+      const descComputedStyle = window.getComputedStyle(
+        heroDescriptionRef.current
+      )
+      const descLetterSpacing = descComputedStyle.letterSpacing
+
+      // Set initial state with GSAP's built-in properties
+      gsap.set(descSplit.words, {
+        overflow: 'hidden',
+        display: 'inline',
+        letterSpacing: descLetterSpacing,
+        y: 100,
+        autoAlpha: 0,
+      })
+
+      // Add description animation to timeline (starts after title)
+      masterTimeline.to(
+        descSplit.words,
+        {
+          duration: 0.8,
+          y: 0,
+          autoAlpha: 1,
+          stagger: 0.05,
+          ease: 'power2.out',
+        },
+        '-=2.5'
+      ) // Start 0.8 seconds before title animation ends
+    }
+
+    // Phase 4: Social Links Animation
+    if (socialLinksRef.current) {
+      const socialLinks = socialLinksRef.current.children
+
+      // Set initial state for social links
+      gsap.set(socialLinks, {
+        y: 50,
+        autoAlpha: 0,
+        scale: 0.8,
+      })
+
+      // Add social links animation to timeline
+      masterTimeline.to(
+        socialLinks,
+        {
+          duration: 0.8,
+          y: 0,
+          autoAlpha: 1,
+          scale: 1,
+          stagger: 0.1,
+          ease: 'back.out(1.7)',
+        },
+        '-=1.3'
+      ) // Start 0.2 seconds before description animation ends
+    }
+
+    // Phase 5: Photos Animation (part of main timeline)
+    if (photosRef.current) {
+      const photos = photosRef.current.querySelectorAll('[data-photo]')
+
+      if (photos.length > 0) {
+        // Set initial state for photos (hidden)
+        gsap.set(photos, {
+          y: (index) => -100,
+          opacity: 0,
+          rotation: (index) => (index % 2 === 0 ? 2 : -2),
+        })
+
+        // Add photos animation to timeline (after social links)
+        masterTimeline.to(
+          photos,
+          {
+            y: 0,
+            opacity: 1,
+            rotation: (index) => (index % 2 === 0 ? -2 : 2),
+            duration: 1.8,
+            ease: 'power2.out',
+            stagger: {
+              amount: 0.8,
+              from: 'start',
+              ease: 'power2.inOut',
+            },
+          },
+          '-=0.2'
+        ) // Start 0.2 seconds before social links animation ends
+      }
+    }
+
+    // Phase 6: Header Animation (after photos)
+    // Call the header animation function if it exists
+    if (window.addHeaderToTimeline) {
+      window.addHeaderToTimeline(masterTimeline)
+    }
+
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+    }
+  }, [])
+
   return (
     <>
       <Head>
         <title>{t('meta.homeTitle')}</title>
         <meta name="description" content={t('meta.homeDescription')} />
         <meta name="keywords" content="Fabian, Wassermann" />
+        <style jsx global>{`
+          /* Ensure high quality image rendering during animations */
+          [aria-label='Home'] img {
+            image-rendering: auto;
+            image-rendering: high-quality;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            /* Force GPU acceleration */
+            will-change: transform;
+          }
+        `}</style>
       </Head>
       <Container className="mt-9">
         <div className="max-w-2xl">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+          <h1
+            ref={heroTitleRef}
+            className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl"
+          >
             {t('home.hero.title')}
           </h1>
-          <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+          <p
+            ref={heroDescriptionRef}
+            className="mt-6 text-base text-zinc-600 dark:text-zinc-400"
+          >
             {t('home.hero.description')}
           </p>
-          <div className="mt-6 flex gap-6">
+          <div ref={socialLinksRef} className="mt-6 flex gap-6">
             {/* <SocialLink
               href="https://twitter.com"
               aria-label="Follow on Twitter"
@@ -372,7 +622,9 @@ export default function Home({ articles }) {
           </div>
         </div>
       </Container>
-      <Photos />
+      <div ref={photosRef}>
+        <Photos />
+      </div>
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">

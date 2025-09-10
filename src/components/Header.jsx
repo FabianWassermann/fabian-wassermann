@@ -6,8 +6,9 @@ import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
 import avatarImage from '@/images/avatar.JPEG'
-import { Fragment, useEffect, useRef } from 'react'
+import React, { Fragment, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
+import { gsap } from 'gsap'
 
 function CloseIcon(props) {
   return (
@@ -80,11 +81,14 @@ function MobileNavItem({ href, children }) {
   )
 }
 
-function MobileNavigation(props) {
+const MobileNavigation = React.forwardRef((props, ref) => {
   const { t } = useTranslation('common')
   return (
     <Popover {...props}>
-      <Popover.Button className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
+      <Popover.Button
+        ref={ref}
+        className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20"
+      >
         {t('menu.open')}
         <ChevronDownIcon className="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400" />
       </Popover.Button>
@@ -124,9 +128,15 @@ function MobileNavigation(props) {
             <nav className="mt-6">
               <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
                 <MobileNavItem href="/about">{t('nav.about')}</MobileNavItem>
-                <MobileNavItem href="/articles">{t('nav.articles')}</MobileNavItem>
-                <MobileNavItem href="/projects">{t('nav.projects')}</MobileNavItem>
-                <MobileNavItem href="/services">{t('nav.services')}</MobileNavItem>
+                <MobileNavItem href="/articles">
+                  {t('nav.articles')}
+                </MobileNavItem>
+                <MobileNavItem href="/projects">
+                  {t('nav.projects')}
+                </MobileNavItem>
+                <MobileNavItem href="/services">
+                  {t('nav.services')}
+                </MobileNavItem>
                 {/* <MobileNavItem href="/uses">{t('nav.uses')}</MobileNavItem> */}
               </ul>
             </nav>
@@ -135,7 +145,7 @@ function MobileNavigation(props) {
       </Transition.Root>
     </Popover>
   )
-}
+})
 
 function NavItem({ href, children }) {
   let isActive = useRouter().pathname === href
@@ -145,7 +155,7 @@ function NavItem({ href, children }) {
       <Link
         href={href}
         className={clsx(
-          'relative block px-3 py-2 transition whitespace-nowrap',
+          'relative block whitespace-nowrap px-3 py-2 transition',
           isActive
             ? 'text-teal-500 dark:text-teal-400'
             : 'hover:text-teal-500 dark:hover:text-teal-400'
@@ -160,10 +170,10 @@ function NavItem({ href, children }) {
   )
 }
 
-function DesktopNavigation(props) {
+const DesktopNavigation = React.forwardRef((props, ref) => {
   const { t } = useTranslation('common')
   return (
-    <nav {...props}>
+    <nav ref={ref} {...props}>
       <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
         <NavItem href="/about">{t('nav.about')}</NavItem>
         <NavItem href="/articles">{t('nav.articles')}</NavItem>
@@ -173,9 +183,9 @@ function DesktopNavigation(props) {
       </ul>
     </nav>
   )
-}
+})
 
-function ModeToggle() {
+const ModeToggle = React.forwardRef((props, ref) => {
   function disableTransitionsTemporarily() {
     document.documentElement.classList.add('[&_*]:!transition-none')
     window.setTimeout(() => {
@@ -199,16 +209,39 @@ function ModeToggle() {
 
   return (
     <button
+      ref={ref}
       type="button"
       aria-label="Toggle dark mode"
-      className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+      className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
       onClick={toggleMode}
+      {...props}
     >
       <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-teal-600" />
       <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-500" />
     </button>
   )
-}
+})
+
+const LanguageSwitcher = React.forwardRef(({ router, i18n, ...props }, ref) => {
+  function switchLocale() {
+    const currentLocale = router.locale || i18n.language || 'en'
+    const nextLocale = currentLocale === 'de' ? 'en' : 'de'
+    const { asPath, pathname, query } = router
+    router.replace({ pathname, query }, asPath, { locale: nextLocale })
+  }
+
+  return (
+    <button
+      ref={ref}
+      type="button"
+      onClick={switchLocale}
+      className="pointer-events-auto rounded-full bg-white/90 px-3 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur hover:ring-zinc-700/20 dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10"
+      {...props}
+    >
+      {router.locale === 'de' ? 'EN' : 'DE'}
+    </button>
+  )
+})
 
 function clamp(number, a, b) {
   let min = Math.min(a, b)
@@ -257,14 +290,55 @@ export function Header() {
 
   let headerRef = useRef()
   let avatarRef = useRef()
+  let headerPillRef = useRef()
+  let modeToggleRef = useRef()
+  let langSwitcherRef = useRef()
   let isInitial = useRef(true)
 
-  function switchLocale() {
-    const currentLocale = router.locale || i18n.language || 'en'
-    const nextLocale = currentLocale === 'de' ? 'en' : 'de'
-    const { asPath, pathname, query } = router
-    router.replace({ pathname, query }, asPath, { locale: nextLocale })
-  }
+  // Expose function to add header animations to external timeline
+  useEffect(() => {
+    if (isHomePage) {
+      window.addHeaderToTimeline = (timeline) => {
+        if (
+          timeline &&
+          headerPillRef.current &&
+          modeToggleRef.current &&
+          langSwitcherRef.current
+        ) {
+          // Set initial state for header elements
+          gsap.set(
+            [
+              headerPillRef.current,
+              modeToggleRef.current,
+              langSwitcherRef.current,
+            ],
+            {
+              scale: 0,
+              opacity: 0,
+            }
+          )
+
+          // Add header animations to the external timeline
+          timeline.to(
+            [
+              headerPillRef.current,
+              modeToggleRef.current,
+              langSwitcherRef.current,
+            ],
+            {
+              scale: 1,
+              opacity: 1,
+              duration: 0.8,
+              ease: 'back.out(1.7)',
+              stagger: 0.1,
+              force3D: true,
+            },
+            '-=2.2'
+          ) // Start 0.2 seconds before previous animation ends
+        }
+      }
+    }
+  }, [isHomePage])
 
   useEffect(() => {
     let downDelay = avatarRef.current?.offsetTop ?? 0
@@ -276,6 +350,34 @@ export function Header() {
 
     function removeProperty(property) {
       document.documentElement.style.removeProperty(property)
+    }
+
+    // Header reveal animations
+    const animateElement = (ref, delay = 0.2) => {
+      if (ref.current) {
+        gsap.set(ref.current, { scale: 0 })
+        gsap.to(ref.current, {
+          scale: 1,
+          duration: 0.8,
+          ease: 'back.out(1.7)',
+          delay: delay,
+          force3D: true, // Force hardware acceleration
+        })
+      }
+    }
+
+    // Use requestAnimationFrame to ensure DOM is ready (fallback for non-homepage)
+    if (!isHomePage) {
+      requestAnimationFrame(() => {
+        // Animate header pill
+        animateElement(headerPillRef, 0.2)
+
+        // Animate mode toggle
+        animateElement(modeToggleRef, 0.3)
+
+        // Animate language switcher
+        animateElement(langSwitcherRef, 0.3)
+      })
     }
 
     function updateHeaderStyles() {
@@ -421,20 +523,24 @@ export function Header() {
                 )}
               </div>
               <div className="flex flex-1 justify-end md:justify-center">
-                <MobileNavigation className="pointer-events-auto md:hidden" />
-                <DesktopNavigation className="pointer-events-auto hidden md:block" />
+                <MobileNavigation
+                  ref={headerPillRef}
+                  className="pointer-events-auto md:hidden"
+                />
+                <DesktopNavigation
+                  ref={headerPillRef}
+                  className="pointer-events-auto hidden md:block"
+                />
               </div>
-              <div className="flex items-center gap-2 justify-end md:flex-1">
+              <div className="flex items-center justify-end gap-2 md:flex-1">
                 <div className="pointer-events-auto">
-                  <ModeToggle />
+                  <ModeToggle ref={modeToggleRef} />
                 </div>
-                <button
-                  type="button"
-                  onClick={switchLocale}
-                  className="pointer-events-auto rounded-full bg-white/90 px-3 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 hover:ring-zinc-700/20 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10"
-                >
-                  {router.locale === 'de' ? 'EN' : 'DE'}
-                </button>
+                <LanguageSwitcher
+                  ref={langSwitcherRef}
+                  router={router}
+                  i18n={i18n}
+                />
               </div>
             </div>
           </Container>
