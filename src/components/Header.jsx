@@ -81,7 +81,10 @@ function MobileNavItem({ href, children }) {
   )
 }
 
-const MobileNavigation = React.forwardRef((props, ref) => {
+const MobileNavigation = React.forwardRef(function MobileNavigation(
+  props,
+  ref
+) {
   const { t } = useTranslation('common')
   return (
     <Popover {...props}>
@@ -170,7 +173,10 @@ function NavItem({ href, children }) {
   )
 }
 
-const DesktopNavigation = React.forwardRef((props, ref) => {
+const DesktopNavigation = React.forwardRef(function DesktopNavigation(
+  props,
+  ref
+) {
   const { t } = useTranslation('common')
   return (
     <nav ref={ref} {...props}>
@@ -185,7 +191,7 @@ const DesktopNavigation = React.forwardRef((props, ref) => {
   )
 })
 
-const ModeToggle = React.forwardRef((props, ref) => {
+const ModeToggle = React.forwardRef(function ModeToggle(props, ref) {
   function disableTransitionsTemporarily() {
     document.documentElement.classList.add('[&_*]:!transition-none')
     window.setTimeout(() => {
@@ -222,7 +228,10 @@ const ModeToggle = React.forwardRef((props, ref) => {
   )
 })
 
-const LanguageSwitcher = React.forwardRef(({ router, i18n, ...props }, ref) => {
+const LanguageSwitcher = React.forwardRef(function LanguageSwitcher(
+  { router, i18n, ...props },
+  ref
+) {
   function switchLocale() {
     const currentLocale = router.locale || i18n.language || 'en'
     const nextLocale = currentLocale === 'de' ? 'en' : 'de'
