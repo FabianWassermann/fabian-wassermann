@@ -1,0 +1,122 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import { CallToAction } from '@/components/CallToAction'
+import Image from 'next/image'
+import lazyLoadingWebflow from './lazy-loading-webflow.png'
+
+export const meta = {
+  author: 'Fabian Wassermann',
+  date: '2025-09-10',
+  title: 'Wie ich die Webflow-Website meines Kunden schneller gemacht habe',
+  description:
+    'Lernen Sie den schrittweisen Prozess zur Optimierung einer Webflow-Website für bessere Performance, einschließlich Bildkomprimierung, Lazy Loading und anderen wichtigen Techniken.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+Die Optimierung der Website-Geschwindigkeit ist keine einmalige Lösung—es ist ein kontinuierlicher Prozess, der sorgfältige Analyse, strategische Umsetzung und kontinuierliche Überwachung erfordert. Als ein Kunde mich wegen seiner langsam ladenden Webflow-Website kontaktierte, wusste ich, dass dies ein umfassendes Optimierungsprojekt werden würde, anstatt nur eine schnelle Anpassung.
+
+In diesem Artikel führe ich dich durch den systematischen Ansatz, den ich gewählt habe, um die Performance ihrer Website zu transformieren, und teile die spezifischen Techniken, die den größten Einfluss hatten, sowie zusätzliche Strategien, die du für deine eigenen Webflow-Projekte implementieren kannst.
+
+## Das Performance-Problem verstehen
+
+Bevor wir uns den Lösungen zuwenden, ist es wichtig zu verstehen, dass Website-Optimierung ein Prozess ist, keine einzelne Aktion. Die Website meines Kunden litt unter mehreren Performance-Engpässen:
+
+- **Große, unkomprimierte Bilder**, die das Laden der Seiten verlangsamten
+- **Fehlendes Lazy Loading**, das unnötige Ressourcen-Downloads verursachte
+
+Der Schlüssel war, jedes Problem systematisch anzugehen und dabei die Auswirkungen jeder Änderung zu messen.
+
+## Was Webflow standardmäßig für die Performance tut
+
+Bevor wir uns den Optimierungsschritten zuwenden, ist es wichtig zu verstehen, was Webflow bereits automatisch handhabt. Webflow hat mehrere eingebaute Performance-Features, die im Hintergrund arbeiten:
+
+### Automatische Optimierungen
+- **Responsive Bildgrößen**: Webflow liefert automatisch passend dimensionierte Bilder für verschiedene Geräte und Bildschirmauflösungen
+- **CDN-Auslieferung**: Alle Webflow-Sites werden automatisch über ein globales Content Delivery Network ausgeliefert für schnelleres Laden weltweit
+- **Code-Minifizierung**: CSS und JavaScript werden automatisch in der Produktion minifiziert
+- **Asset-Komprimierung**: Statische Assets werden mit gzip-Komprimierung komprimiert
+- **Browser-Caching**: Angemessene Cache-Header werden automatisch für statische Ressourcen gesetzt
+
+Das Verständnis dieser Standard-Optimierungen hilft dabei, sich auf Bereiche zu konzentrieren, wo manuelle Eingriffe den größten Einfluss haben können. Während Webflow viele Performance-Aspekte automatisch handhabt, gibt es immer noch erhebliche Optimierungsmöglichkeiten, besonders bei der Bildkomprimierung, der Effizienz von benutzerdefiniertem Code und Drittanbieter-Integrationen.
+
+## Schritt 1: Bildoptimierung und -komprimierung
+
+Die erste und wirkungsvollste Änderung war die Implementierung einer ordnungsgemäßen Bildoptimierung. Hier ist, was ich getan habe:
+
+### Bestehende Bilder komprimiert
+- **Dateigrößen um 60-80% reduziert** ohne merklichen Qualitätsverlust
+- **Bilder in moderne Formate konvertiert** wie WebP, wo unterstützt
+- **Responsive Bildgrößen implementiert**, um passend dimensionierte Bilder für verschiedene Geräte zu liefern
+
+### Best Practices für Webflow-Bildoptimierung
+- Verwende Webflows eingebaute Bildoptimierungs-Einstellungen
+- Komprimiere Bilder vor dem Hochladen (ziele auf unter 100KB für die meisten Bilder)
+- Verwende die korrekten Bildabmessungen für dein Design
+- Erwäge die Verwendung des WebP-Formats für bessere Komprimierung
+
+Ich empfehle die Verwendung von [xConverts WebP-Kompressor](https://www.xconvert.com/compress-webp), um WebP-Bilder zu komprimieren, da er dir die Dateigröße vor und nach der Komprimierung anzeigt und es dir ermöglicht, die Einstellungen für optimale Ergebnisse anzupassen.
+
+## Schritt 2: Lazy Loading implementieren
+
+Lazy Loading war der zweite große Performance-Boost. Diese Technik verzögert das Laden von Bildern und anderen Ressourcen, bis sie tatsächlich benötigt werden.
+
+<Image
+  src={lazyLoadingWebflow}
+  alt="Webflow-Bildeinstellungen-Panel zeigt das 'Typ'-Dropdown mit 'Lazy: lädt beim Scrollen' für ein Bild ausgewählt."
+  width={280}
+  height={512}
+/>
+
+*Screenshot: Webflows Bildeinstellungen-Panel. Das 'Typ'-Dropdown ist auf **Lazy: lädt beim Scrollen** eingestellt, was Lazy Loading für das ausgewählte Bild aktiviert.*
+
+Das Aktivieren von Lazy Loading in Webflow ist unkompliziert. Wie im Screenshot oben gezeigt, kannst du, wenn du ein Bild im Designer auswählst, das **Bildeinstellungen**-Panel öffnen. Unter dem **Typ**-Dropdown wählst du **Lazy: lädt beim Scrollen**. Dies stellt sicher, dass das Bild nur geladen wird, wenn es in den Viewport eintritt, was die anfänglichen Seitenladezeiten reduziert und die Performance verbessert, besonders auf bildlastigen Seiten.
+
+## Schritt 3: Zusätzliche Webflow-Optimierungstechniken
+
+Über Bilder und Lazy Loading hinaus sind hier andere wesentliche Optimierungen, die ich implementiert habe:
+
+### Code-Optimierung
+- **CSS und JavaScript minifiziert**, um Dateigrößen zu reduzieren
+- **Ungenutzten Code entfernt** und unnötigen benutzerdefinierten Code
+- **Benutzerdefinierte Schriftarten optimiert** mit font-display: swap
+- **Render-blockierende Ressourcen eliminiert**, wo möglich
+
+### Performance-Überwachung
+- **Google PageSpeed Insights-Überwachung eingerichtet**
+- **Core Web Vitals-Tracking implementiert**, um die Benutzererfahrung zu messen
+- **Regelmäßige Performance-Audits**, um Regressionen früh zu erkennen
+
+## Der kontinuierliche Prozess
+
+Website-Optimierung ist niemals wirklich "fertig". Hier ist, wie du die Performance aufrechterhältst:
+
+### Regelmäßige Wartung
+- **Monatliche Performance-Audits**, um neue Probleme zu erkennen
+- **Bildoptimierungs-Überprüfungen**, wenn Inhalte hinzugefügt werden
+- **Code-Bereinigung**, um ungenutzte Elemente zu entfernen
+- **Drittanbieter-Script-Audits**, um sicherzustellen, dass sie noch notwendig sind
+
+### Kontinuierliche Verbesserung
+- **A/B-Tests** verschiedener Optimierungsstrategien
+- **Core Web Vitals-Überwachung** für Einblicke in die Benutzererfahrung
+- **Auf dem Laufenden bleiben** mit Webflows neuen Performance-Features
+- **Regelmäßige Content-Audits**, um die Optimierungsvorteile aufrechtzuerhalten
+
+## Fazit
+
+Eine Webflow-Website schneller zu machen ist tatsächlich ein Prozess, der einen systematischen Ansatz und kontinuierliche Aufmerksamkeit erfordert. Durch den Fokus auf Bildoptimierung, die Implementierung von Lazy Loading und das Befolgen von Best Practices für Code und Asset-Auslieferung kannst du die Performance deiner Website erheblich verbessern.
+
+Denk daran, dass Optimierung ein iterativer Prozess ist—was heute funktioniert, könnte morgen Anpassungen benötigen, wenn sich deine Inhalte und Traffic-Muster entwickeln. Der Schlüssel ist, eine Routine aus Überwachung, Testen und Optimieren zu etablieren, um Spitzenleistung aufrechtzuerhalten.
+
+<CallToAction
+  text={
+    <>
+      Brauchst du Hilfe bei der Optimierung
+      <br />
+      deiner Webflow-Website?
+    </>
+  }
+  buttonText="Kontakt aufnehmen"
+  size="small"
+  clickUrl="/#contact"
+/>
