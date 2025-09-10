@@ -299,7 +299,8 @@ export function Header() {
 
   let headerRef = useRef()
   let avatarRef = useRef()
-  let headerPillRef = useRef()
+  let mobileNavRef = useRef()
+  let desktopNavRef = useRef()
   let modeToggleRef = useRef()
   let langSwitcherRef = useRef()
   let isInitial = useRef(true)
@@ -308,42 +309,32 @@ export function Header() {
   useEffect(() => {
     if (isHomePage) {
       window.addHeaderToTimeline = (timeline) => {
-        if (
-          timeline &&
-          headerPillRef.current &&
-          modeToggleRef.current &&
-          langSwitcherRef.current
-        ) {
-          // Set initial state for header elements
-          gsap.set(
-            [
-              headerPillRef.current,
-              modeToggleRef.current,
-              langSwitcherRef.current,
-            ],
-            {
+        if (timeline && modeToggleRef.current && langSwitcherRef.current) {
+          // Determine which navigation is visible based on screen size
+          const isMobile = window.innerWidth < 768 // md breakpoint
+          const navRef = isMobile ? mobileNavRef.current : desktopNavRef.current
+
+          if (navRef) {
+            // Set initial state for header elements
+            gsap.set([navRef, modeToggleRef.current, langSwitcherRef.current], {
               scale: 0,
               opacity: 0,
-            }
-          )
+            })
 
-          // Add header animations to the external timeline
-          timeline.to(
-            [
-              headerPillRef.current,
-              modeToggleRef.current,
-              langSwitcherRef.current,
-            ],
-            {
-              scale: 1,
-              opacity: 1,
-              duration: 0.8,
-              ease: 'back.out(1.7)',
-              stagger: 0.1,
-              force3D: true,
-            },
-            '-=2.2'
-          ) // Start 0.2 seconds before previous animation ends
+            // Add header animations to the external timeline
+            timeline.to(
+              [navRef, modeToggleRef.current, langSwitcherRef.current],
+              {
+                scale: 1,
+                opacity: 1,
+                duration: 0.8,
+                ease: 'back.out(1.7)',
+                stagger: 0.1,
+                force3D: true,
+              },
+              '-=2.2'
+            ) // Start 0.2 seconds before previous animation ends
+          }
         }
       }
     }
@@ -378,8 +369,14 @@ export function Header() {
     // Use requestAnimationFrame to ensure DOM is ready (fallback for non-homepage)
     if (!isHomePage) {
       requestAnimationFrame(() => {
-        // Animate header pill
-        animateElement(headerPillRef, 0.2)
+        // Determine which navigation is visible based on screen size
+        const isMobile = window.innerWidth < 768 // md breakpoint
+        const navRef = isMobile ? mobileNavRef.current : desktopNavRef.current
+
+        // Animate navigation (mobile or desktop)
+        if (navRef) {
+          animateElement({ current: navRef }, 0.2)
+        }
 
         // Animate mode toggle
         animateElement(modeToggleRef, 0.3)
@@ -533,11 +530,11 @@ export function Header() {
               </div>
               <div className="flex flex-1 justify-end md:justify-center">
                 <MobileNavigation
-                  ref={headerPillRef}
+                  ref={mobileNavRef}
                   className="pointer-events-auto md:hidden"
                 />
                 <DesktopNavigation
-                  ref={headerPillRef}
+                  ref={desktopNavRef}
                   className="pointer-events-auto hidden md:block"
                 />
               </div>
