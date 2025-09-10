@@ -282,9 +282,15 @@ function Resume() {
   )
 }
 
-function Photos() {
+const Photos = React.forwardRef((props, ref) => {
   let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
   const containerRef = useRef(null)
+  const [showGradients, setShowGradients] = useState(false)
+
+  // Expose method to parent component
+  React.useImperativeHandle(ref, () => ({
+    showGradients: () => setShowGradients(true),
+  }))
 
   useEffect(() => {
     // Register ScrollTrigger plugin
@@ -318,8 +324,23 @@ function Photos() {
     }
   }, [])
 
+  // Function to show gradients when first image is visible
+  const handleFirstImageShow = () => {
+    setShowGradients(true)
+    // Call the parent callback if provided
+    if (onFirstImageShow) {
+      onFirstImageShow()
+    }
+  }
+
   return (
-    <div className="relative mx-auto mt-16 max-w-[90rem] overflow-hidden py-3 before:absolute before:left-0 before:top-0 before:z-10 before:hidden before:h-full before:w-10 before:bg-gradient-to-r before:from-zinc-50 before:to-[rgba(0,0,0,0)] after:absolute after:right-0 after:top-0 after:z-10 after:hidden after:h-full after:w-10 after:bg-gradient-to-r after:from-[rgba(0,0,0,0)] after:to-zinc-50 before:dark:from-[rgba(0,0,0,1)] after:dark:to-[rgba(0,0,0,1)] sm:mt-20 before:sm:block after:sm:block">
+    <div
+      className={`relative mx-auto mt-16 max-w-[90rem] overflow-hidden py-3 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-10 before:bg-gradient-to-r before:from-zinc-50 before:to-[rgba(0,0,0,0)] after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-10 after:bg-gradient-to-r after:from-[rgba(0,0,0,0)] after:to-zinc-50 before:dark:from-[rgba(0,0,0,1)] after:dark:to-[rgba(0,0,0,1)] sm:mt-20 ${
+        showGradients
+          ? 'before:block after:block'
+          : 'before:hidden after:hidden'
+      }`}
+    >
       <div
         ref={containerRef}
         data-photos-container
@@ -368,7 +389,7 @@ function Photos() {
       </div>
     </div>
   )
-}
+})
 
 // I’m the founder and CEO of AATSI, where we develop crypto technologies that automate the asset trading for people to save time and make profits.
 
@@ -379,6 +400,16 @@ export default function Home({ articles }) {
   const heroDescriptionRef = useRef(null)
   const socialLinksRef = useRef(null)
   const photosRef = useRef(null)
+  const photosComponentRef = useRef(null)
+
+  // Function to handle when first image is shown
+  const handleFirstImageShow = () => {
+    // This will be called when the first image animation completes
+    // We'll trigger the gradient visibility from the Photos component
+    if (photosComponentRef.current) {
+      photosComponentRef.current.showGradients()
+    }
+  }
 
   useEffect(() => {
     // Register GSAP plugins
@@ -553,9 +584,13 @@ export default function Home({ articles }) {
               from: 'start',
               ease: 'power2.inOut',
             },
+            onStart: () => {
+              // Show gradients when first image animation completes
+              handleFirstImageShow()
+            },
           },
-          '-=0.2'
-        ) // Start 0.2 seconds before social links animation ends
+          '-=0.8'
+        ) // Start 0.8 seconds before social links animation ends
       }
     }
 
@@ -630,7 +665,7 @@ export default function Home({ articles }) {
         </div>
       </Container>
       <div ref={photosRef}>
-        <Photos />
+        <Photos ref={photosComponentRef} />
       </div>
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
