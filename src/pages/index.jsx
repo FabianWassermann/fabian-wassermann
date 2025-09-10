@@ -411,6 +411,13 @@ export default function Home({ articles }) {
         force3D: true,
         // Use transform3d for better performance
         transformOrigin: 'center center',
+        onComplete: () => {
+          // Clean up transform properties to prevent conflicts with other animations
+          gsap.set(avatarElement, {
+            clearProps: 'willChange,imageRendering,transformOrigin',
+          })
+          avatarElement.style.transform = 'var(--avatar-image-transform)'
+        },
       })
     }
 
