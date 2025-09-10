@@ -282,7 +282,7 @@ function Resume() {
   )
 }
 
-const Photos = React.forwardRef((props, ref) => {
+const Photos = React.forwardRef(function Photos(props, ref) {
   let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
   const containerRef = useRef(null)
   const [showGradients, setShowGradients] = useState(false)
