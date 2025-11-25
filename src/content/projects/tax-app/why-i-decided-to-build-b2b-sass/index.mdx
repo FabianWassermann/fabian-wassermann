@@ -1,0 +1,83 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import { CallToAction } from '@/components/CallToAction'
+import Image from 'next/image'
+import mandantDepotSearch from './mandant-depot-search.png'
+import createMandant from './create-mandant.png'
+import activitiesList from './activities-list.png'
+
+export const meta = {
+  author: 'Fabian Wassermann',
+  date: '2025-11-25',
+  title:
+    'B2B SaaS for Austrian Tax Advisors: Automated Capital Gains Tax & E1kv Generation',
+  description:
+    'Powerful B2B SaaS for Austrian tax advisors and law firms: automate capital gains tax (KESt) calculation, E1kv values generation, and client management. Streamline Austrian tax workflows with digital automation built for professional tax consulting.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+<Image
+  src={mandantDepotSearch}
+  alt="Dashboard interface showing client (Mandant) and depot selection"
+  className="rounded-lg"
+/>{' '}
+
+## Why Build a B2B SaaS for Austrian Tax Advisors? (Capital Gains Tax Automation Explained)
+
+My original idea was quite simple:
+I wanted a tool—essentially a “digital tax consultant”—that could handle Austrian capital gains tax (KESt) calculations
+for my stock trades with foreign brokers.
+I reached out to an established tax consulting firm, hoping they could take care of this for me.
+To my surprise, they told me **they weren't able to support this specific use case**, despite not being a small firm by any means.
+
+A few weeks later, something unexpected happened.
+**A tax advisory firm from Vienna contacted me**, inquiring about my KestAustria software.
+Up to that point, I had only built a B2C SaaS for fun—something for private investors like myself.
+But this new client had a different scenario in mind: **they wanted to import and automatically process
+data for multiple clients within a B2B SaaS**.
+
+<Image
+  src={createMandant}
+  alt="Interface for creating a new client (Mandant) in the B2B SaaS"
+  className="rounded-lg"
+/>{' '}
+
+In the following article I will share why and how this Saas can benefit tax consulting firms.
+
+## The Pain Points for Tax Advisors: Where Existing Tools Fall Short
+
+Most established software solutions, such as [BMD](https://www.bmd.com/at/) and [DATEV](https://datev.at/kanzlei/), are excellent at accounting and form submission—but **they assume the values for each tax form (like Austria's E1kv) are already prepared**.
+
+Yet, for international stock trading accounts, preparing these values means that the advisor must:
+
+- Import and standardize broker transaction statements (from disparate banks and platforms)
+- Correctly classify each transaction (buy, sell, dividend, etc.)
+- Apply Austrian capital gains tax rules, tax year cutoffs, reporting currencies, and specific exemptions
+- Track losses, offsets, and double-taxation treaties by transaction
+- Aggregate all results _per client_, ready for automated transfer into the E1kv
+
+In practice, this is **error-prone and extremely time-consuming**—even with Excel macros or partial import tools.
+
+## My B2B SaaS was built to automate these core challenges:
+
+- **Bulk process** raw broker exports for all clients in a secure, centralized web dashboard
+- Run intelligent parsing and tax calculation logic for **hundreds or thousands of transactions**
+- **Instantly generate** the E1kv-ready summaries for each client and reporting year
+- Support complex portfolios with foreign currencies, changing tax law, and multi-asset classes
+- Handle both Reporting Funds and Non-Reporting Funds with ÖKB integration
+
+<Image
+  src={activitiesList}
+  alt="Activity list showing all transactions (trades, dividends, interest) for a client"
+  className="rounded-lg"
+/>{' '}
+
+The result? Firms can handle **many more clients** (with less manual work), **reduce mistakes**, and offer a **faster, more professional digital service**.
+
+<CallToAction
+  text={<>Get in touch</>}
+  buttonText="Contact me"
+  clickUrl="/#contact"
+/>
+
+[Learn more about KestAustria B2C SaaS &rarr;](https://www.kestaustria.at)

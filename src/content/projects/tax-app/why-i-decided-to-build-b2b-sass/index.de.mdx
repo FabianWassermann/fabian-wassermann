@@ -1,0 +1,82 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import { CallToAction } from '@/components/CallToAction'
+import Image from 'next/image'
+import mandantDepotSearch from './mandant-depot-search.png'
+import createMandant from './create-mandant.png'
+import activitiesList from './activities-list.png'
+
+export const meta = {
+  author: 'Fabian Wassermann',
+  date: '2025-11-25',
+  title:
+    'B2B SaaS für österreichische Steuerberater: Automatisierte KESt-Berechnung & E1kv-Generierung',
+  description:
+    'Leistungsstarkes B2B SaaS für österreichische Steuerberater und Kanzleien: Automatisierung der Kapitalertragssteuer (KESt) Berechnung, E1kv-Werte-Generierung und Mandantenverwaltung. Optimieren Sie österreichische Steuer-Workflows mit digitaler Automatisierung für professionelle Steuerberatung.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+<Image
+  src={mandantDepotSearch}
+  alt="Dashboard-Oberfläche mit Mandanten- und Depotauswahl"
+  className="rounded-lg"
+/>{' '}
+
+## Warum ein B2B SaaS für österreichische Steuerberater? (KESt-Automatisierung erklärt)
+
+Meine ursprüngliche Idee war recht einfach:
+Ich wollte ein Tool—im Wesentlichen einen „digitalen Steuerberater"—der österreichische Kapitalertragssteuer (KESt) Berechnungen
+für meine Aktiengeschäfte mit ausländischen Brokern durchführen konnte.
+Ich wandte mich an eine etablierte Steuerberatungskanzlei in der Hoffnung, dass sie sich darum kümmern könnte.
+Zu meiner Überraschung teilten sie mir mit, dass **sie diesen speziellen Anwendungsfall nicht unterstützen konnten**, obwohl es sich keineswegs um eine kleine Kanzlei handelte.
+
+Einige Wochen später geschah etwas Unerwartetes.
+**Eine Steuerberatungskanzlei aus Wien kontaktierte mich** und erkundigte sich nach meiner KestAustria Software.
+Bis dahin hatte ich nur ein B2C SaaS zum Spaß gebaut—etwas für private Anleger wie mich selbst.
+Aber dieser neue Kunde hatte ein anderes Szenario im Sinn: **sie wollten Daten für mehrere Mandanten innerhalb eines B2B SaaS importieren und automatisch verarbeiten**.
+
+<Image
+  src={createMandant}
+  alt="Oberfläche zum Erstellen eines neuen Mandanten im B2B SaaS"
+  className="rounded-lg"
+/>{' '}
+
+Im folgenden Artikel werde ich erläutern, warum und wie dieses SaaS Steuerberatungskanzleien nutzen kann.
+
+## Die Herausforderungen für Steuerberater: Wo bestehende Tools an ihre Grenzen stoßen
+
+Die meisten etablierten Softwarelösungen, wie [BMD](https://www.bmd.com/at/) und [DATEV](https://datev.at/kanzlei/), sind hervorragend in Buchhaltung und Formularübermittlung—aber **sie gehen davon aus, dass die Werte für jedes Steuerformular (wie Österreichs E1kv) bereits vorbereitet sind**.
+
+Doch für internationale Aktiendepots bedeutet die Vorbereitung dieser Werte, dass der Berater:
+
+- Broker-Transaktionsauszüge importieren und standardisieren muss (von verschiedenen Banken und Plattformen)
+- Jede Transaktion korrekt klassifizieren muss (Kauf, Verkauf, Dividende, etc.)
+- Österreichische Kapitalertragssteuer-Regeln, Steuerjahresgrenzen, Meldewährungen und spezifische Ausnahmen anwenden muss
+- Verluste, Verrechnungen und Doppelbesteuerungsabkommen pro Transaktion nachverfolgen muss
+- Alle Ergebnisse _pro Mandant_ aggregieren muss, bereit für den automatisierten Transfer in die E1kv
+
+In der Praxis ist dies **fehleranfällig und extrem zeitaufwändig**—selbst mit Excel-Makros oder teilweisen Import-Tools.
+
+## Mein B2B SaaS wurde entwickelt, um diese Kernherausforderungen zu automatisieren:
+
+- **Massenverarbeitung** von rohen Broker-Exporten für alle Mandanten in einem sicheren, zentralisierten Web-Dashboard
+- Intelligente Parsing- und Steuerberechnungslogik für **Hunderte oder Tausende von Transaktionen** ausführen
+- **Sofortige Generierung** der E1kv-fertigen Zusammenfassungen für jeden Mandanten und jedes Steuerjahr
+- Unterstützung komplexer Portfolios mit Fremdwährungen, sich ändernden Steuergesetzen und Multi-Asset-Klassen
+- Handhabung von sowohl Meldefonds als auch Nicht-Meldefonds mit ÖKB-Integration
+
+<Image
+  src={activitiesList}
+  alt="Aktivitätenliste mit allen Transaktionen (Trades, Dividenden, Zinsen) für einen Mandanten"
+  className="rounded-lg"
+/>{' '}
+
+Das Ergebnis? Kanzleien können **viel mehr Mandanten** bearbeiten (mit weniger manueller Arbeit), **Fehler reduzieren** und einen **schnelleren, professionelleren digitalen Service** anbieten.
+
+<CallToAction
+  text={<>Kontakt aufnehmen</>}
+  buttonText="Kontaktieren Sie mich"
+  clickUrl="/#contact"
+/>
+
+[Mehr über KestAustria B2C SaaS erfahren &rarr;](https://www.kestaustria.at)
