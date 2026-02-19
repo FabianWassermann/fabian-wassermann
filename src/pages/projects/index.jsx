@@ -11,16 +11,29 @@ import logoHundepensionBergparadies from '@/images/logos/hundepensionbergparadie
 import logoLabradorVomSalzkofelblick from '@/images/logos/labrador-vom-salzkofelblick.png'
 import logoAatsiRebalancing from '@/images/logos/aatsi-rebalancing.png'
 import logoTRElektrotechnik from '@/images/logos/tr-elektrotechnik.png'
+import logoTerminpilot from '@/images/logos/logoTerminpilot.png'
 import logoKestAustria from '@/images/logos/kestaustria.png'
 import imageHundepensionBergparadies from '@/images/projects/hundepension.webp'
 import imageSunnySoul from '@/images/projects/sunnysoul.webp'
 import imageAatsiRebalancing from '@/images/projects/aatsi-rebalancing.webp'
 import imageTRElektrotechnik from '@/images/projects/tr-elektrotechnik.webp'
 import imageKestAustria from '@/images/projects/kestaustria.webp'
+import imageTerminpilot from '@/images/projects/terminpilot.png'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 const projects = [
+  {
+    id: 'terminpilot',
+    link: {
+      href: 'https://terminpilot.fabian-wassermann.com/',
+      label: 'terminpilot.fabian-wassermann.com',
+    },
+    logo: logoTerminpilot,
+    tags: ['NextJs', 'TailwindCSS'],
+    isImageShown: false,
+    image: imageTerminpilot,
+  },
   {
     id: 'kest',
     link: {
@@ -193,9 +206,8 @@ export default function Projects() {
                       project.isImageShown = !oldSate
                       forceUpdate()
                     }}
-                    className={`${
-                      project.isImageShown ? '!flex' : 'flex sm:hidden'
-                    } z-40 h-10 w-10 items-center justify-center rounded-full bg-white text-zinc-500 shadow-md shadow-zinc-800/5 ring-1 ring-zinc-800/5 hover:bg-zinc-50 hover:text-zinc-600 group-hover:flex dark:border dark:border-zinc-600/50 dark:bg-zinc-700 dark:ring-0 dark:hover:bg-zinc-600 dark:hover:text-zinc-400`}
+                    className={`${project.isImageShown ? '!flex' : 'flex sm:hidden'
+                      } z-40 h-10 w-10 items-center justify-center rounded-full bg-white text-zinc-500 shadow-md shadow-zinc-800/5 ring-1 ring-zinc-800/5 hover:bg-zinc-50 hover:text-zinc-600 group-hover:flex dark:border dark:border-zinc-600/50 dark:bg-zinc-700 dark:ring-0 dark:hover:bg-zinc-600 dark:hover:text-zinc-400`}
                   >
                     {project.isImageShown ? (
                       <EyeCloseIcon stroke="currentColor" className="h-6 w-6" />
@@ -222,9 +234,8 @@ export default function Projects() {
                   <span className="ml-2">{project.link.label}</span>
                 </p>
                 <div
-                  className={`${
-                    project.isImageShown ? 'z-30 opacity-100' : 'z-10 opacity-0'
-                  } absolute -inset-y-6 -inset-x-4 flex items-center justify-center bg-zinc-50 transition-opacity dark:bg-zinc-800 sm:-inset-x-6 sm:rounded-2xl`}
+                  className={`${project.isImageShown ? 'z-30 opacity-100' : 'z-10 opacity-0'
+                    } absolute -inset-y-6 -inset-x-4 flex items-center justify-center bg-zinc-50 transition-opacity dark:bg-zinc-800 sm:-inset-x-6 sm:rounded-2xl`}
                 >
                   {project.image ? (
                     <Image
@@ -280,9 +291,8 @@ export default function Projects() {
                         project.isImageShown = !oldSate
                         forceUpdate()
                       }}
-                      className={`${
-                        project.isImageShown ? '!flex' : 'flex sm:hidden'
-                      } z-40 h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-zinc-500 shadow-md shadow-zinc-800/5 ring-1 ring-zinc-800/5 hover:bg-zinc-50 hover:text-zinc-600 group-hover:flex dark:border dark:border-zinc-600/50 dark:bg-zinc-700 dark:ring-0 dark:hover:bg-zinc-600 dark:hover:text-zinc-400`}
+                      className={`${project.isImageShown ? '!flex' : 'flex sm:hidden'
+                        } z-40 h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-zinc-500 shadow-md shadow-zinc-800/5 ring-1 ring-zinc-800/5 hover:bg-zinc-50 hover:text-zinc-600 group-hover:flex dark:border dark:border-zinc-600/50 dark:bg-zinc-700 dark:ring-0 dark:hover:bg-zinc-600 dark:hover:text-zinc-400`}
                     >
                       {project.isImageShown ? (
                         <EyeCloseIcon
@@ -306,9 +316,8 @@ export default function Projects() {
                   <span className="ml-2">{project.link.label}</span>
                 </p>
                 <div
-                  className={`${
-                    project.isImageShown ? 'z-30 opacity-100' : 'z-10 opacity-0'
-                  } absolute -inset-y-6 -inset-x-4 flex items-center justify-center bg-zinc-50 transition-opacity dark:bg-zinc-800 sm:-inset-x-6 sm:rounded-2xl`}
+                  className={`${project.isImageShown ? 'z-30 opacity-100' : 'z-10 opacity-0'
+                    } absolute -inset-y-6 -inset-x-4 flex items-center justify-center bg-zinc-50 transition-opacity dark:bg-zinc-800 sm:-inset-x-6 sm:rounded-2xl`}
                 >
                   {project.image ? (
                     <Image

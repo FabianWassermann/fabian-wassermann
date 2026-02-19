@@ -63,8 +63,7 @@
       "github": "Auf GitHub folgen",
       "linkedin": "Auf LinkedIn folgen"
     }
-  }
-  ,
+  },
   "articles": {
     "title": "Artikel über Software und Webdesign.",
     "intro": "Alle meine ausführlichen Gedanken zu Programmierung, Webdesign und mehr – chronologisch gesammelt."
@@ -75,6 +74,10 @@
     "websiteSectionTitle": "Website-Projekte",
     "applicationSectionTitle": "Anwendungsprojekte",
     "items": {
+      "terminpilot": {
+        "name": "Terminpilot",
+        "description": "Website, die einen Überblick über die Vorteile des Einsatzes von KI für Telefonate und Terminvereinbarungen bietet."
+      },
       "kest": {
         "name": "KestAustria",
         "description": "Website für eine Software zur Berechnung der Kapitalertragsteuer in Österreich. Die Seite gibt einen Überblick über die Funktionen."
@@ -367,5 +370,3 @@
     }
   }
 }
-
-

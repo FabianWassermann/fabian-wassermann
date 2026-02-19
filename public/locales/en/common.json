@@ -49,8 +49,7 @@
       "role": "Role",
       "date": "Date"
     }
-  }
-  ,
+  },
   "about": {
     "hero": {
       "title": "I’m Fabian. I live in Austria, where I build amazing software."
@@ -64,8 +63,7 @@
       "github": "Follow on GitHub",
       "linkedin": "Follow on LinkedIn"
     }
-  }
-  ,
+  },
   "articles": {
     "title": "Writing on software development, webdesign, and the software industry.",
     "intro": "All of my long-form thoughts on programming, webdesign, and more, collected in chronological order."
@@ -76,6 +74,10 @@
     "websiteSectionTitle": "Website Projects",
     "applicationSectionTitle": "Application Projects",
     "items": {
+      "terminpilot": {
+        "name": "Terminpilot",
+        "description": "Website giving an overview over the benefits of using AI for phone calls and appointment scheduling."
+      },
       "kest": {
         "name": "KestAustria",
         "description": "Website for a Software calculating capital gain tax for Austrians. The website gives an overview over the features."
@@ -179,13 +181,7 @@
           "courierNew": "Courier New"
         },
         "example": {
-          "navigation": [
-            "Rings",
-            "Necklaces",
-            "Earrings",
-            "Bracelets",
-            "Sale"
-          ],
+          "navigation": ["Rings", "Necklaces", "Earrings", "Bracelets", "Sale"],
           "badge": "The Big Summer Sale.",
           "shopNow": "Shop now",
           "cta": "Shop now",
