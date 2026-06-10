@@ -5,18 +5,22 @@ import { getAllArticles } from './getAllArticles'
 import { importProjectArticle } from './getAllArticlesOfProject'
 
 export async function getAllArticlesAndProjectArticles(locale = 'en') {
-  let articleFilenames = await glob(['*.mdx', '**/index.mdx'], {
-    cwd: path.join(process.cwd(), `src/content/projects/`),
+  let articleFilenames = await glob(['*/articles/*/index.mdx'], {
+    cwd: path.join(process.cwd(), 'src/content/projects'),
   })
 
   let articles = await Promise.all(
     articleFilenames.map((articleFilename) => {
-      const articleName = articleFilename.split('/')[0]
-      const articleFilenameWithoutName = articleFilename.replace(
-        `${articleName}/`,
+      const projectName = articleFilename.split('/')[0]
+      const articleFilenameWithoutProjectPath = articleFilename.replace(
+        `${projectName}/articles/`,
         ''
       )
-      return importProjectArticle(articleName, articleFilenameWithoutName, locale)
+      return importProjectArticle(
+        projectName,
+        articleFilenameWithoutProjectPath,
+        locale
+      )
     })
   )
 

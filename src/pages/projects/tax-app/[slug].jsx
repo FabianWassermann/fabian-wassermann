@@ -10,11 +10,11 @@ export default function ArticlePage({ slug, locale }) {
   const MDXComponent = dynamic(() =>
     import(
       /* webpackInclude: /index(\.[a-z]{2})?\.mdx$/ */
-      `@/content/projects/tax-app/${slug}/index.${selectedLocale}.mdx`
+      `@/content/projects/tax-app/articles/${slug}/index.${selectedLocale}.mdx`
     ).catch(() =>
       import(
         /* webpackInclude: /index(\.[a-z]{2})?\.mdx$/ */
-        `@/content/projects/tax-app/${slug}/index.mdx`
+        `@/content/projects/tax-app/articles/${slug}/index.mdx`
       )
     )
   )
@@ -29,7 +29,10 @@ export async function getStaticProps({ params, locale }) {
 }
 
 export async function getStaticPaths() {
-  const contentDir = path.join(process.cwd(), 'src/content/projects/tax-app')
+  const contentDir = path.join(
+    process.cwd(),
+    'src/content/projects/tax-app/articles'
+  )
   const paths = []
 
   if (fs.existsSync(contentDir)) {
@@ -56,6 +59,5 @@ export async function getStaticPaths() {
     fallback: false,
   }
 }
-
 
 

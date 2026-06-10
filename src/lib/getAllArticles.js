@@ -4,7 +4,9 @@ import * as path from 'path'
 async function importArticleFromContent(articleDir, locale) {
   // Try locale-specific first, then fallback to default index.mdx
   try {
-    let mod = await import(`@/content/articles/${articleDir}/index.${locale}.mdx`)
+    let mod = await import(
+      `@/content/articles/${articleDir}/index.${locale}.mdx`
+    )
     return { mod, slug: articleDir }
   } catch (e) {
     let mod = await import(`@/content/articles/${articleDir}/index.mdx`)

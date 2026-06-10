@@ -10,11 +10,11 @@ export default function ArticlePage({ slug, locale }) {
   const MDXComponent = dynamic(() =>
     import(
       /* webpackInclude: /index(\.[a-z]{2})?\.mdx$/ */
-      `@/content/projects/billing-software/${slug}/index.${selectedLocale}.mdx`
+      `@/content/projects/billing-software/articles/${slug}/index.${selectedLocale}.mdx`
     ).catch(() =>
       import(
         /* webpackInclude: /index(\.[a-z]{2})?\.mdx$/ */
-        `@/content/projects/billing-software/${slug}/index.mdx`
+        `@/content/projects/billing-software/articles/${slug}/index.mdx`
       )
     )
   )
@@ -29,7 +29,10 @@ export async function getStaticProps({ params, locale }) {
 }
 
 export async function getStaticPaths() {
-  const contentDir = path.join(process.cwd(), 'src/content/projects/billing-software')
+  const contentDir = path.join(
+    process.cwd(),
+    'src/content/projects/billing-software/articles'
+  )
   const paths = []
 
   if (fs.existsSync(contentDir)) {
@@ -56,6 +59,4 @@ export async function getStaticPaths() {
     fallback: false,
   }
 }
-
-
 
